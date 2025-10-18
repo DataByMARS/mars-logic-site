@@ -4,8 +4,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mars Logic</title>
+
+  <!-- Poppins font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
   <header class="site-header">
     <nav>
@@ -21,27 +29,48 @@
   <section id="home" class="section">
     <h1>Welcome to Mars Logic</h1>
     <p>Clear thinking. Clean code. Pragmatic results.</p>
+    <p><a href="#contact" class="btn">Let’s Talk</a></p>
   </section>
 
   <section id="about" class="section">
     <h2>About</h2>
-    <p>We blend engineering rigor with creative design to build reliable systems and meaningful software.</p>
+    <p>
+      At Mars Logic, we bring engineering precision and creative insight together to build
+      dependable, meaningful, and data-driven solutions. We believe great work is equal parts
+      logic and imagination — grounded in research, powered by technology, and refined by design.
+    </p>
   </section>
 
   <section id="services" class="section">
     <h2>Services</h2>
-    <p>From architecture reviews to product launches, we help projects get from orbit to touchdown.</p>
+    <ul>
+      <li>Research Design</li>
+      <li>Data Collection</li>
+      <li>Statistical Analysis</li>
+      <li>Qualitative Insights</li>
+      <li>Predictive Modeling</li>
+      <li>Data Visualization</li>
+      <li>Reporting</li>
+      <li>Front-to-End Project Management</li>
+    </ul>
   </section>
 
   <section id="contact" class="section">
     <h2>Contact</h2>
-    <p>Email us at <a href="mailto:hello@mars-logic.com">hello@mars-logic.com</a>.</p>
+    <p>
+      Ready to collaborate or learn more about how Mars Logic can support your next project?
+      Reach out at
+      <a href="mailto:hello@mars-logic.com">hello@mars-logic.com</a>.
+    </p>
   </section>
 
   <footer>
     <p>© <span id="year"></span> Mars Logic</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    // Auto-update footer year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

@@ -1,0 +1,94 @@
+/* ===== Global Styles ===== */
+:root {
+  --brand: #ff4d4d;
+  --accent: #ffb84d;
+  --bg: #0b0b0d;
+  --text: #e8e8f0;
+  --muted: #b7b7c7;
+  --max: 1100px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* ===== Navigation ===== */
+.site-header {
+  position: sticky;
+  top: 0;
+  background: rgba(11, 11, 13, 0.9);
+  backdrop-filter: blur(10px);
+  z-index: 100;
+}
+
+.nav-list {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 1rem 0;
+}
+
+.nav-list a {
+  color: var(--muted);
+  text-decoration: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  transition: 0.2s;
+}
+
+.nav-list a:hover {
+  background: linear-gradient(135deg, var(--brand), var(--accent));
+  color: #000;
+}
+
+/* ===== Sections ===== */
+.section {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 80px 20px;
+}
+
+h1, h2 {
+  color: var(--brand);
+  margin-top: 0;
+}
+
+p {
+  max-width: 700px;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  padding: 20px;
+  border-top: 1px solid #222;
+}
+
+/* ===== Responsive Layout ===== */
+@media (max-width: 768px) {
+  .nav-list {
+    flex-direction: column;
+    align-items: center;
+  }
+  .section {
+    padding: 60px 16px;
+  }
+  h1 {
+    font-size: 1.8rem;
+  }
+}
