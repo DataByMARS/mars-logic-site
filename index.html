@@ -16,17 +16,20 @@
 </head>
 <body>
 
-  <!-- Header with logo on left, nav on right -->
+  <!-- Header -->
   <header class="site-header">
     <div class="nav">
       <a class="brand" href="#home" aria-label="MARS Home">
         <img src="assets/logo.png" alt="MARS — Modern Analytics & Research Solutions logo" />
-        <span class="brand-name">MARS</span>
       </a>
 
-      <nav aria-label="Main">
+      <button class="nav-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
+
+      <nav id="primary-nav" aria-label="Main">
         <ul class="nav-list">
-          <li><a href="#home">Home</a></li>
+          <li><a href="#home" class="active">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -37,14 +40,14 @@
 
   <main>
     <!-- Hero -->
-    <section id="home" class="section home">
+    <section id="home" class="section hero">
       <h1>Welcome to MARS</h1>
-      <p>Human-centered. Data-Driven.</p>
+      <p class="lede">Human-centered. Data-Driven.</p>
       <p><a href="#contact" class="btn">Work With Us</a></p>
     </section>
 
     <!-- About -->
-    <section id="about" class="section">
+    <section id="about" class="section alt">
       <h2>About</h2>
       <p>
         Modern Analytics & Research Solutions (MARS) is a research and analytics firm that transforms
@@ -72,36 +75,35 @@
         strategically relevant.
       </p>
       <p>
-        <strong>Lasting Impact:</strong> Our commitment extends beyond project delivery. MARS is dedicated to knowledge transfer
-        and capacity building. We equip our clients with the tools, frameworks, and understanding necessary to sustain
-        evidence-based decision-making long-term, fostering organizational independence and creating a lasting impact.
+        <strong>Lasting Impact:</strong> We prioritize knowledge transfer and capacity building so teams can sustain
+        evidence-based decision-making long-term, fostering organizational independence and lasting impact.
       </p>
 
       <h3>Our Core Values</h3>
-      <ul>
-        <li><strong>Integrity:</strong> Upholding scientific rigor and the highest ethical standards in all that we do.</li>
-        <li><strong>Innovation:</strong> Applying modern tools, advanced analytics, and cutting-edge methods to address evolving challenges.</li>
-        <li><strong>Collaboration:</strong> Creating meaningful, client-aligned partnerships focused on shared goals and co-created solutions.</li>
+      <ul class="values">
+        <li><strong>Integrity:</strong> Scientific rigor and the highest ethical standards.</li>
+        <li><strong>Innovation:</strong> Modern tools, advanced analytics, and cutting-edge methods.</li>
+        <li><strong>Collaboration:</strong> Client-aligned partnerships focused on shared goals and co-created solutions.</li>
       </ul>
     </section>
 
     <!-- Services -->
     <section id="services" class="section">
       <h2>Services</h2>
-      <ul class="services-list">
-        <li>Research Design</li>
-        <li>Data Collection</li>
-        <li>Statistical Analysis</li>
-        <li>Qualitative Insights</li>
-        <li>Predictive Modeling</li>
-        <li>Data Visualization</li>
-        <li>Reporting</li>
-        <li>Front-to-End Project Management</li>
-      </ul>
+      <div class="cards">
+        <article class="card"><h3>Research Design</h3><p>Study design, sampling, instruments, KPIs, and evaluation strategy.</p></article>
+        <article class="card"><h3>Data Collection</h3><p>Mixed-method fielding across surveys, interviews, focus groups, and more.</p></article>
+        <article class="card"><h3>Statistical Analysis</h3><p>Descriptive, inferential, and causal methods tailored to your decisions.</p></article>
+        <article class="card"><h3>Qualitative Insights</h3><p>Themes, narratives, and stakeholder-driven synthesis with rigor.</p></article>
+        <article class="card"><h3>Predictive Modeling</h3><p>Forecasting, classification, and risk modeling with transparent assumptions.</p></article>
+        <article class="card"><h3>Data Visualization</h3><p>Dashboards and storytelling that make the signal pop and stick.</p></article>
+        <article class="card"><h3>Reporting</h3><p>Executive summaries, technical appendices, and decision-ready deliverables.</p></article>
+        <article class="card"><h3>Front-to-End PM</h3><p>Scope, timelines, comms, and QA—alignment from kickoff to handoff.</p></article>
+      </div>
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="section">
+    <section id="contact" class="section alt">
       <h2>Contact</h2>
       <p>
         Ready to collaborate or learn more about how MARS can support your next project?
@@ -114,8 +116,6 @@
     <p>© <span id="year"></span> MARS</p>
   </footer>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
