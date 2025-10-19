@@ -1,7 +1,8 @@
 /* ================================================================
    MARS — Modern Analytics & Research Solutions
-   Design v8.3 — mobile top-load harden, readable dark-CTA, centered
-   watermark, responsive About image, larger pills, back-to-top
+   Design v8.7 — lock scrolling during boot (fix mobile mid-page load),
+   readable dark-CTA, centered hover watermark, responsive About image,
+   larger pills, back-to-top
    ================================================================ */
 
 /* ---------- Brand tokens ---------- */
@@ -33,26 +34,27 @@
 /* Anchor offset for sticky header + default smooth scroll */
 html{ scroll-behavior:smooth; scroll-padding-top:72px; }
 
-/* Prevent Safari/iOS from loading mid-page or preserving weird anchors */
-html.is-booting { scroll-behavior:auto !important; }
-@media (hover:none) and (pointer:coarse){
-  html { scroll-behavior:auto; } /* Disable smooth scroll on touch devices during boot */
-}
-
-/* Prevent scroll anchoring jumps at top of page */
-body, #top, #home, .site-header { overflow-anchor:none; }
-
 /* Prefer reduced motion */
 @media (prefers-reduced-motion: reduce){
   html{ scroll-behavior:auto; }
 }
-/* Anti “load-in-the-middle” hardening:
-   - During boot (if HTML uses .is-booting), force no smooth.
-   - On touch devices (coarse pointer), also avoid smooth on initial load. */
+
+/* ---------------------------------------------------------------
+   Anti “load-in-the-middle” hardening
+   - While the page boots (HTML has .is-booting), disable smooth scroll
+     and lock scrolling so iOS can’t anchor mid-page.
+   - Also disable smooth scroll on coarse pointers during boot.
+   - Prevent scroll anchoring on top elements.
+   --------------------------------------------------------------- */
 html.is-booting{ scroll-behavior:auto !important; }
+html.is-booting, body.is-booting{ overflow:hidden; height:100%; }
+
 @media (hover:none) and (pointer:coarse){
   html{ scroll-behavior:auto; }
 }
+
+/* Keep the browser from anchoring to elements during first paint */
+body, #top, #home, .site-header{ overflow-anchor:none; }
 
 body{
   margin:0; background:var(--bg); color:var(--text);
