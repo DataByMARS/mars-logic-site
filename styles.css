@@ -176,3 +176,63 @@ footer{
   .about-grid{ grid-template-columns:1fr; }
   .cards{ grid-template-columns:1fr; }
 }
+/* ===== About: hard overrides to ensure clean layout ===== */
+.about-intro{
+  text-align:left;
+  color: var(--stellar-grey);
+  max-width: 900px;
+  margin: 0 auto 32px auto;
+  line-height: 1.8;
+}
+
+/* Card grid: even spacing, even heights */
+.about-grid{
+  display:grid !important;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: stretch;
+  margin-top: 8px;
+}
+.about-card{
+  background:#fff;
+  border:1px solid #eaeaea;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.06);
+  display:flex;
+  flex-direction:column;
+  min-height:100%;
+}
+.about-card h3{
+  margin: 0 0 .4rem 0;
+  color: var(--deep-space);
+  font-size: 1.08rem;
+  font-weight: 600;
+}
+.about-card p{ margin:0; color: var(--stellar-grey); }
+.about-card ul{ margin:.3rem 0 0 0; padding-left: 1.15rem; }
+.about-card ul.bullets li{ margin:.4rem 0; }
+
+.about-card ul.checklist{
+  list-style:none;
+  padding-left:0;
+}
+.about-card ul.checklist li{
+  position:relative;
+  margin:.45rem 0;
+  padding-left: 1.25rem;
+}
+.about-card ul.checklist li::before{
+  content:"▸";
+  position:absolute; left:0; top:0;
+  color: var(--martian-red);
+  font-weight: 700;
+}
+
+/* Responsive: 3 → 2 → 1 */
+@media (max-width: 980px){
+  .about-grid{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 680px){
+  .about-grid{ grid-template-columns: 1fr; }
+}
