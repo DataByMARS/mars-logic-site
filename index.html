@@ -21,22 +21,37 @@
 </head>
 <body>
 
-  <!-- Force start-at-top on first load AND on bfcache restores -->
-  <script>
-    (function () {
-      try {
-        if ('scrollRestoration' in history) {
-          history.scrollRestoration = 'manual';
-        }
-      } catch (_) {}
-      window.addEventListener('load', function () {
-        if (!location.hash) window.scrollTo(0, 0);
-      }, { once: true });
-      window.addEventListener('pageshow', function (e) {
-        if (e.persisted && !location.hash) window.scrollTo(0, 0);
-      });
-    })();
-  </script>
+ <!-- Force start-at-top on first load and Safari BFCache restores -->
+<script>
+(function () {
+  try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (_) {}
+
+  // Helper: only force to top when there is NO #hash in the URL
+  function forceTopIfNoHash() {
+    if (!location.hash) {
+      // multiple attempts to beat Safari’s late restores/layout shifts
+      window.scrollTo(0, 0);
+      requestAnimationFrame(() => window.scrollTo(0, 0));
+      setTimeout(() => window.scrollTo(0, 0), 50);
+      setTimeout(() => window.scrollTo(0, 0), 120);
+    }
+  }
+
+  // On normal first load
+  window.addEventListener('load', forceTopIfNoHash, { once: true });
+
+  // On BFCache restore (Safari/iOS)
+  window.addEventListener('pageshow', function (e) {
+    if (e.persisted) forceTopIfNoHash();
+  });
+
+  // Also run as soon as DOM is ready (earlier than load)
+  document.addEventListener('DOMContentLoaded', function () {
+    // Prevent the browser from auto-jumping to internal anchors on very first paint
+    if (!location.hash) window.scrollTo(0, 0);
+  });
+})();
+</script>
 
   <!-- ================= Header / Navigation ================= -->
   <header class="site-header" role="banner">
