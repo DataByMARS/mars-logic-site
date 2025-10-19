@@ -3,28 +3,34 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>MARS — Modern Analytics & Research Solutions</title>
-  <meta name="description" content="MARS empowers organizations with human-centered, data-driven research and analytics solutions." />
+  <meta name="description" content="MARS transforms complex information into clarity and action through modern research and analytics." />
+
+  <!-- Favicons (optional) -->
+  <link rel="icon" href="assets/logo.png" type="image/png" />
 
   <!-- Poppins font -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
-  <!-- Styles (cache-busted) -->
- <link rel="stylesheet" href="styles.css?v=aboutfix3" />
+  <!-- Stylesheet (we will deliver the updated CSS next) -->
+<link rel="stylesheet" href="styles.css?v=designv2" />
 </head>
 <body>
-  <!-- Header / Navigation -->
-  <header class="site-header">
+  <!-- ================ Header / Navigation ================ -->
+  <header class="site-header" role="banner">
     <div class="nav container">
       <a href="#home" class="brand" aria-label="MARS Home">
-        <img src="assets/logo.png" alt="MARS — Modern Analytics & Research Solutions logo" />
+        <img src="assets/logo.png" alt="MARS logo" />
       </a>
+
       <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
         <span class="bar"></span><span class="bar"></span><span class="bar"></span>
       </button>
-      <nav id="primary-nav" aria-label="Main navigation">
+
+      <nav id="primary-nav" class="primary-nav" aria-label="Main navigation">
         <ul class="nav-list">
           <li><a href="#home" class="active">Home</a></li>
           <li><a href="#about">About</a></li>
@@ -35,23 +41,26 @@
     </div>
   </header>
 
-  <!-- Hero -->
+  <!-- ================ Hero ================ -->
   <section id="home" class="section section--hero">
     <div class="container hero-content">
-      <h1>Welcome to MARS.</h1>
-      <p class="lede">Human-centered. Data-driven.</p>
-      <a href="#contact" class="btn">Work With Us</a>
+      <h1>Welcome to MARS</h1>
+      <p class="lede">Modern Analytics & Research Solutions. Human-centered. Data-driven.</p>
+      <div class="cta-row">
+        <a href="#contact" class="btn">Work With Us</a>
+        <a href="#services" class="btn-secondary">Explore Services</a>
+      </div>
     </div>
   </section>
 
-  <!-- About (flowing, no bullets/cards) -->
-  <section id="about" class="section about-flow">
+  <!-- ================ About (flowing narrative) ================ -->
+  <section id="about" class="section section--band about-flow">
     <div class="container">
+      <span class="kicker">About MARS</span>
       <h2 class="about-title">About Us</h2>
 
       <p class="about-lede">
-        Modern Analytics & Research Solutions (MARS) helps organizations turn complex information into clarity and action.
-        We combine analytical precision with human understanding so data can drive meaningful, lasting decisions.
+        MARS helps organizations turn complex information into clarity and action. We combine analytical precision with human understanding so data can drive meaningful, lasting decisions.
       </p>
 
       <div class="about-columns">
@@ -60,105 +69,148 @@
           <div class="about-block">
             <h3>Our Mission</h3>
             <p>
-              Our mission is to empower organizations to make confident, evidence-based decisions grounded in clarity,
-              strategy, and human insight.
+              Our mission is to help organizations make confident, evidence-based decisions grounded in clarity, strategy, and human insight.
             </p>
           </div>
 
           <div class="about-block">
             <h3>Our Approach</h3>
             <p>
-              We work as thought partners. Every project begins with understanding your goals, your audiences, and your
-              context. Together, we co-create solutions that align with strategy and human experience.
-            </p>
-            <p>
-              Stakeholder voices and lived experience are integrated into each phase so findings are relevant and clear.
-              Beyond delivery, we share methods and tools that help teams sustain evidence-based decision-making over time.
+              We work as thought partners. Each engagement begins with understanding goals, audiences, and context. We co-create solutions that align with strategy and human experience. Stakeholder voices are integrated throughout the work so findings are relevant and clear. We share methods and tools so teams can sustain evidence-based decision-making over time.
             </p>
           </div>
 
           <div class="about-block">
             <h3>Our Values</h3>
             <p>
-              Integrity guides our process from start to finish. Innovation fuels our work through modern tools and
-              advanced analytics. Collaboration defines our relationships, building strong partnerships grounded in
-              transparency, trust, and shared purpose.
+              Integrity guides our process. Innovation fuels our methods and tools. Collaboration shapes our partnerships through transparency, trust, and shared purpose.
             </p>
           </div>
 
           <div class="about-block about-last">
             <h3>The MARS Difference</h3>
             <p>
-              MARS delivers more than analysis; we deliver understanding. Each engagement is designed to help you
-              navigate complexity, uncover insight, and make decisions that stand up to scrutiny. Success is measured
-              by your clarity and confidence.
+              MARS delivers more than analysis. We deliver understanding that stands up to scrutiny and moves work forward.
             </p>
           </div>
         </div>
 
-        <!-- Visual column (optional image; replace when ready) -->
-        <aside class="about-visual" aria-label="Brand visual">
-          <img src="assets/logo.png" alt="MARS brand mark" />
+        <!-- Visual column (replace with a real image when ready) -->
+        <aside class="about-visual" aria-label="About visual">
+          <!-- Replace 'about.jpg' with an actual abstract or data-inspired image in /assets -->
+          <img src="assets/about.jpg" alt="" />
         </aside>
       </div>
     </div>
   </section>
 
-  <!-- Services -->
-  <section id="services" class="section">
+  <!-- ================ Services ================ -->
+  <section id="services" class="section section--band">
     <div class="container">
+      <span class="kicker">What We Do</span>
       <h2>Our Services</h2>
-      <div class="cards">
-        <div class="card"><h3>Research Design</h3><p>Custom methodology planning to align research with strategy and objectives.</p></div>
-        <div class="card"><h3>Data Collection</h3><p>Robust, multi-channel data capture systems to support your insights journey.</p></div>
-        <div class="card"><h3>Statistical Analysis</h3><p>Quantitative and inferential techniques that uncover the hidden story in your data.</p></div>
-        <div class="card"><h3>Qualitative Insights</h3><p>Contextual, stakeholder-driven qualitative research to enrich your understanding.</p></div>
-        <div class="card"><h3>Predictive Modeling</h3><p>Forecasting and scenario planning to anticipate future opportunities and risks.</p></div>
-        <div class="card"><h3>Data Visualization</h3><p>Compelling visual stories that make your data easy to understand and act upon.</p></div>
-        <div class="card"><h3>Reporting</h3><p>Executive-ready deliverables that translate analytics into decisions and communication.</p></div>
-        <div class="card"><h3>Front-to-End Project Management</h3><p>Comprehensive oversight from kickoff through delivery to adoption.</p></div>
+
+      <div class="cards services-grid">
+        <article class="card service">
+          <div class="service-icon" aria-hidden="true"></div>
+          <h3>Research Design</h3>
+          <p>Rigorous methods that align evidence with strategy from the start.</p>
+        </article>
+
+        <article class="card service">
+          <div class="service-icon" aria-hidden="true"></div>
+          <h3>Data Collection</h3>
+          <p>Reliable, multi-channel capture that supports a complete view.</p>
+        </article>
+
+        <article class="card service">
+          <div class="service-icon" aria-hidden="true"></div>
+          <h3>Statistical Analysis</h3>
+          <p>Clear quantitative answers to complex questions.</p>
+        </article>
+
+        <article class="card service">
+          <div class="service-icon" aria-hidden="true"></div>
+          <h3>Qualitative Insights</h3>
+          <p>Human context that brings meaning to the numbers.</p>
+        </article>
+
+        <article class="card service">
+          <div class="service-icon" aria-hidden="true"></div>
+          <h3>Predictive Modeling</h3>
+          <p>Forward-looking models that inform decisions before they are urgent.</p>
+        </article>
+
+        <article class="card service">
+          <div class="service-icon" aria-hidden="true"></div>
+          <h3>Data Visualization</h3>
+          <p>Visual narratives that make findings easy to understand and share.</p>
+        </article>
+
+        <article class="card service">
+          <div class="service-icon" aria-hidden="true"></div>
+          <h3>Reporting</h3>
+          <p>Executive-ready deliverables that translate analysis into action.</p>
+        </article>
+
+        <article class="card service">
+          <div class="service-icon" aria-hidden="true"></div>
+          <h3>End-to-End Management</h3>
+          <p>From kickoff through delivery to adoption with a single accountable partner.</p>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- Contact -->
-  <section id="contact" class="section section--alt">
-    <div class="container">
-      <h2>Contact Us</h2>
-      <p>Ready to collaborate or learn more about how MARS can support your next project? Reach out at
-        <a href="mailto:dstone@mars-logic.com">dstone@mars-logic.com</a>.
+  <!-- ================ Contact ================ -->
+  <section id="contact" class="section contact section--deep">
+    <div class="container contact-inner">
+      <span class="kicker kicker--light">Get in Touch</span>
+      <h2 class="contact-title">Let’s collaborate</h2>
+      <p class="contact-lede">
+        Tell us about your next project. We bring clarity to complex questions and help teams move forward with confidence.
       </p>
-      <a href="mailto:dstone@mars-logic.com" class="btn">Get In Touch</a>
+      <p class="contact-email">
+        <a href="mailto:dstone@mars-logic.com" class="contact-link">dstone@mars-logic.com</a>
+      </p>
+      <div class="cta-row">
+        <a href="mailto:dstone@mars-logic.com" class="btn btn--light">Start the Conversation</a>
+      </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container">
+  <!-- ================ Footer ================ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
       <p>© <span id="year"></span> Modern Analytics and Research Solutions. All rights reserved.</p>
     </div>
   </footer>
 
+  <!-- ================ Scripts ================ -->
   <script>
     // Auto-update footer year
-    document.getElementById("year").textContent = new Date().getFullYear();
+    (function(){
+      var y = document.getElementById("year");
+      if (y) y.textContent = new Date().getFullYear();
+    })();
 
     // Mobile nav toggle
-    const navToggle = document.querySelector('.nav-toggle');
-    const navPanel  = document.querySelector('#primary-nav');
-    if (navToggle && navPanel) {
-      navToggle.addEventListener('click', () => {
-        const open = navPanel.classList.toggle('open');
-        navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    (function(){
+      const navToggle = document.querySelector(".nav-toggle");
+      const navPanel  = document.querySelector("#primary-nav");
+      if (!navToggle || !navPanel) return;
+      navToggle.addEventListener("click", function(){
+        const open = navPanel.classList.toggle("open");
+        navToggle.setAttribute("aria-expanded", open ? "true" : "false");
       });
-      // Close menu when a link is clicked (mobile)
-      navPanel.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', () => {
-          navPanel.classList.remove('open');
-          navToggle.setAttribute('aria-expanded', 'false');
+      // Close panel on link click (mobile)
+      navPanel.querySelectorAll("a").forEach(function(a){
+        a.addEventListener("click", function(){
+          navPanel.classList.remove("open");
+          navToggle.setAttribute("aria-expanded", "false");
         });
       });
-    }
+    })();
   </script>
 </body>
 </html>
