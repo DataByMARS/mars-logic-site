@@ -1,8 +1,7 @@
 /* ================================================================
    MARS — Modern Analytics & Research Solutions
-   Design v8.7 — lock scrolling during boot (fix mobile mid-page load),
-   readable dark-CTA, centered hover watermark, responsive About image,
-   larger pills, back-to-top
+   Design v9 — guaranteed top-load on mobile, readable dark-CTA,
+   centered watermark, responsive About image, larger pills, back-to-top
    ================================================================ */
 
 /* ---------- Brand tokens ---------- */
@@ -22,6 +21,7 @@
   --shadow:0 8px 22px rgba(0,0,0,.06);
   --focus:2px solid var(--deep-space);
 
+  --header-h:72px;           /* used for scroll offsets */
   --space-xl:96px;
   --space-lg:72px;
   --space-md:48px;
@@ -31,30 +31,21 @@
 /* ---------- Base / reset ---------- */
 *{ box-sizing:border-box; }
 
-/* Anchor offset for sticky header + default smooth scroll */
-html{ scroll-behavior:smooth; scroll-padding-top:72px; }
+/* Default smooth scrolling (we'll disable during boot/touch) */
+html{ scroll-behavior:smooth; }
 
-/* Prefer reduced motion */
-@media (prefers-reduced-motion: reduce){
-  html{ scroll-behavior:auto; }
-}
-
-/* ---------------------------------------------------------------
-   Anti “load-in-the-middle” hardening
-   - While the page boots (HTML has .is-booting), disable smooth scroll
-     and lock scrolling so iOS can’t anchor mid-page.
-   - Also disable smooth scroll on coarse pointers during boot.
-   - Prevent scroll anchoring on top elements.
-   --------------------------------------------------------------- */
-html.is-booting{ scroll-behavior:auto !important; }
-html.is-booting, body.is-booting{ overflow:hidden; height:100%; }
-
+/* Disable smooth during boot; iOS/touch prefers instant on first paint */
+html.boot-lock{ scroll-behavior:auto !important; }
 @media (hover:none) and (pointer:coarse){
   html{ scroll-behavior:auto; }
 }
 
-/* Keep the browser from anchoring to elements during first paint */
-body, #top, #home, .site-header{ overflow-anchor:none; }
+/* Make in-page anchors land below sticky header without global padding */
+#home, #about, #services, #contact{ scroll-margin-top: var(--header-h); }
+
+/* Prevent anchoring jumps: allow only very top to anchor */
+#top-sentinel{ height:1px; overflow-anchor:auto; }
+body{ overflow-anchor:none; }
 
 body{
   margin:0; background:var(--bg); color:var(--text);
@@ -88,6 +79,13 @@ p{ margin:0 0 12px; color:var(--muted); }
   background:#fff; border-bottom:1px solid #ececec;
   box-shadow:0 2px 6px rgba(0,0,0,.03);
 }
+
+/* During boot on touch devices, pin header to avoid sticky recalculation nudge */
+@media (hover:none) and (pointer:coarse){
+  html.boot-lock .site-header{ position:fixed; top:0; left:0; right:0; }
+  html.boot-lock body{ padding-top: var(--header-h); } /* prevent overlap during boot */
+}
+
 .nav{
   max-width:var(--max); margin:0 auto; padding:12px 24px;
   display:flex; align-items:center; justify-content:space-between; gap:16px;
@@ -170,7 +168,6 @@ p{ margin:0 0 12px; color:var(--muted); }
   border:2px solid rgba(255,255,255,0);
   box-shadow:var(--shadow);
 }
-/* Higher-specificity for dark band */
 .section--deep .btn.btn--light{
   background:#fff;
   color:var(--deep-space) !important;
@@ -284,7 +281,7 @@ p{ margin:0 0 12px; color:var(--muted); }
   bottom:calc(16px + env(safe-area-inset-bottom, 0px));
   z-index:1200;
   width:56px; height:56px;
-  display:none;                 /* shown on phones below */
+  display:none;                 /* shown on phones */
   border-radius:50%;
   background:#fff;
   box-shadow:0 10px 22px rgba(0,0,0,.15);
@@ -328,7 +325,6 @@ p{ margin:0 0 12px; color:var(--muted); }
   .brand img{ max-height:28px; max-width:140px; }
   .section{ padding:var(--space-lg) 0; }
   .section--hero{ padding:var(--space-lg) 0 var(--space-md); }
-  /* back-to-top visible on phones */
   .back-to-top{ display:flex; }
 }
 
