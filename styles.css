@@ -173,3 +173,75 @@ footer{
   .nav-list a{ padding:.65rem .7rem; border-radius:8px; }
   .cards{ grid-template-columns:1fr; }
 }
+/* ===== About: modern, card-based layout ===== */
+.about h2{
+  margin-bottom: 14px;
+}
+
+.about-intro{
+  color: var(--stellar-grey);
+  max-width: 900px;
+  margin: 0 0 20px 0;
+}
+
+.about-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 8px;
+}
+
+.about-card{
+  background: #fff;
+  border: 1px solid #ececec;
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: var(--shadow);
+}
+
+.about-card h3{
+  margin: 0 0 .35rem 0;
+  color: var(--deep-space);
+  font-size: 1.05rem;
+}
+
+.about-card p{
+  margin: 0;
+  color: var(--stellar-grey);
+}
+
+.about-card ul{
+  margin: .25rem 0 0 0;
+  padding-left: 1.15rem;
+}
+
+.about-card ul.bullets li{
+  margin: .35rem 0;
+}
+
+/* Red “check” style list for Approach */
+.about-card ul.checklist{
+  list-style: none;
+  padding-left: 0;
+}
+.about-card ul.checklist li{
+  position: relative;
+  padding-left: 1.4rem;
+  margin: .45rem 0;
+}
+.about-card ul.checklist li::before{
+  content: "▸";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--martian-red);
+  font-weight: 700;
+}
+
+/* Responsive grid: 3 → 2 → 1 */
+@media (max-width: 980px){
+  .about-grid{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 680px){
+  .about-grid{ grid-template-columns: 1fr; }
+}
