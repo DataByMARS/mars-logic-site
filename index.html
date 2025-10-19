@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" class="no-js boot-lock">
+<html lang="en" class="no-js">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,34 +8,41 @@
   <meta name="description" content="MARS transforms complex information into clarity and action through modern research and analytics.">
   <meta name="theme-color" content="#1e1853">
 
+  <!-- Favicon -->
   <link rel="icon" href="assets/logo.png" type="image/png" />
 
-  <!-- Poppins font -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  <!-- Stylesheet (cache-busted) -->
-  <link rel="stylesheet" href="styles.css?v=1760917109" />
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css?v=1760917458" />
 
-  <!-- Top-load hardening (runs before paint) -->
+  <!-- Guaranteed top-at-load on iOS/Android (hash flick technique) -->
   <script>
     (function () {
       try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (_) {}
-      document.documentElement.classList.add('boot-lock');
-      if (!location.hash) { window.scrollTo(0, 0); }
+      if (!location.hash) {
+        var urlNoHash = location.pathname + location.search;      // keep same path/query
+        location.replace('#top-sentinel');                         // jump to true top immediately
+        requestAnimationFrame(function () {
+          history.replaceState(null, '', urlNoHash);               // remove hash without scrolling
+          window.scrollTo(0, 0);                                   // ensure exact 0 after replace
+        });
+      }
     })();
   </script>
 </head>
 <body>
 
-  <!-- Sentinel so the browser can anchor the very top instead of mid-page -->
+  <!-- True top anchor -->
   <div id="top-sentinel" aria-hidden="true"></div>
 
   <!-- ================= Header / Navigation ================= -->
   <header class="site-header" role="banner">
     <div class="nav container">
-      <a href="#home" class="brand" aria-label="MARS Home">
+      <a href="#top-sentinel" class="brand" aria-label="MARS Home">
         <img src="assets/logo.png" alt="MARS logo" />
       </a>
 
@@ -58,12 +65,10 @@
   <section id="home" class="section section--hero" aria-label="Welcome">
     <div class="container hero-content">
       <h1>Welcome to MARS</h1>
-
       <p class="lede hero-subtitle">
         <span class="subtitle-line"><strong>Modern Analytics &amp; Research Solutions</strong></span>
         <span class="subtitle-line">Human centered. Data driven.</span>
       </p>
-
       <div class="cta-row">
         <a href="#contact" class="btn">Work With Us</a>
         <a href="#services" class="btn-secondary">Explore Services</a>
@@ -88,20 +93,17 @@
             <h3>Our Mission</h3>
             <p>We empower teams to make confident, evidence-based decisions grounded in clarity, strategy, and human insight.</p>
           </div>
-
           <div class="about-block">
             <h3>Our Approach</h3>
             <p>We work as thought partners. Each engagement begins with your goals, audiences, and context. Together we co-create
               solutions that align with strategy and human experience. Stakeholder voices are integrated throughout the work so
               findings are relevant and clear. We share methods and tools so teams can sustain evidence-based decision-making over time.</p>
           </div>
-
           <div class="about-block">
             <h3>Our Values</h3>
             <p>Integrity guides our process. Innovation fuels our methods and tools. Collaboration shapes our partnerships through
               transparency, trust, and shared purpose.</p>
           </div>
-
           <div class="about-block about-last">
             <h3>The MARS Difference</h3>
             <p>MARS delivers more than analysis; we deliver understanding that stands up to scrutiny and moves work forward.</p>
@@ -109,7 +111,7 @@
         </div>
 
         <aside class="about-visual" aria-label="About visual">
-          <!-- If you know actual dimensions, set them here; these reserve layout space -->
+          <!-- width/height reserve aspect ratio for stable layout -->
           <img src="assets/graphics.jpg" alt="" loading="lazy" width="1600" height="900" />
         </aside>
       </div>
@@ -153,8 +155,8 @@
     </div>
   </section>
 
-  <!-- ===== Mobile back-to-top (icon-only logo) ===== -->
-  <a href="#home" class="back-to-top" aria-label="Back to top">
+  <!-- Back-to-top -->
+  <a href="#top-sentinel" class="back-to-top" aria-label="Back to top">
     <img src="assets/logo-icon.png" alt="" aria-hidden="true" />
   </a>
 
@@ -189,37 +191,6 @@
           navToggle.setAttribute('aria-expanded', 'false');
         });
       });
-    })();
-
-    // Finalize: force top & unlock after layout stabilizes (handles iOS/Safari BFCache/orientation)
-    (function () {
-      function forceTopIfNoHash() {
-        if (!location.hash) {
-          window.scrollTo(0, 0);
-          requestAnimationFrame(() => window.scrollTo(0, 0));
-          setTimeout(() => window.scrollTo(0, 0), 60);
-          setTimeout(() => window.scrollTo(0, 0), 180);
-        }
-      }
-
-      window.addEventListener('load', () => {
-        forceTopIfNoHash();
-        document.documentElement.classList.remove('boot-lock');
-      }, { once: true });
-
-      window.addEventListener('pageshow', (e) => {
-        if (e.persisted) forceTopIfNoHash();
-      });
-
-      if (document.fonts && document.fonts.ready) {
-        document.fonts.ready.then(() => setTimeout(forceTopIfNoHash, 80));
-      }
-
-      document.addEventListener('visibilitychange', () => {
-        if (document.visibilityState === 'visible') setTimeout(forceTopIfNoHash, 60);
-      });
-
-      window.addEventListener('orientationchange', () => setTimeout(forceTopIfNoHash, 60));
     })();
   </script>
 </body>
