@@ -62,7 +62,7 @@
   <!-- ================= About (flowing narrative) ================= -->
   <section id="about" class="section section--band about-flow">
     <div class="container">
-      <!-- Pill label only (visible); keep semantic h2 visually hidden for accessibility -->
+      <!-- Pill label only (visible); semantic h2 visually hidden for accessibility -->
       <span class="kicker kicker--pill">ABOUT MARS</span>
       <h2 class="visually-hidden">About Us</h2>
 
@@ -108,9 +108,13 @@
           </div>
         </div>
 
-        <!-- Visual column (use your chosen image) -->
+        <!-- Visual column -->
         <aside class="about-visual" aria-label="About visual">
-          <img src="assets/graphics.jpg" alt="" />
+          <img
+            src="assets/graphics.jpg"
+            alt="Abstract data visualization in MARS colors"
+            loading="lazy"
+          />
         </aside>
       </div>
     </div>
@@ -198,7 +202,7 @@
   <footer class="site-footer" role="contentinfo">
     <div class="container footer-inner">
       <!-- Centered icon-only mark (decorative) -->
-      <img src="assets/logo-icon.png" class="footer-mark" alt="" aria-hidden="true" />
+      <img src="assets/logo-icon.png" class="footer-mark" alt="" aria-hidden="true" loading="lazy" />
       <p>© <span id="year"></span> Modern Analytics and Research Solutions. All rights reserved.</p>
     </div>
   </footer>
