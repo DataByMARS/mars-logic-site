@@ -17,41 +17,60 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
   <!-- Stylesheet (cache-busted) -->
-  <link rel="stylesheet" href="styles.css?v=designv8_3" />
+  <link rel="stylesheet" href="styles.css?v=1760912920" />
 </head>
 <body>
 
- <!-- Force start-at-top on first load and Safari BFCache restores -->
-<script>
-(function () {
-  try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (_) {}
+  <!-- Force start-at-top on first load / history restores (iOS-hardened) -->
+  <script>
+    (function () {
+      try {
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+      } catch (_) {}
 
-  // Helper: only force to top when there is NO #hash in the URL
-  function forceTopIfNoHash() {
-    if (!location.hash) {
-      // multiple attempts to beat Safari’s late restores/layout shifts
-      window.scrollTo(0, 0);
-      requestAnimationFrame(() => window.scrollTo(0, 0));
-      setTimeout(() => window.scrollTo(0, 0), 50);
-      setTimeout(() => window.scrollTo(0, 0), 120);
-    }
-  }
+      function forceTop() {
+        if (!location.hash && (window.pageYOffset || document.documentElement.scrollTop) > 0) {
+          window.scrollTo(0, 0);
+        }
+      }
 
-  // On normal first load
-  window.addEventListener('load', forceTopIfNoHash, { once: true });
+      // 1) Immediately on load and a few retries as layout stabilizes
+      window.addEventListener('load', function () {
+        forceTop();
+        setTimeout(forceTop, 60);
+        setTimeout(forceTop, 180);
+        setTimeout(forceTop, 400);
+        setTimeout(forceTop, 900);
+        requestAnimationFrame(() => requestAnimationFrame(forceTop));
+      }, { once: true });
 
-  // On BFCache restore (Safari/iOS)
-  window.addEventListener('pageshow', function (e) {
-    if (e.persisted) forceTopIfNoHash();
-  });
+      // 2) When restored from back-forward cache (common on iOS Safari)
+      window.addEventListener('pageshow', function (e) {
+        if (e.persisted) {
+          setTimeout(forceTop, 50);
+          setTimeout(forceTop, 250);
+        }
+      });
 
-  // Also run as soon as DOM is ready (earlier than load)
-  document.addEventListener('DOMContentLoaded', function () {
-    // Prevent the browser from auto-jumping to internal anchors on very first paint
-    if (!location.hash) window.scrollTo(0, 0);
-  });
-})();
-</script>
+      // 3) As soon as DOM is ready (earlier than full load)
+      document.addEventListener('DOMContentLoaded', function () {
+        if (!location.hash) window.scrollTo(0, 0);
+      });
+
+      // 4) After web fonts finish loading (prevents late reflow jumps)
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(() => setTimeout(forceTop, 80));
+      }
+
+      // 5) If tab becomes visible after loading in background
+      document.addEventListener('visibilitychange', function () {
+        if (document.visibilityState === 'visible') setTimeout(forceTop, 60);
+      });
+
+      // 6) iOS orientation change can nudge scroll
+      window.addEventListener('orientationchange', () => setTimeout(forceTop, 60));
+    })();
+  </script>
 
   <!-- ================= Header / Navigation ================= -->
   <header class="site-header" role="banner">
