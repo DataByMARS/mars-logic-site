@@ -1,6 +1,6 @@
 /* ================================================================
    MARS — Modern Analytics & Research Solutions
-   Design v8 — clean, responsive, brand-forward
+   Design v8 — mobile back-to-top + responsive About image fixes
    ================================================================ */
 
 /* ---------- Brand tokens ---------- */
@@ -69,7 +69,6 @@ p{ margin:0 0 12px; color:var(--muted); }
 }
 .brand img{ height:auto; max-height:32px; max-width:170px; object-fit:contain; }
 
-/* primary nav */
 .nav-list{
   list-style:none; display:flex; align-items:center; gap:20px; margin:0; padding:0;
 }
@@ -77,8 +76,7 @@ p{ margin:0 0 12px; color:var(--muted); }
   color:var(--deep-space); font-weight:600; letter-spacing:.2px;
   padding:10px 8px; border-radius:8px; transition:color .15s ease, background .15s ease;
 }
-/* remove any decorative underline effects */
-.nav-list a::after{ content:none; }
+.nav-list a::after{ content:none; } /* ensure no underline accent */
 
 .nav-toggle{ display:none; background:transparent; border:0; padding:6px; cursor:pointer; }
 .nav-toggle .bar{ display:block; width:22px; height:2px; background:#2b2b2b; margin:4px 0; border-radius:2px; }
@@ -106,7 +104,7 @@ p{ margin:0 0 12px; color:var(--muted); }
 /* Pill labels (the only visible section titles) */
 .kicker{
   display:inline-block;
-  font-size:clamp(1.05rem, .9rem + .6vw, 1.25rem);  /* bigger = proper title weight */
+  font-size:clamp(1.05rem, .9rem + .6vw, 1.25rem);
   letter-spacing:.35px;
   font-weight:700;
   text-transform:uppercase;
@@ -117,13 +115,11 @@ p{ margin:0 0 12px; color:var(--muted); }
   margin-bottom:16px;
 }
 .kicker--light{ background:rgba(255,255,255,.22); }
+.kicker--pill{}
 
 /* Hero subtitle: two lines */
 .hero-subtitle{ margin-top:6px; }
-.hero-subtitle .subtitle-line{
-  display:block;
-  line-height:1.55;
-}
+.hero-subtitle .subtitle-line{ display:block; line-height:1.55; }
 .hero-subtitle .subtitle-line:first-child{ margin-bottom:2px; }
 
 /* Buttons */
@@ -143,21 +139,14 @@ p{ margin:0 0 12px; color:var(--muted); }
 }
 .btn-secondary:hover{ background:var(--deep-space); color:#fff; transform:translateY(-1px); }
 
-/* Light-on-dark button — must remain readable on deep band */
+/* Light-on-dark button (always readable) */
 .btn--light{
   background:#fff; color:var(--deep-space);
   border:2px solid rgba(255,255,255,0);
   box-shadow:var(--shadow);
 }
-.section--deep .btn--light{
-  background:#fff !important;
-  color:var(--deep-space) !important;
-  border-color: rgba(255,255,255,0) !important;
-}
-.section--deep .btn--light:hover{
-  background:#f2f2f7 !important;
-  color:var(--deep-space) !important;
-  border-color:#fff !important;
+.btn--light:hover{
+  background:#f2f2f7; color:var(--deep-space); border-color:#fff;
 }
 
 /* CTA row — always centered and tidy */
@@ -167,7 +156,7 @@ p{ margin:0 0 12px; color:var(--muted); }
 }
 
 /* ================================================================
-   ABOUT — flowing narrative + optional visual
+   ABOUT — flowing narrative + responsive visual
    ================================================================ */
 .about-flow .about-lede{
   text-align:left; color:var(--stellar-grey);
@@ -184,23 +173,27 @@ p{ margin:0 0 12px; color:var(--muted); }
 .about-block h3{ margin:0 0 8px 0; font-weight:600; }
 .about-block p{ margin:0; }
 
-/* Visual column — reserved image */
+/* Visual column — fully responsive image (no awkward crop on mobile) */
 .about-visual{
   background:#fff; border:1px solid #ececec; border-radius:12px; padding:12px;
   box-shadow:var(--shadow);
 }
 .about-visual img{
-  width:100%; height:auto; aspect-ratio: 4 / 3; object-fit:cover; border-radius:8px;
+  width:100%;
+  height:auto;             /* key: allow height to follow width */
+  border-radius:8px;
+  display:block;
+  object-fit:cover;
+  object-position:center;
 }
 
 /* ================================================================
-   SERVICES — modern 3-up grid with subtle lift
+   SERVICES — modern 3-up grid with hover watermark
    ================================================================ */
 .services-grid{
   display:grid; grid-template-columns:repeat(3,1fr); gap:20px;
   margin-top:var(--space-sm);
 }
-
 .service.card{
   position:relative; overflow:hidden;
   background:#fff; border:1px solid #eaeaea; border-radius:var(--radius);
@@ -209,36 +202,25 @@ p{ margin:0 0 12px; color:var(--muted); }
   border-top:4px solid var(--deep-space);
   display:flex; flex-direction:column; min-height:100%;
 }
-
-/* Lift + top accent on hover */
 .service.card:hover{
   transform:translateY(-2px);
   box-shadow:0 12px 28px rgba(0,0,0,.08);
   border-top-color:var(--martian-red);
 }
-
-/* Keep content above watermark */
-.service.card h3,
-.service.card p,
-.service.card .service-icon{ position:relative; z-index:1; }
-
-/* Remove any old duplicated background versions */
-.service.card::after{ content:none !important; }
-
-/* Single centered watermark (icon-only logo) */
-.service.card::before{
+/* single, centered watermark on hover */
+.service.card::after{
   content:"";
   position:absolute; inset:0;
   background-image:url("assets/logo-icon.png");
   background-repeat:no-repeat;
-  background-position:center 55%;
-  background-size:68%;
+  background-position:center center;
+  background-size:120px 120px;
   opacity:0;
-  transition:opacity .22s ease;
   pointer-events:none;
-  filter:grayscale(100%) contrast(90%) brightness(102%);
+  transition:opacity .2s ease;
+  filter:grayscale(100%) contrast(80%) brightness(110%);
 }
-.service.card:hover::before{ opacity:.12; }
+.service.card:hover::after{ opacity:.06; }
 
 .service h3{ margin:.2rem 0 .35rem; font-size:1.07rem; }
 .service p{ margin:0; color:var(--stellar-grey); }
@@ -261,6 +243,27 @@ p{ margin:0 0 12px; color:var(--muted); }
 .contact-link{ color:#fff; text-decoration:underline; text-underline-offset:3px; }
 
 /* ================================================================
+   MOBILE BACK-TO-TOP LOGO
+   ================================================================ */
+.back-to-top{
+  position:fixed;
+  right:16px; 
+  bottom:calc(16px + env(safe-area-inset-bottom, 0px));
+  z-index:1200;
+  width:56px; height:56px;
+  display:none;                 /* hidden by default; shown on mobile */
+  border-radius:50%;
+  background:#fff;
+  box-shadow:0 10px 22px rgba(0,0,0,.15);
+  border:1px solid #ececec;
+  align-items:center; justify-content:center;
+}
+.back-to-top img{
+  width:32px; height:32px; display:block;
+}
+.back-to-top:active{ transform:scale(.98); }
+
+/* ================================================================
    FOOTER
    ================================================================ */
 .site-footer{ background:#fff; border-top:2px solid rgba(30,24,83,.18); }
@@ -268,7 +271,6 @@ p{ margin:0 0 12px; color:var(--muted); }
   padding:calc(var(--space-sm) + 4px) 0 var(--space-sm);
   text-align:center; color:var(--stellar-grey);
 }
-/* centered, responsive icon-only logo */
 .footer-mark{
   display:block;
   margin:0 auto 10px auto;
@@ -293,7 +295,8 @@ p{ margin:0 0 12px; color:var(--muted); }
   .brand img{ max-height:28px; max-width:140px; }
   .section{ padding:var(--space-lg) 0; }
   .section--hero{ padding:var(--space-lg) 0 var(--space-md); }
-  .about-visual img{ aspect-ratio:16 / 9; } /* nicer crop on phones */
+  /* mobile back-to-top visible on phones */
+  .back-to-top{ display:flex; }
 }
 
 @media (max-width:680px){
@@ -308,10 +311,10 @@ p{ margin:0 0 12px; color:var(--muted); }
   .nav-list a{ padding:10px 12px; border-radius:8px; }
 
   .services-grid{ grid-template-columns:1fr; }
-  .cta-row{ justify-content:center; } /* ensure centered on mobile */
+  .cta-row{ justify-content:center; }
 }
 
 /* ================================================================
    Micro-polish
    ================================================================ */
-a:hover{ color:var(--martian-red); }
+a:hover{ color: var(--martian-red); }

@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
   <!-- Stylesheet (cache-busted) -->
-  <link rel="stylesheet" href="styles.css?v=designv7" />
+  <link rel="stylesheet" href="styles.css?v=designv8" />
 </head>
 <body>
   <!-- ================= Header / Navigation ================= -->
@@ -62,7 +62,7 @@
   <!-- ================= About (flowing narrative) ================= -->
   <section id="about" class="section section--band about-flow">
     <div class="container">
-      <!-- Pill label only (visible); semantic h2 visually hidden for accessibility -->
+      <!-- Pill label only (visible); keep semantic h2 visually hidden for accessibility -->
       <span class="kicker kicker--pill">ABOUT MARS</span>
       <h2 class="visually-hidden">About Us</h2>
 
@@ -108,13 +108,9 @@
           </div>
         </div>
 
-        <!-- Visual column -->
+        <!-- Visual column (uses your chosen responsive image) -->
         <aside class="about-visual" aria-label="About visual">
-          <img
-            src="assets/graphics.jpg"
-            alt="Abstract data visualization in MARS colors"
-            loading="lazy"
-          />
+          <img src="assets/graphics.jpg" alt="" />
         </aside>
       </div>
     </div>
@@ -198,11 +194,16 @@
     </div>
   </section>
 
+  <!-- ===== Mobile back-to-top (icon-only logo) ===== -->
+  <a href="#home" class="back-to-top" aria-label="Back to top">
+    <img src="assets/logo-icon.png" alt="" aria-hidden="true" />
+  </a>
+
   <!-- ================= Footer ================= -->
   <footer class="site-footer" role="contentinfo">
     <div class="container footer-inner">
       <!-- Centered icon-only mark (decorative) -->
-      <img src="assets/logo-icon.png" class="footer-mark" alt="" aria-hidden="true" loading="lazy" />
+      <img src="assets/logo-icon.png" class="footer-mark" alt="" aria-hidden="true" />
       <p>© <span id="year"></span> Modern Analytics and Research Solutions. All rights reserved.</p>
     </div>
   </footer>
