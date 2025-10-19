@@ -45,9 +45,12 @@
   <section id="home" class="section section--hero">
     <div class="container hero-content">
       <h1>Welcome to MARS</h1>
-      <p class="lede">
-        <strong>Modern Analytics & Research Solutions.</strong> Human centered. Data driven.
+
+      <p class="lede hero-subtitle">
+        <span class="subtitle-line">Modern Analytics &amp; Research Solutions</span>
+        <span class="subtitle-line">Human centered. Data driven.</span>
       </p>
+
       <div class="cta-row">
         <a href="#contact" class="btn">Work With Us</a>
         <a href="#services" class="btn-secondary">Explore Services</a>
@@ -58,11 +61,13 @@
   <!-- ================= About (flowing narrative) ================= -->
   <section id="about" class="section section--band about-flow">
     <div class="container">
-      <span class="kicker">About MARS</span>
-      <h2 class="about-title">About Us</h2>
+      <!-- Pill label only (visible); keep semantic h2 visually hidden -->
+      <span class="kicker kicker--pill">ABOUT MARS</span>
+      <h2 class="visually-hidden">About Us</h2>
 
       <p class="about-lede">
-        MARS helps organizations turn complex information into clarity and action. We combine analytical precision with human understanding so data can guide decisions that last.
+        MARS helps organizations turn complex information into clarity and action.
+        We combine analytical precision with human understanding so data guides decisions that last.
       </p>
 
       <div class="about-columns">
@@ -71,33 +76,38 @@
           <div class="about-block">
             <h3>Our Mission</h3>
             <p>
-              We empower teams to make confident, evidence-based decisions grounded in clarity, strategy, and human insight.
+              We empower teams to make confident, evidence-based decisions grounded in clarity,
+              strategy, and human insight.
             </p>
           </div>
 
           <div class="about-block">
             <h3>Our Approach</h3>
             <p>
-              We work as thought partners. Each engagement begins with understanding goals, audiences, and context. Solutions are co-created to align with strategy and human experience. Stakeholder voices are integrated throughout the work so findings are relevant and clear. We share methods and tools so teams can sustain evidence-based decision making over time.
+              We work as thought partners. Each engagement begins with your goals, audiences, and context.
+              Together we co-create solutions that align with strategy and human experience.
+              Stakeholder voices are integrated throughout the work so findings are relevant and clear.
+              We share methods and tools so teams can sustain evidence-based decision-making over time.
             </p>
           </div>
 
           <div class="about-block">
             <h3>Our Values</h3>
             <p>
-              Integrity guides our process. Innovation fuels our methods and tools. Collaboration shapes our partnerships through transparency, trust, and shared purpose.
+              Integrity guides our process. Innovation fuels our methods and tools. Collaboration shapes our partnerships
+              through transparency, trust, and shared purpose.
             </p>
           </div>
 
-          <div class="about-block">
+          <div class="about-block about-last">
             <h3>The MARS Difference</h3>
             <p>
-              MARS delivers more than analysis. We deliver understanding that stands up to scrutiny and moves work forward.
+              MARS delivers more than analysis; we deliver understanding that stands up to scrutiny and moves work forward.
             </p>
           </div>
         </div>
 
-        <!-- Visual column (swap with a real abstract/data image when ready) -->
+        <!-- Visual column (replace with an abstract/data image named about.jpg) -->
         <aside class="about-visual" aria-label="About visual">
           <img src="assets/about.jpg" alt="" />
         </aside>
@@ -108,8 +118,9 @@
   <!-- ================= Services ================= -->
   <section id="services" class="section section--band">
     <div class="container">
-      <span class="kicker">What We Do</span>
-      <h2>Our Services</h2>
+      <!-- Pill label only; semantic heading hidden -->
+      <span class="kicker kicker--pill">WHAT WE DO</span>
+      <h2 class="visually-hidden">Our Services</h2>
 
       <div class="cards services-grid">
         <article class="card service">
@@ -166,8 +177,11 @@
   <!-- ================= Contact ================= -->
   <section id="contact" class="section contact section--deep">
     <div class="container contact-inner">
-      <span class="kicker kicker--light">Get in Touch</span>
-      <h2 class="contact-title">Let’s Connect</h2>
+      <!-- Pill label only; semantic heading hidden -->
+      <span class="kicker kicker--pill kicker--light">GET IN TOUCH</span>
+      <h2 class="visually-hidden">Contact Us</h2>
+
+      <h3 class="contact-title">Let’s Connect</h3>
       <p class="contact-lede">
         Tell us about your next project. We bring clarity to complex questions and help teams move forward with confidence.
       </p>
@@ -183,10 +197,7 @@
   <!-- ================= Footer ================= -->
   <footer class="site-footer" role="contentinfo">
     <div class="container footer-inner">
-      <p>
-        <img src="assets/icon.png" alt="" class="footer-mark" />
-        © <span id="year"></span> Modern Analytics and Research Solutions. All rights reserved.
-      </p>
+      <p>© <span id="year"></span> Modern Analytics and Research Solutions. All rights reserved.</p>
     </div>
   </footer>
 
@@ -194,26 +205,24 @@
   <script>
     // Auto-update footer year
     (function () {
-      var y = document.getElementById("year");
+      var y = document.getElementById('year');
       if (y) y.textContent = new Date().getFullYear();
     })();
 
     // Mobile nav toggle
     (function () {
-      const navToggle = document.querySelector(".nav-toggle");
-      const navPanel  = document.querySelector("#primary-nav");
+      const navToggle = document.querySelector('.nav-toggle');
+      const navPanel  = document.querySelector('#primary-nav');
       if (!navToggle || !navPanel) return;
-
-      navToggle.addEventListener("click", function () {
-        const open = navPanel.classList.toggle("open");
-        navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      navToggle.addEventListener('click', function () {
+        const open = navPanel.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       });
-
       // Close panel on link click (mobile)
-      navPanel.querySelectorAll("a").forEach(function (a) {
-        a.addEventListener("click", function () {
-          navPanel.classList.remove("open");
-          navToggle.setAttribute("aria-expanded", "false");
+      navPanel.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
+          navPanel.classList.remove('open');
+          navToggle.setAttribute('aria-expanded', 'false');
         });
       });
     })();
