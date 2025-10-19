@@ -4,10 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>MARS — Modern Analytics & Research Solutions</title>
-  <meta name="description" content="MARS transforms complex information into clarity and action through modern research and analytics." />
+  <title>MARS | Modern Analytics & Research Solutions</title>
+  <meta name="description" content="MARS turns complex information into clarity and action with human-centered, data-driven research and analytics." />
 
-  <!-- Favicons (optional) -->
+  <!-- Favicon (optional) -->
   <link rel="icon" href="assets/logo.png" type="image/png" />
 
   <!-- Poppins font -->
@@ -15,11 +15,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
-  <!-- Stylesheet (we will deliver the updated CSS next) -->
-<link rel="stylesheet" href="styles.css?v=designv2" />
+  <!-- Stylesheet (cache-buster bumped) -->
+  <link rel="stylesheet" href="styles.css?v=designv4" />
 </head>
 <body>
-  <!-- ================ Header / Navigation ================ -->
+  <!-- ================= Header / Navigation ================= -->
   <header class="site-header" role="banner">
     <div class="nav container">
       <a href="#home" class="brand" aria-label="MARS Home">
@@ -41,11 +41,17 @@
     </div>
   </header>
 
-  <!-- ================ Hero ================ -->
+  <!-- ================= Hero ================= -->
   <section id="home" class="section section--hero">
     <div class="container hero-content">
       <h1>Welcome to MARS</h1>
-      <p class="lede">Modern Analytics & Research Solutions. Human-centered. Data-driven.</p>
+
+      <!-- Stacked subheadline for better reading rhythm -->
+      <p class="lede lede--stack" aria-label="Brand and tagline">
+        <span class="brandline">Modern Analytics & Research Solutions</span>
+        <span class="tagline">Human centered. Data driven.</span>
+      </p>
+
       <div class="cta-row">
         <a href="#contact" class="btn">Work With Us</a>
         <a href="#services" class="btn-secondary">Explore Services</a>
@@ -53,14 +59,14 @@
     </div>
   </section>
 
-  <!-- ================ About (flowing narrative) ================ -->
+  <!-- ================= About (flowing narrative) ================= -->
   <section id="about" class="section section--band about-flow">
     <div class="container">
       <span class="kicker">About MARS</span>
       <h2 class="about-title">About Us</h2>
 
       <p class="about-lede">
-        MARS helps organizations turn complex information into clarity and action. We combine analytical precision with human understanding so data can drive meaningful, lasting decisions.
+        MARS helps organizations turn complex information into clarity and action. We combine analytical precision with human understanding so data can guide decisions that last.
       </p>
 
       <div class="about-columns">
@@ -69,21 +75,21 @@
           <div class="about-block">
             <h3>Our Mission</h3>
             <p>
-              Our mission is to help organizations make confident, evidence-based decisions grounded in clarity, strategy, and human insight.
+              We empower teams to make confident, evidence-based decisions grounded in clarity, strategy, and human insight.
             </p>
           </div>
 
           <div class="about-block">
             <h3>Our Approach</h3>
             <p>
-              We work as thought partners. Each engagement begins with understanding goals, audiences, and context. We co-create solutions that align with strategy and human experience. Stakeholder voices are integrated throughout the work so findings are relevant and clear. We share methods and tools so teams can sustain evidence-based decision-making over time.
+              We work as thought partners. Each engagement begins with your goals, audiences, and context. Together we shape solutions that fit your strategy and the people who rely on it. Stakeholder voices are woven through the work so findings are relevant and clear. We share methods and tools that help teams sustain evidence-based choices over time.
             </p>
           </div>
 
           <div class="about-block">
             <h3>Our Values</h3>
             <p>
-              Integrity guides our process. Innovation fuels our methods and tools. Collaboration shapes our partnerships through transparency, trust, and shared purpose.
+              Integrity guides the process. Innovation strengthens our methods and tooling. Collaboration defines the partnership through transparency, trust, and shared purpose.
             </p>
           </div>
 
@@ -95,16 +101,15 @@
           </div>
         </div>
 
-        <!-- Visual column (replace with a real image when ready) -->
+        <!-- Visual column (replace with an abstract/data image when ready) -->
         <aside class="about-visual" aria-label="About visual">
-          <!-- Replace 'about.jpg' with an actual abstract or data-inspired image in /assets -->
           <img src="assets/about.jpg" alt="" />
         </aside>
       </div>
     </div>
   </section>
 
-  <!-- ================ Services ================ -->
+  <!-- ================= Services ================= -->
   <section id="services" class="section section--band">
     <div class="container">
       <span class="kicker">What We Do</span>
@@ -120,7 +125,7 @@
         <article class="card service">
           <div class="service-icon" aria-hidden="true"></div>
           <h3>Data Collection</h3>
-          <p>Reliable, multi-channel capture that supports a complete view.</p>
+          <p>Reliable multi-channel capture that supports a complete view.</p>
         </article>
 
         <article class="card service">
@@ -138,7 +143,7 @@
         <article class="card service">
           <div class="service-icon" aria-hidden="true"></div>
           <h3>Predictive Modeling</h3>
-          <p>Forward-looking models that inform decisions before they are urgent.</p>
+          <p>Forward-looking models that inform choices before they are urgent.</p>
         </article>
 
         <article class="card service">
@@ -162,7 +167,7 @@
     </div>
   </section>
 
-  <!-- ================ Contact ================ -->
+  <!-- ================= Contact ================= -->
   <section id="contact" class="section contact section--deep">
     <div class="container contact-inner">
       <span class="kicker kicker--light">Get in Touch</span>
@@ -179,14 +184,14 @@
     </div>
   </section>
 
-  <!-- ================ Footer ================ -->
+  <!-- ================= Footer ================= -->
   <footer class="site-footer" role="contentinfo">
     <div class="container footer-inner">
       <p>© <span id="year"></span> Modern Analytics and Research Solutions. All rights reserved.</p>
     </div>
   </footer>
 
-  <!-- ================ Scripts ================ -->
+  <!-- ================= Scripts ================= -->
   <script>
     // Auto-update footer year
     (function(){

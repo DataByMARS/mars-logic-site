@@ -1,39 +1,39 @@
 /* ================================================================
    MARS — Modern Analytics & Research Solutions
-   Design v1: clean, restrained, responsive, brand-forward
+   Design v2: clean, restrained, responsive, brand-forward
    ================================================================ */
 
 /* ---------- Brand tokens ---------- */
 :root{
   /* Brand */
-  --martian-red: #a21e24;
-  --stellar-grey: #676767;
-  --deep-space:  #1e1853;
-  --star-dust:   #f7f6f3;
-  --white:       #ffffff;
+  --martian-red:#a21e24;
+  --stellar-grey:#676767;
+  --deep-space:#1e1853;
+  --star-dust:#f7f6f3;
+  --white:#ffffff;
 
   /* Theme */
-  --bg:    var(--white);
-  --text:  #1b1b1b;
-  --muted: #454545;
+  --bg:var(--white);
+  --text:#1b1b1b;
+  --muted:#454545;
 
   /* Layout */
-  --max:   1140px;
-  --radius: 12px;
-  --shadow: 0 8px 22px rgba(0,0,0,.06);
-  --focus:  2px solid var(--deep-space);
+  --max:1140px;
+  --radius:12px;
+  --shadow:0 8px 22px rgba(0,0,0,.06);
+  --focus:2px solid var(--deep-space);
 
   /* Vertical rhythm */
-  --space-xl: 96px;
-  --space-lg: 72px;
-  --space-md: 48px;
-  --space-sm: 24px;
+  --space-xl:96px;
+  --space-lg:72px;
+  --space-md:48px;
+  --space-sm:24px;
 }
 
 /* ---------- Base / reset ---------- */
-*{ box-sizing: border-box; }
-html{ scroll-behavior: smooth; scroll-padding-top: 72px; }
-@media (prefers-reduced-motion: reduce){ html{ scroll-behavior: auto; } }
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; scroll-padding-top:72px; }
+@media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
 
 body{
   margin:0; background:var(--bg); color:var(--text);
@@ -47,11 +47,18 @@ a:focus-visible, button:focus-visible{ outline:var(--focus); outline-offset:2px;
 .container{ max-width:var(--max); margin:0 auto; padding:0 24px; }
 
 h1,h2,h3{ margin:0 0 10px; line-height:1.22; font-weight:700; letter-spacing:.2px; }
-h1{ font-size:clamp(2.2rem, 1.4rem + 2.8vw, 3.2rem); color:var(--deep-space); }
-h2{ font-size:clamp(1.6rem, 1.2rem + 1.4vw, 2.2rem); color:var(--deep-space); }
+h1{ font-size:clamp(2.2rem,1.4rem + 2.8vw,3.2rem); color:var(--deep-space); }
+h2{ font-size:clamp(1.6rem,1.2rem + 1.4vw,2.2rem); color:var(--deep-space); }
 h3{ font-size:1.1rem; color:var(--deep-space); }
 p{ margin:0 0 12px; color:var(--muted); }
 .lede{ color:var(--stellar-grey); max-width:760px; margin:0 auto var(--space-sm); }
+
+/* stacked hero subheadline */
+.lede--stack{ margin-top:6px; }
+.lede--stack .brandline,
+.lede--stack .tagline{ display:block; }
+.lede--stack .brandline{ font-weight:400; color:var(--stellar-grey); }
+.lede--stack .tagline{ margin-top:6px; color:var(--stellar-grey); opacity:.92; }
 
 /* ================================================================
    Header / Navigation
@@ -59,15 +66,13 @@ p{ margin:0 0 12px; color:var(--muted); }
 .site-header{
   position:sticky; top:0; z-index:1000;
   background:#fff; border-bottom:1px solid #ececec;
-  box-shadow: 0 2px 6px rgba(0,0,0,.03);
+  box-shadow:0 2px 6px rgba(0,0,0,.03);
 }
 .nav{
   max-width:var(--max); margin:0 auto; padding:12px 24px;
   display:flex; align-items:center; justify-content:space-between; gap:16px;
 }
-.brand img{
-  height:auto; max-height:32px; max-width:170px; object-fit:contain;
-}
+.brand img{ height:auto; max-height:32px; max-width:170px; object-fit:contain; }
 
 .nav-list{
   list-style:none; display:flex; align-items:center; gap:20px; margin:0; padding:0;
@@ -79,10 +84,10 @@ p{ margin:0 0 12px; color:var(--muted); }
 }
 .nav-list a::after{
   content:""; position:absolute; left:12%; right:12%; bottom:2px; height:2px;
-  background: transparent; transition: background .15s ease;
+  background:transparent; transition:background .15s ease;
 }
 .nav-list a:hover::after,
-.nav-list a.active::after{ background: var(--martian-red); }
+.nav-list a.active::after{ background:var(--martian-red); }
 
 .nav-toggle{ display:none; background:transparent; border:0; padding:6px; cursor:pointer; }
 .nav-toggle .bar{ display:block; width:22px; height:2px; background:#2b2b2b; margin:4px 0; border-radius:2px; }
@@ -93,33 +98,33 @@ p{ margin:0 0 12px; color:var(--muted); }
 .section{ padding:var(--space-xl) 0; }
 .section--hero{ padding:calc(var(--space-xl) + 16px) 0 var(--space-lg); text-align:center; }
 .section--band{
-  background: var(--star-dust);
-  border-top: 1px solid #ececec;
-  border-bottom: 1px solid #ececec;
+  background:var(--star-dust);
+  border-top:1px solid #ececec;
+  border-bottom:1px solid #ececec;
 }
 .section--deep{
-  background: var(--deep-space);
-  color: #fff;
+  background:var(--deep-space);
+  color:#fff;
 }
-.section--deep p, .section--deep h2, .section--deep h3, .section--deep a{ color:#fff; }
+
+/* Deep section text color — exclude buttons so they keep their own color */
+.section--deep p,
+.section--deep h2,
+.section--deep h3{ color:#fff; }
+.section--deep a:not(.btn):not(.btn--light){ color:#fff; }
 .section--deep .lede{ color:#e7e7ef; }
 
 /* Kickers (small labels above headings) */
 .kicker{
   display:inline-block; font-size:.78rem; letter-spacing:.38px; font-weight:700;
   text-transform:uppercase; padding:4px 8px; border-radius:999px;
-  background: var(--deep-space); color:#fff; margin-bottom:8px;
+  background:var(--deep-space); color:#fff; margin-bottom:8px;
 }
-.kicker--light{ background: rgba(255,255,255,.18); }
+.kicker--light{ background:rgba(255,255,255,.18); }
 
-/* Section heading accent bar */
-.section h2{
-  position: relative; margin-bottom: 14px;
-}
-.section h2::before{
-  content:""; position:absolute; left:0; top:-12px; width:44px; height:3px;
-  background: var(--martian-red); border-radius:2px;
-}
+/* Section headings — remove decorative red underline globally */
+.section h2{ margin-bottom:14px; }
+.section h2::before{ content:none; }
 
 /* Buttons */
 .btn{
@@ -134,11 +139,16 @@ p{ margin:0 0 12px; color:var(--muted); }
   display:inline-block; border:2px solid var(--deep-space);
   color:var(--deep-space); background:#fff;
   padding:.78rem 1.1rem; border-radius:10px; font-weight:700;
-  margin-left:10px; transition: background .15s ease, color .15s ease, transform .15s ease;
+  margin-left:10px; transition:background .15s ease, color .15s ease, transform .15s ease;
 }
 .btn-secondary:hover{ background:var(--deep-space); color:#fff; transform:translateY(-1px); }
 
-/* CTA rows */
+/* Light button for dark sections (keeps dark text) */
+.btn--light{
+  background:#fff; color:var(--deep-space) !important; box-shadow:var(--shadow);
+}
+.btn--light:hover{ background:#f2f2f7; color:var(--deep-space) !important; }
+
 .cta-row{ display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
 
 /* ================================================================
@@ -153,103 +163,86 @@ p{ margin:0 0 12px; color:var(--muted); }
 .about-flow .about-title{ text-align:left; }
 .about-flow .about-lede{
   text-align:left; color:var(--stellar-grey);
-  line-height:1.9; margin: 0 0 var(--space-md) 0;
-  max-width: 860px;
+  line-height:1.9; margin:0 0 var(--space-md) 0; max-width:860px;
 }
 .about-columns{
-  display:grid; grid-template-columns: 1.35fr .9fr; gap: 40px; align-items:start;
+  display:grid; grid-template-columns:1.35fr .9fr; gap:40px; align-items:start;
 }
 .about-content{ display:flex; flex-direction:column; gap:28px; }
 
 /* Narrative blocks with subtle left accent */
-.about-block{
-  padding-left:18px; border-left:3px solid var(--deep-space);
-}
+.about-block{ padding-left:18px; border-left:3px solid var(--deep-space); }
 .about-block h3{ margin:0 0 8px 0; font-weight:600; }
 .about-block p{ margin:0; }
 
-/* Visual column — never a giant logo */
+/* Visual column */
 .about-visual{
   background:#fff; border:1px solid #ececec; border-radius:12px; padding:12px;
-  box-shadow: var(--shadow);
+  box-shadow:var(--shadow);
 }
-.about-visual img{
-  width:100%; height:260px; object-fit:cover; border-radius:8px;
-}
+.about-visual img{ width:100%; height:260px; object-fit:cover; border-radius:8px; }
 
 /* ================================================================
-   SERVICES — modern 3-up grid with subtle lift
+   SERVICES — modern 3-up grid
    ================================================================ */
 .services-grid{
-  display:grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
-  margin-top: var(--space-sm);
+  display:grid; grid-template-columns:repeat(3,1fr); gap:20px;
+  margin-top:var(--space-sm);
 }
 .service.card{
   background:#fff; border:1px solid #eaeaea; border-radius:var(--radius);
-  padding:18px 18px 20px; box-shadow: var(--shadow);
-  transition: transform .15s ease, box-shadow .15s ease, border-top-color .15s ease;
+  padding:18px 18px 20px; box-shadow:var(--shadow);
+  transition:transform .15s ease, box-shadow .15s ease, border-top-color .15s ease;
   border-top:4px solid var(--deep-space);
   display:flex; flex-direction:column; min-height:100%;
 }
 .service.card:hover{
-  transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(0,0,0,.08);
-  border-top-color: var(--martian-red);
+  transform:translateY(-2px);
+  box-shadow:0 12px 28px rgba(0,0,0,.08);
+  border-top-color:var(--martian-red);
 }
 .service h3{ margin:.2rem 0 .35rem; font-size:1.07rem; }
 .service p{ margin:0; color:var(--stellar-grey); }
 
-/* Placeholder icon area (optional) */
 .service-icon{
   width:36px; height:36px; border-radius:8px; margin-bottom:10px;
-  background: #efeff7; /* deep-space tint */
+  background:#efeff7;
 }
 
 /* ================================================================
    CONTACT — deep-space band
    ================================================================ */
-.section.contact{ padding: var(--space-lg) 0 var(--space-xl); }
-.contact-inner{ max-width: 900px; }
+.section.contact{ padding:var(--space-lg) 0 var(--space-xl); }
+.contact-inner{ max-width:900px; }
 .contact-title{ color:#fff; }
-.contact-lede{
-  color:#dfe0ee; max-width: 760px; margin: 6px 0 var(--space-sm) 0;
-}
-.contact-email{ margin-bottom: var(--space-sm); }
-.contact-link{ color:#fff; text-decoration: underline; text-underline-offset: 3px; }
-.btn--light{
-  background:#fff; color: var(--deep-space); box-shadow: var(--shadow);
-}
-.btn--light:hover{ background:#f2f2f7; color: var(--deep-space); }
+.contact-lede{ color:#dfe0ee; max-width:760px; margin:6px 0 var(--space-sm) 0; }
+.contact-email{ margin-bottom:var(--space-sm); }
+.contact-link{ color:#fff; text-decoration:underline; text-underline-offset:3px; }
 
 /* ================================================================
    FOOTER
    ================================================================ */
-.site-footer{
-  background:#fff; border-top:2px solid rgba(30,24,83,.18);
-}
-.footer-inner{ padding: var(--space-sm) 0; text-align:center; color:var(--stellar-grey); }
+.site-footer{ background:#fff; border-top:2px solid rgba(30,24,83,.18); }
+.footer-inner{ padding:var(--space-sm) 0; text-align:center; color:var(--stellar-grey); }
 
 /* ================================================================
    Responsive
    ================================================================ */
-@media (max-width: 1080px){
+@media (max-width:1080px){
   .container{ padding:0 20px; }
 }
-
-@media (max-width: 980px){
-  .about-columns{ grid-template-columns: 1fr; gap: 28px; }
-  .about-visual img{ height: 220px; }
-  .services-grid{ grid-template-columns: repeat(2, 1fr); }
+@media (max-width:980px){
+  .about-columns{ grid-template-columns:1fr; gap:28px; }
+  .about-visual img{ height:220px; }
+  .services-grid{ grid-template-columns:repeat(2,1fr); }
 }
-
-@media (max-width: 720px){
+@media (max-width:720px){
   .brand img{ max-height:28px; max-width:140px; }
-  .section{ padding: var(--space-lg) 0; }
-  .section--hero{ padding: var(--space-lg) 0 var(--space-md); }
-  .about-visual img{ height: 200px; }
+  .section{ padding:var(--space-lg) 0; }
+  .section--hero{ padding:var(--space-lg) 0 var(--space-md); }
+  .about-visual img{ height:200px; }
 }
-
-@media (max-width: 680px){
+@media (max-width:680px){
   .nav-toggle{ display:block; }
   #primary-nav{
     position:absolute; top:64px; right:16px; left:16px;
@@ -260,16 +253,16 @@ p{ margin:0 0 12px; color:var(--muted); }
   .nav-list{ flex-direction:column; align-items:stretch; gap:6px; }
   .nav-list a{ padding:10px 12px; border-radius:8px; }
 
-  .services-grid{ grid-template-columns: 1fr; }
+  .services-grid{ grid-template-columns:1fr; }
   .cta-row{ justify-content:flex-start; }
 }
 
 /* ================================================================
    Micro-polish
    ================================================================ */
-a:hover{ color: var(--martian-red); }
+a:hover{ color:var(--martian-red); }
 hr.rule{
   border:0; height:1px;
-  background: linear-gradient(90deg, rgba(30,24,83,.18), rgba(30,24,83,.06));
-  margin: 18px 0;
+  background:linear-gradient(90deg, rgba(30,24,83,.18), rgba(30,24,83,.06));
+  margin:18px 0;
 }
