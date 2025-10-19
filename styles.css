@@ -1,6 +1,6 @@
 /* ================================================================
    MARS — Modern Analytics & Research Solutions
-   Design v8 — mobile back-to-top + responsive About image fixes
+   Design v8.1 — button visibility fix + mobile back-to-top + responsive About image
    ================================================================ */
 
 /* ---------- Brand tokens ---------- */
@@ -145,8 +145,16 @@ p{ margin:0 0 12px; color:var(--muted); }
   border:2px solid rgba(255,255,255,0);
   box-shadow:var(--shadow);
 }
-.btn--light:hover{
-  background:#f2f2f7; color:var(--deep-space); border-color:#fff;
+/* High-specificity override so dark-band link color doesn't force white text */
+.section--deep .btn--light{
+  background:#fff;
+  color:var(--deep-space) !important;   /* readable by default */
+  border-color:#fff;
+}
+.section--deep .btn--light:hover{
+  background:transparent;
+  color:#fff !important;                /* invert on hover */
+  border-color:#fff;
 }
 
 /* CTA row — always centered and tidy */
@@ -180,7 +188,7 @@ p{ margin:0 0 12px; color:var(--muted); }
 }
 .about-visual img{
   width:100%;
-  height:auto;             /* key: allow height to follow width */
+  height:auto;
   border-radius:8px;
   display:block;
   object-fit:cover;
