@@ -11,19 +11,18 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
-<link rel="stylesheet" href="styles.css?v=aboutfix1" />
+  <!-- Styles (cache-busted) -->
+  <link rel="stylesheet" href="styles.css?v=aboutfix2" />
 </head>
 <body>
   <!-- Header / Navigation -->
   <header class="site-header">
     <div class="nav container">
-      <a href="#home" class="brand">
+      <a href="#home" class="brand" aria-label="MARS Home">
         <img src="assets/logo.png" alt="MARS — Modern Analytics & Research Solutions logo" />
       </a>
-      <button class="nav-toggle" aria-label="Toggle navigation">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
       </button>
       <nav id="primary-nav" aria-label="Main navigation">
         <ul class="nav-list">
@@ -36,7 +35,7 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
+  <!-- Hero -->
   <section id="home" class="section section--hero">
     <div class="container hero-content">
       <h1>Welcome to MARS.</h1>
@@ -45,40 +44,67 @@
     </div>
   </section>
 
-  <!-- About Section -->
-  <section id="about" class="section section--alt">
+  <!-- About (flowing, no bullets/cards) -->
+  <section id="about" class="section about-flow">
     <div class="container">
-      <h2>About Us</h2>
-      <p class="about-intro">
-        Modern Analytics & Research Solutions (MARS) is a research and analytics firm that transforms complex data into clear, actionable insights. We deliver human-centered, data-driven solutions through rigorous methodologies, advanced analytics, and strategic storytelling. Whether supporting a single phase or managing an entire project lifecycle, MARS equips organizations to make informed, evidence-based decisions.
+      <h2 class="about-title">About Us</h2>
+
+      <p class="about-lede">
+        Modern Analytics & Research Solutions (MARS) helps organizations turn complex information into clarity and action.
+        We combine analytical precision with human understanding so data can drive meaningful, lasting decisions.
       </p>
 
-      <div class="about-grid">
-        <div class="about-card">
-          <h3>Our Mission</h3>
-          <p>To empower organizations to make informed, data-driven decisions grounded in clarity, strategy, and human insight.</p>
+      <div class="about-columns">
+        <!-- Narrative column -->
+        <div class="about-content">
+          <div class="about-block">
+            <h3>Our Mission</h3>
+            <p>
+              Our mission is to empower organizations to make confident, evidence-based decisions grounded in clarity,
+              strategy, and human insight.
+            </p>
+          </div>
+
+          <div class="about-block">
+            <h3>Our Approach</h3>
+            <p>
+              We work as thought partners. Every project begins with understanding your goals, your audiences, and your
+              context. Together, we co-create solutions that align with strategy and human experience.
+            </p>
+            <p>
+              Stakeholder voices and lived experience are integrated into each phase so findings are relevant and clear.
+              Beyond delivery, we share methods and tools that help teams sustain evidence-based decision-making over time.
+            </p>
+          </div>
+
+          <div class="about-block">
+            <h3>Our Values</h3>
+            <p>
+              Integrity guides our process from start to finish. Innovation fuels our work through modern tools and
+              advanced analytics. Collaboration defines our relationships, building strong partnerships grounded in
+              transparency, trust, and shared purpose.
+            </p>
+          </div>
+
+          <div class="about-block about-last">
+            <h3>The MARS Difference</h3>
+            <p>
+              MARS delivers more than analysis; we deliver understanding. Each engagement is designed to help you
+              navigate complexity, uncover insight, and make decisions that stand up to scrutiny. Success is measured
+              by your clarity and confidence.
+            </p>
+          </div>
         </div>
-        <div class="about-card">
-          <h3>Our Approach: Partnership & Capacity Building</h3>
-          <ul class="checklist">
-            <li><strong>Collaborative Partnership:</strong> We operate as thought-partners, working closely with clients to co-create solutions aligned with your goals.</li>
-            <li><strong>Human-Centered Focus:</strong> Our approach balances technical precision with human clarity; we integrate stakeholder voices and lived experience into every phase.</li>
-            <li><strong>Lasting Impact:</strong> We are committed to knowledge transfer and capacity building, equipping clients with tools and frameworks for ongoing evidence-based decision-making.</li>
-          </ul>
-        </div>
-        <div class="about-card">
-          <h3>Our Core Values</h3>
-          <ul class="bullets">
-            <li><strong>Integrity:</strong> Upholding scientific rigor and the highest ethical standards.</li>
-            <li><strong>Innovation:</strong> Applying modern tools, advanced analytics, and cutting-edge methods.</li>
-            <li><strong>Collaboration:</strong> Creating meaningful, client-aligned partnerships focused on shared goals and co-created solutions.</li>
-          </ul>
-        </div>
+
+        <!-- Visual column (optional image; replace when ready) -->
+        <aside class="about-visual" aria-label="Brand visual">
+          <img src="assets/logo.png" alt="MARS brand mark" />
+        </aside>
       </div>
     </div>
   </section>
 
-  <!-- Services Section -->
+  <!-- Services -->
   <section id="services" class="section">
     <div class="container">
       <h2>Our Services</h2>
@@ -95,12 +121,14 @@
     </div>
   </section>
 
-  <!-- Contact Section -->
+  <!-- Contact -->
   <section id="contact" class="section section--alt">
     <div class="container">
       <h2>Contact Us</h2>
-      <p>Ready to collaborate or learn more about how MARS can support your next project? Reach out at <a href="mailto:hello@mars-logic.com">dstone@mars-logic.com</a>.</p>
-      <a href="mailto:hello@mars-logic.com" class="btn">Get In Touch</a>
+      <p>Ready to collaborate or learn more about how MARS can support your next project? Reach out at
+        <a href="mailto:dstone@mars-logic.com">dstone@mars-logic.com</a>.
+      </p>
+      <a href="mailto:dstone@mars-logic.com" class="btn">Get In Touch</a>
     </div>
   </section>
 
@@ -117,11 +145,20 @@
 
     // Mobile nav toggle
     const navToggle = document.querySelector('.nav-toggle');
-    const navPanel = document.querySelector('#primary-nav');
-    navToggle.addEventListener('click', () => {
-      navPanel.classList.toggle('open');
-      navToggle.setAttribute('aria-expanded', navPanel.classList.contains('open'));
-    });
+    const navPanel  = document.querySelector('#primary-nav');
+    if (navToggle && navPanel) {
+      navToggle.addEventListener('click', () => {
+        const open = navPanel.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      // Close menu when a link is clicked (mobile)
+      navPanel.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          navPanel.classList.remove('open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
   </script>
 </body>
 </html>
