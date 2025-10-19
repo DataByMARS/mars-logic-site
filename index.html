@@ -6,6 +6,7 @@
 
   <title>MARS — Modern Analytics & Research Solutions</title>
   <meta name="description" content="MARS transforms complex information into clarity and action through modern research and analytics." />
+  <meta name="theme-color" content="#1e1853" />
 
   <!-- Favicon -->
   <link rel="icon" href="assets/logo.png" type="image/png" />
@@ -16,11 +17,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
   <!-- Stylesheet (cache-busted) -->
-  <link rel="stylesheet" href="styles.css?v=designv8_2" />
+  <link rel="stylesheet" href="styles.css?v=designv8_3" />
 </head>
 <body>
 
-  <!-- Force start-at-top on first load / history restores -->
+  <!-- Force start-at-top on first load AND on bfcache restores -->
   <script>
     (function () {
       try {
@@ -80,7 +81,7 @@
   <!-- ================= About ================= -->
   <section id="about" class="section section--band about-flow" aria-labelledby="about-label">
     <div class="container">
-      <!-- Pill label only (visible); keep semantic h2 visually hidden for accessibility -->
+      <!-- Pill label only (visible); semantic h2 hidden for a11y -->
       <span id="about-label" class="kicker kicker--pill" aria-hidden="true">ABOUT MARS</span>
       <h2 class="visually-hidden">About Us</h2>
 

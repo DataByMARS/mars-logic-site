@@ -1,6 +1,7 @@
 /* ================================================================
    MARS — Modern Analytics & Research Solutions
-   Design v8.1 — button visibility fix + mobile back-to-top + responsive About image
+   Design v8.2 — polish: readable dark-CTA, centered hover watermark,
+   responsive About image, larger pills, mobile back-to-top
    ================================================================ */
 
 /* ---------- Brand tokens ---------- */
@@ -69,6 +70,7 @@ p{ margin:0 0 12px; color:var(--muted); }
 }
 .brand img{ height:auto; max-height:32px; max-width:170px; object-fit:contain; }
 
+/* primary nav */
 .nav-list{
   list-style:none; display:flex; align-items:center; gap:20px; margin:0; padding:0;
 }
@@ -104,7 +106,7 @@ p{ margin:0 0 12px; color:var(--muted); }
 /* Pill labels (the only visible section titles) */
 .kicker{
   display:inline-block;
-  font-size:clamp(1.05rem, .9rem + .6vw, 1.25rem);
+  font-size:clamp(1.05rem, .9rem + .6vw, 1.25rem);  /* big enough to act as titles */
   letter-spacing:.35px;
   font-weight:700;
   text-transform:uppercase;
@@ -139,21 +141,21 @@ p{ margin:0 0 12px; color:var(--muted); }
 }
 .btn-secondary:hover{ background:var(--deep-space); color:#fff; transform:translateY(-1px); }
 
-/* Light-on-dark button (always readable) */
+/* Light-on-dark button (ALWAYS readable) */
 .btn--light{
   background:#fff; color:var(--deep-space);
   border:2px solid rgba(255,255,255,0);
   box-shadow:var(--shadow);
 }
-/* High-specificity override so dark-band link color doesn't force white text */
-.section--deep .btn--light{
+/* Higher-specificity: when inside dark band, keep readable default, invert on hover */
+.section--deep .btn.btn--light{
   background:#fff;
-  color:var(--deep-space) !important;   /* readable by default */
+  color:var(--deep-space) !important;
   border-color:#fff;
 }
-.section--deep .btn--light:hover{
+.section--deep .btn.btn--light:hover{
   background:transparent;
-  color:#fff !important;                /* invert on hover */
+  color:#fff !important;
   border-color:#fff;
 }
 
@@ -188,7 +190,7 @@ p{ margin:0 0 12px; color:var(--muted); }
 }
 .about-visual img{
   width:100%;
-  height:auto;
+  height:auto;          /* follow width; keeps full image on small screens */
   border-radius:8px;
   display:block;
   object-fit:cover;
@@ -215,7 +217,7 @@ p{ margin:0 0 12px; color:var(--muted); }
   box-shadow:0 12px 28px rgba(0,0,0,.08);
   border-top-color:var(--martian-red);
 }
-/* single, centered watermark on hover */
+/* Single, perfectly centered watermark on hover */
 .service.card::after{
   content:"";
   position:absolute; inset:0;
@@ -255,11 +257,11 @@ p{ margin:0 0 12px; color:var(--muted); }
    ================================================================ */
 .back-to-top{
   position:fixed;
-  right:16px; 
+  right:16px;
   bottom:calc(16px + env(safe-area-inset-bottom, 0px));
   z-index:1200;
   width:56px; height:56px;
-  display:none;                 /* hidden by default; shown on mobile */
+  display:none;                 /* hidden by default; shown on phones */
   border-radius:50%;
   background:#fff;
   box-shadow:0 10px 22px rgba(0,0,0,.15);
@@ -303,7 +305,7 @@ p{ margin:0 0 12px; color:var(--muted); }
   .brand img{ max-height:28px; max-width:140px; }
   .section{ padding:var(--space-lg) 0; }
   .section--hero{ padding:var(--space-lg) 0 var(--space-md); }
-  /* mobile back-to-top visible on phones */
+  /* back-to-top visible on phones */
   .back-to-top{ display:flex; }
 }
 
