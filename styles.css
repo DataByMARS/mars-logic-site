@@ -31,13 +31,16 @@
 *{ box-sizing:border-box; }
 
 /* Anchor offset for sticky header + default smooth scroll */
-html{ scroll-behavior:smooth; scroll-padding-top:72px; }
+html{
+  scroll-behavior:smooth;
+  scroll-padding-top:72px;
+  overflow-anchor:none;   /* optional: prevents mid-load jumpiness */
+}
 
 /* Prefer reduced motion */
 @media (prefers-reduced-motion: reduce){
   html{ scroll-behavior:auto; }
 }
-
 /* Anti “load-in-the-middle” hardening:
    - During boot (if HTML uses .is-booting), force no smooth.
    - On touch devices (coarse pointer), also avoid smooth on initial load. */

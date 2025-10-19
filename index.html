@@ -16,59 +16,56 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
+  <!-- Early, inline anti-jump reset (iOS Safari scroll restore & anchor jumps) -->
+  <style>
+    html, body {
+      scroll-behavior: auto !important;
+      overflow-anchor: none;
+    }
+  </style>
+
   <!-- Stylesheet (cache-busted) -->
-  <link rel="stylesheet" href="styles.css?v=1760913045" />
+  <link rel="stylesheet" href="styles.css?v=1760913614" />
 </head>
 <body>
 
   <!-- Force start-at-top on first load / history restores (iOS-hardened) -->
   <script>
     (function () {
-      try {
-        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-      } catch (_) {}
+      try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (_) {}
 
-      function forceTop() {
-        if (!location.hash && (window.pageYOffset || document.documentElement.scrollTop) > 0) {
+      function forceTopIfNoHash() {
+        if (!location.hash) {
+          // multiple attempts to beat late layout/paint on mobile Safari
           window.scrollTo(0, 0);
+          requestAnimationFrame(() => window.scrollTo(0, 0));
+          setTimeout(() => window.scrollTo(0, 0), 60);
+          setTimeout(() => window.scrollTo(0, 0), 180);
+          setTimeout(() => window.scrollTo(0, 0), 400);
         }
       }
 
-      // 1) Immediately on load and a few retries as layout stabilizes
-      window.addEventListener('load', function () {
-        forceTop();
-        setTimeout(forceTop, 60);
-        setTimeout(forceTop, 180);
-        setTimeout(forceTop, 400);
-        setTimeout(forceTop, 900);
-        requestAnimationFrame(() => requestAnimationFrame(forceTop));
-      }, { once: true });
+      // Run as early as we can
+      if (!location.hash) window.scrollTo(0, 0);
 
-      // 2) When restored from back-forward cache (common on iOS Safari)
+      // DOM ready (earlier than full load)
+      document.addEventListener('DOMContentLoaded', forceTopIfNoHash, { once: true });
+
+      // After load (images/fonts/layout done-ish)
+      window.addEventListener('load', forceTopIfNoHash, { once: true });
+
+      // BFCache restores (common on iOS)
       window.addEventListener('pageshow', function (e) {
-        if (e.persisted) {
-          setTimeout(forceTop, 50);
-          setTimeout(forceTop, 250);
-        }
+        if (e.persisted) forceTopIfNoHash();
       });
 
-      // 3) As soon as DOM is ready (earlier than full load)
-      document.addEventListener('DOMContentLoaded', function () {
-        if (!location.hash) window.scrollTo(0, 0);
-      });
-
-      // 4) After web fonts finish loading (prevents late reflow jumps)
+      // After web fonts (late reflow can nudge)
       if (document.fonts && document.fonts.ready) {
-        document.fonts.ready.then(() => setTimeout(forceTop, 80));
+        document.fonts.ready.then(() => setTimeout(forceTopIfNoHash, 80));
       }
 
-      // 5) If tab becomes visible after loading in background
-      document.addEventListener('visibilitychange', function () {
-        if (document.visibilityState === 'visible') setTimeout(forceTop, 60);
-      });
-
-      // 6) iOS orientation change can nudge scroll
-      window.addEventListener('orientationchange', () => setTimeout(forceTop, 60));
+      // Orientation changes
+      window.addEventListener('orientationchange', () => setTimeout(forceTopIfNoHash, 60));
     })();
   </script>
 
