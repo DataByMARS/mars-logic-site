@@ -1,6 +1,6 @@
 /* ================================================================
    MARS — Modern Analytics & Research Solutions
-   Design v9.2 — iOS top-load fix (hash flick), stable hero, image reservation
+   Design v8.1 — button visibility fix + mobile back-to-top + responsive About image
    ================================================================ */
 
 /* ---------- Brand tokens ---------- */
@@ -20,7 +20,6 @@
   --shadow:0 8px 22px rgba(0,0,0,.06);
   --focus:2px solid var(--deep-space);
 
-  --header-h:72px;
   --space-xl:96px;
   --space-lg:72px;
   --space-md:48px;
@@ -29,26 +28,26 @@
 
 /* ---------- Base / reset ---------- */
 *{ box-sizing:border-box; }
-html{ scroll-behavior:smooth; } /* keep smooth; we’re not fighting it anymore */
+html{ scroll-behavior:smooth; scroll-padding-top:72px; }
+@media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+
 body{
   margin:0; background:var(--bg); color:var(--text);
   font-family:"Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   line-height:1.75;
   -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
-  overflow-anchor:none; /* don’t let the body be an anchor target */
 }
 img{ max-width:100%; height:auto; display:block; }
 a{ color:var(--deep-space); text-decoration:none; }
 a:focus-visible, button:focus-visible{ outline:var(--focus); outline-offset:2px; }
 .container{ max-width:var(--max); margin:0 auto; padding:0 24px; }
 
-/* Screen-reader only helper */
+/* Accessible hide (keeps for screen readers) */
 .visually-hidden{
   position:absolute !important; height:1px; width:1px; overflow:hidden;
   clip:rect(1px,1px,1px,1px); white-space:nowrap; border:0; padding:0; margin:-1px;
 }
 
-/* Typography */
 h1,h2,h3{ margin:0 0 10px; line-height:1.22; font-weight:700; letter-spacing:.2px; }
 h1{ font-size:clamp(2.2rem, 1.4rem + 2.8vw, 3.2rem); color:var(--deep-space); }
 h2{ font-size:clamp(1.6rem, 1.2rem + 1.4vw, 2.2rem); color:var(--deep-space); }
@@ -70,7 +69,6 @@ p{ margin:0 0 12px; color:var(--muted); }
 }
 .brand img{ height:auto; max-height:32px; max-width:170px; object-fit:contain; }
 
-/* primary nav */
 .nav-list{
   list-style:none; display:flex; align-items:center; gap:20px; margin:0; padding:0;
 }
@@ -78,6 +76,8 @@ p{ margin:0 0 12px; color:var(--muted); }
   color:var(--deep-space); font-weight:600; letter-spacing:.2px;
   padding:10px 8px; border-radius:8px; transition:color .15s ease, background .15s ease;
 }
+.nav-list a::after{ content:none; } /* ensure no underline accent */
+
 .nav-toggle{ display:none; background:transparent; border:0; padding:6px; cursor:pointer; }
 .nav-toggle .bar{ display:block; width:22px; height:2px; background:#2b2b2b; margin:4px 0; border-radius:2px; }
 
@@ -85,13 +85,7 @@ p{ margin:0 0 12px; color:var(--muted); }
    Sections / Utilities / Buttons
    ================================================================ */
 .section{ padding:var(--space-xl) 0; }
-.section--hero{
-  /* Reserve a full, address-bar-aware viewport height so iOS doesn’t reflow later */
-  min-height:100svh;
-  display:flex; align-items:center; justify-content:center;
-  padding:calc(var(--space-xl) + 10px) 0 var(--space-lg);
-  text-align:center;
-}
+.section--hero{ padding:calc(var(--space-xl) + 10px) 0 var(--space-lg); text-align:center; }
 .section--band{
   background:var(--star-dust);
   border-top:1px solid #ececec;
@@ -107,10 +101,7 @@ p{ margin:0 0 12px; color:var(--muted); }
 .section--deep a{ color:#fff; }
 .section--deep .lede{ color:#e7e7ef; }
 
-/* Sentinel at true top that the browser can safely snap to */
-#top-sentinel{ height:1px; overflow-anchor:auto; }
-
-/* Pill labels */
+/* Pill labels (the only visible section titles) */
 .kicker{
   display:inline-block;
   font-size:clamp(1.05rem, .9rem + .6vw, 1.25rem);
@@ -124,6 +115,7 @@ p{ margin:0 0 12px; color:var(--muted); }
   margin-bottom:16px;
 }
 .kicker--light{ background:rgba(255,255,255,.22); }
+.kicker--pill{}
 
 /* Hero subtitle: two lines */
 .hero-subtitle{ margin-top:6px; }
@@ -147,24 +139,25 @@ p{ margin:0 0 12px; color:var(--muted); }
 }
 .btn-secondary:hover{ background:var(--deep-space); color:#fff; transform:translateY(-1px); }
 
-/* Light-on-dark button (ALWAYS readable) */
+/* Light-on-dark button (always readable) */
 .btn--light{
   background:#fff; color:var(--deep-space);
   border:2px solid rgba(255,255,255,0);
   box-shadow:var(--shadow);
 }
-.section--deep .btn.btn--light{
+/* High-specificity override so dark-band link color doesn't force white text */
+.section--deep .btn--light{
   background:#fff;
-  color:var(--deep-space) !important;
+  color:var(--deep-space) !important;   /* readable by default */
   border-color:#fff;
 }
-.section--deep .btn.btn--light:hover{
+.section--deep .btn--light:hover{
   background:transparent;
-  color:#fff !important;
+  color:#fff !important;                /* invert on hover */
   border-color:#fff;
 }
 
-/* CTA row */
+/* CTA row — always centered and tidy */
 .cta-row{
   display:flex; justify-content:center; align-items:center; flex-wrap:wrap;
   gap:12px; text-align:center;
@@ -183,12 +176,12 @@ p{ margin:0 0 12px; color:var(--muted); }
 }
 .about-content{ display:flex; flex-direction:column; gap:28px; }
 
-/* Narrative blocks */
+/* Narrative blocks with subtle left accent */
 .about-block{ padding-left:18px; border-left:3px solid var(--deep-space); }
 .about-block h3{ margin:0 0 8px 0; font-weight:600; }
 .about-block p{ margin:0; }
 
-/* Visual column — reserve aspect ratio to prevent layout shift */
+/* Visual column — fully responsive image (no awkward crop on mobile) */
 .about-visual{
   background:#fff; border:1px solid #ececec; border-radius:12px; padding:12px;
   box-shadow:var(--shadow);
@@ -196,7 +189,6 @@ p{ margin:0 0 12px; color:var(--muted); }
 .about-visual img{
   width:100%;
   height:auto;
-  aspect-ratio:16/9;     /* reserve height on mobile */
   border-radius:8px;
   display:block;
   object-fit:cover;
@@ -204,7 +196,7 @@ p{ margin:0 0 12px; color:var(--muted); }
 }
 
 /* ================================================================
-   SERVICES
+   SERVICES — modern 3-up grid with hover watermark
    ================================================================ */
 .services-grid{
   display:grid; grid-template-columns:repeat(3,1fr); gap:20px;
@@ -223,6 +215,7 @@ p{ margin:0 0 12px; color:var(--muted); }
   box-shadow:0 12px 28px rgba(0,0,0,.08);
   border-top-color:var(--martian-red);
 }
+/* single, centered watermark on hover */
 .service.card::after{
   content:"";
   position:absolute; inset:0;
@@ -239,6 +232,8 @@ p{ margin:0 0 12px; color:var(--muted); }
 
 .service h3{ margin:.2rem 0 .35rem; font-size:1.07rem; }
 .service p{ margin:0; color:var(--stellar-grey); }
+
+/* Optional icon placeholder */
 .service-icon{
   width:36px; height:36px; border-radius:8px; margin-bottom:10px;
   background:#efeff7;
@@ -260,18 +255,20 @@ p{ margin:0 0 12px; color:var(--muted); }
    ================================================================ */
 .back-to-top{
   position:fixed;
-  right:16px;
+  right:16px; 
   bottom:calc(16px + env(safe-area-inset-bottom, 0px));
   z-index:1200;
   width:56px; height:56px;
-  display:none;
+  display:none;                 /* hidden by default; shown on mobile */
   border-radius:50%;
   background:#fff;
   box-shadow:0 10px 22px rgba(0,0,0,.15);
   border:1px solid #ececec;
   align-items:center; justify-content:center;
 }
-.back-to-top img{ width:32px; height:32px; display:block; }
+.back-to-top img{
+  width:32px; height:32px; display:block;
+}
 .back-to-top:active{ transform:scale(.98); }
 
 /* ================================================================
@@ -296,16 +293,20 @@ p{ margin:0 0 12px; color:var(--muted); }
 @media (max-width:1080px){
   .container{ padding:0 20px; }
 }
+
 @media (max-width:980px){
   .about-columns{ grid-template-columns:1fr; gap:28px; }
   .services-grid{ grid-template-columns:repeat(2,1fr); }
 }
+
 @media (max-width:720px){
   .brand img{ max-height:28px; max-width:140px; }
   .section{ padding:var(--space-lg) 0; }
   .section--hero{ padding:var(--space-lg) 0 var(--space-md); }
+  /* mobile back-to-top visible on phones */
   .back-to-top{ display:flex; }
 }
+
 @media (max-width:680px){
   .nav-toggle{ display:block; }
   #primary-nav{
@@ -316,9 +317,12 @@ p{ margin:0 0 12px; color:var(--muted); }
   #primary-nav.open{ display:block; }
   .nav-list{ flex-direction:column; align-items:stretch; gap:6px; }
   .nav-list a{ padding:10px 12px; border-radius:8px; }
+
   .services-grid{ grid-template-columns:1fr; }
   .cta-row{ justify-content:center; }
 }
 
-/* Micro-polish */
+/* ================================================================
+   Micro-polish
+   ================================================================ */
 a:hover{ color: var(--martian-red); }

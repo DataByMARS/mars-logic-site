@@ -1,48 +1,28 @@
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>MARS — Modern Analytics & Research Solutions</title>
-  <meta name="description" content="MARS transforms complex information into clarity and action through modern research and analytics.">
-  <meta name="theme-color" content="#1e1853">
+  <meta name="description" content="MARS transforms complex information into clarity and action through modern research and analytics." />
 
   <!-- Favicon -->
   <link rel="icon" href="assets/logo.png" type="image/png" />
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <!-- Poppins font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="styles.css?v=1760917458" />
-
-  <!-- Guaranteed top-at-load on iOS/Android (hash flick technique) -->
-  <script>
-    (function () {
-      try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (_) {}
-      if (!location.hash) {
-        var urlNoHash = location.pathname + location.search;      // keep same path/query
-        location.replace('#top-sentinel');                         // jump to true top immediately
-        requestAnimationFrame(function () {
-          history.replaceState(null, '', urlNoHash);               // remove hash without scrolling
-          window.scrollTo(0, 0);                                   // ensure exact 0 after replace
-        });
-      }
-    })();
-  </script>
+  <!-- Stylesheet (cache-busted) -->
+  <link rel="stylesheet" href="styles.css?v=designv8_1" />
 </head>
 <body>
-
-  <!-- True top anchor -->
-  <div id="top-sentinel" aria-hidden="true"></div>
-
   <!-- ================= Header / Navigation ================= -->
   <header class="site-header" role="banner">
     <div class="nav container">
-      <a href="#top-sentinel" class="brand" aria-label="MARS Home">
+      <a href="#home" class="brand" aria-label="MARS Home">
         <img src="assets/logo.png" alt="MARS logo" />
       </a>
 
@@ -62,13 +42,16 @@
   </header>
 
   <!-- ================= Hero ================= -->
-  <section id="home" class="section section--hero" aria-label="Welcome">
+  <section id="home" class="section section--hero">
     <div class="container hero-content">
       <h1>Welcome to MARS</h1>
+
+      <!-- Two-line subtitle: company name bold, tagline normal -->
       <p class="lede hero-subtitle">
         <span class="subtitle-line"><strong>Modern Analytics &amp; Research Solutions</strong></span>
         <span class="subtitle-line">Human centered. Data driven.</span>
       </p>
+
       <div class="cta-row">
         <a href="#contact" class="btn">Work With Us</a>
         <a href="#services" class="btn-secondary">Explore Services</a>
@@ -76,10 +59,11 @@
     </div>
   </section>
 
-  <!-- ================= About ================= -->
-  <section id="about" class="section section--band about-flow" aria-labelledby="about-label">
+  <!-- ================= About (flowing narrative) ================= -->
+  <section id="about" class="section section--band about-flow">
     <div class="container">
-      <span id="about-label" class="kicker kicker--pill" aria-hidden="true">ABOUT MARS</span>
+      <!-- Pill label only (visible); keep semantic h2 visually hidden for accessibility -->
+      <span class="kicker kicker--pill">ABOUT MARS</span>
       <h2 class="visually-hidden">About Us</h2>
 
       <p class="about-lede">
@@ -88,59 +72,114 @@
       </p>
 
       <div class="about-columns">
+        <!-- Narrative column -->
         <div class="about-content">
           <div class="about-block">
             <h3>Our Mission</h3>
-            <p>We empower teams to make confident, evidence-based decisions grounded in clarity, strategy, and human insight.</p>
+            <p>
+              We empower teams to make confident, evidence-based decisions grounded in clarity,
+              strategy, and human insight.
+            </p>
           </div>
+
           <div class="about-block">
             <h3>Our Approach</h3>
-            <p>We work as thought partners. Each engagement begins with your goals, audiences, and context. Together we co-create
-              solutions that align with strategy and human experience. Stakeholder voices are integrated throughout the work so
-              findings are relevant and clear. We share methods and tools so teams can sustain evidence-based decision-making over time.</p>
+            <p>
+              We work as thought partners. Each engagement begins with your goals, audiences, and context.
+              Together we co-create solutions that align with strategy and human experience. Stakeholder voices
+              are integrated throughout the work so findings are relevant and clear. We share methods and tools
+              so teams can sustain evidence-based decision-making over time.
+            </p>
           </div>
+
           <div class="about-block">
             <h3>Our Values</h3>
-            <p>Integrity guides our process. Innovation fuels our methods and tools. Collaboration shapes our partnerships through
-              transparency, trust, and shared purpose.</p>
+            <p>
+              Integrity guides our process. Innovation fuels our methods and tools. Collaboration shapes our
+              partnerships through transparency, trust, and shared purpose.
+            </p>
           </div>
+
           <div class="about-block about-last">
             <h3>The MARS Difference</h3>
-            <p>MARS delivers more than analysis; we deliver understanding that stands up to scrutiny and moves work forward.</p>
+            <p>
+              MARS delivers more than analysis; we deliver understanding that stands up to scrutiny and moves work forward.
+            </p>
           </div>
         </div>
 
+        <!-- Visual column (uses your chosen responsive image) -->
         <aside class="about-visual" aria-label="About visual">
-          <!-- width/height reserve aspect ratio for stable layout -->
-          <img src="assets/graphics.jpg" alt="" loading="lazy" width="1600" height="900" />
+          <img src="assets/graphics.jpg" alt="" loading="lazy" />
         </aside>
       </div>
     </div>
   </section>
 
   <!-- ================= Services ================= -->
-  <section id="services" class="section section--band" aria-labelledby="services-label">
+  <section id="services" class="section section--band">
     <div class="container">
-      <span id="services-label" class="kicker kicker--pill" aria-hidden="true">WHAT WE DO</span>
+      <!-- Pill label only; semantic heading hidden -->
+      <span class="kicker kicker--pill">WHAT WE DO</span>
       <h2 class="visually-hidden">Our Services</h2>
 
       <div class="cards services-grid">
-        <article class="card service"><div class="service-icon" aria-hidden="true"></div><h3>Research Design</h3><p>Rigorous methods that align evidence with strategy from the start.</p></article>
-        <article class="card service"><div class="service-icon" aria-hidden="true"></div><h3>Data Collection</h3><p>Reliable, multi-channel capture that supports a complete view.</p></article>
-        <article class="card service"><div class="service-icon" aria-hidden="true"></div><h3>Statistical Analysis</h3><p>Clear quantitative answers to complex questions.</p></article>
-        <article class="card service"><div class="service-icon" aria-hidden="true"></div><h3>Qualitative Insights</h3><p>Human context that brings meaning to the numbers.</p></article>
-        <article class="card service"><div class="service-icon" aria-hidden="true"></div><h3>Predictive Modeling</h3><p>Forward-looking models that inform decisions before they are urgent.</p></article>
-        <article class="card service"><div class="service-icon" aria-hidden="true"></div><h3>Data Visualization</h3><p>Visual narratives that make findings easy to understand and share.</p></article>
-        <article class="card service"><div class="service-icon" aria-hidden="true"></div><h3>Reporting</h3><p>Executive-ready deliverables that translate analysis into action.</p></article>
-        <article class="card service"><div class="service-icon" aria-hidden="true"></div><h3>End-to-End Management</h3><p>From kickoff through delivery to adoption with a single accountable partner.</p></article>
+        <article class="card service">
+          <div class="service-icon" aria-hidden="true"></div>
+          <h3>Research Design</h3>
+          <p>Rigorous methods that align evidence with strategy from the start.</p>
+        </article>
+
+        <article class="card service">
+          <div class="service-icon" aria-hidden="true"></div>
+          <h3>Data Collection</h3>
+          <p>Reliable, multi-channel capture that supports a complete view.</p>
+        </article>
+
+        <article class="card service">
+          <div class="service-icon" aria-hidden="true"></div>
+          <h3>Statistical Analysis</h3>
+          <p>Clear quantitative answers to complex questions.</p>
+        </article>
+
+        <article class="card service">
+          <div class="service-icon" aria-hidden="true"></div>
+          <h3>Qualitative Insights</h3>
+          <p>Human context that brings meaning to the numbers.</p>
+        </article>
+
+        <article class="card service">
+          <div class="service-icon" aria-hidden="true"></div>
+          <h3>Predictive Modeling</h3>
+          <p>Forward-looking models that inform decisions before they are urgent.</p>
+        </article>
+
+        <article class="card service">
+          <div class="service-icon" aria-hidden="true"></div>
+          <h3>Data Visualization</h3>
+          <p>Visual narratives that make findings easy to understand and share.</p>
+        </article>
+
+        <article class="card service">
+          <div class="service-icon" aria-hidden="true"></div>
+          <h3>Reporting</h3>
+          <p>Executive-ready deliverables that translate analysis into action.</p>
+        </article>
+
+        <article class="card service">
+          <div class="service-icon" aria-hidden="true"></div>
+          <h3>End-to-End Management</h3>
+          <p>From kickoff through delivery to adoption with a single accountable partner.</p>
+        </article>
       </div>
     </div>
   </section>
 
   <!-- ================= Contact ================= -->
-  <section id="contact" class="section contact section--deep" aria-labelledby="contact-label">
+  <section id="contact" class="section contact section--deep">
     <div class="container contact-inner">
-      <span id="contact-label" class="kicker kicker--pill kicker--light" aria-hidden="true">GET IN TOUCH</span>
+      <!-- Pill label only; semantic heading hidden -->
+      <span class="kicker kicker--pill kicker--light">GET IN TOUCH</span>
       <h2 class="visually-hidden">Contact Us</h2>
 
       <p class="contact-lede">
@@ -155,14 +194,15 @@
     </div>
   </section>
 
-  <!-- Back-to-top -->
-  <a href="#top-sentinel" class="back-to-top" aria-label="Back to top">
+  <!-- ===== Mobile back-to-top (icon-only logo) ===== -->
+  <a href="#home" class="back-to-top" aria-label="Back to top">
     <img src="assets/logo-icon.png" alt="" aria-hidden="true" />
   </a>
 
   <!-- ================= Footer ================= -->
   <footer class="site-footer" role="contentinfo">
     <div class="container footer-inner">
+      <!-- Centered icon-only mark (decorative) -->
       <img src="assets/logo-icon.png" class="footer-mark" alt="" aria-hidden="true" />
       <p>© <span id="year"></span> Modern Analytics and Research Solutions. All rights reserved.</p>
     </div>
@@ -171,22 +211,23 @@
   <!-- ================= Scripts ================= -->
   <script>
     // Auto-update footer year
-    (function () {
-      const y = document.getElementById('year');
+    (function(){
+      var y = document.getElementById('year');
       if (y) y.textContent = new Date().getFullYear();
     })();
 
     // Mobile nav toggle
-    (function () {
+    (function(){
       const navToggle = document.querySelector('.nav-toggle');
       const navPanel  = document.querySelector('#primary-nav');
       if (!navToggle || !navPanel) return;
-      navToggle.addEventListener('click', function () {
+      navToggle.addEventListener('click', function(){
         const open = navPanel.classList.toggle('open');
         navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       });
-      navPanel.querySelectorAll('a').forEach(function (a) {
-        a.addEventListener('click', function () {
+      // Close panel on link click (mobile)
+      navPanel.querySelectorAll('a').forEach(function(a){
+        a.addEventListener('click', function(){
           navPanel.classList.remove('open');
           navToggle.setAttribute('aria-expanded', 'false');
         });
