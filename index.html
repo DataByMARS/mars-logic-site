@@ -4,110 +4,110 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MARS — Modern Analytics & Research Solutions</title>
+  <meta name="description" content="MARS empowers organizations with human-centered, data-driven research and analytics solutions." />
 
   <!-- Poppins font -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
-  <!-- Stylesheet -->
   <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
+  <!-- Header / Navigation -->
   <header class="site-header">
-    <nav class="nav">
+    <div class="nav container">
       <a href="#home" class="brand">
-        <img src="assets/logo.png" alt="MARS – Modern Analytics & Research Solutions" />
+        <img src="assets/logo.png" alt="MARS — Modern Analytics & Research Solutions logo" />
       </a>
       <button class="nav-toggle" aria-label="Toggle navigation">
         <span class="bar"></span>
         <span class="bar"></span>
         <span class="bar"></span>
       </button>
-      <div id="primary-nav">
+      <nav id="primary-nav" aria-label="Main navigation">
         <ul class="nav-list">
-          <li><a href="#home">Home</a></li>
+          <li><a href="#home" class="active">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
-      </div>
-    </nav>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <!-- Home Hero Section -->
-    <section id="home" class="section section--hero">
-      <div class="container hero-content">
-        <h1>Welcome to MARS.</h1>
-        <p class="lede">Human-centered. Data-driven.</p>
-        <a href="#contact" class="btn">Work With Us</a>
-      </div>
-    </section>
+  <!-- Hero Section -->
+  <section id="home" class="section section--hero">
+    <div class="container hero-content">
+      <h1>Welcome to MARS.</h1>
+      <p class="lede">Human-centered. Data-driven.</p>
+      <a href="#contact" class="btn">Work With Us</a>
+    </div>
+  </section>
 
-    <!-- About Section -->
-    <section id="about" class="section section--alt">
-      <div class="container">
-        <h2>About Us</h2>
-        <p class="about-intro">
-          Modern Analytics & Research Solutions (MARS) is a research and analytics firm that transforms complex data into clear, actionable insights. We deliver human-centered, data-driven solutions through rigorous methodologies, advanced analytics, and strategic storytelling. Whether supporting a single phase or managing an entire project lifecycle, MARS equips organizations to make informed, evidence-based decisions.
-        </p>
+  <!-- About Section -->
+  <section id="about" class="section section--alt">
+    <div class="container">
+      <h2>About Us</h2>
+      <p class="about-intro">
+        Modern Analytics & Research Solutions (MARS) is a research and analytics firm that transforms complex data into clear, actionable insights. We deliver human-centered, data-driven solutions through rigorous methodologies, advanced analytics, and strategic storytelling. Whether supporting a single phase or managing an entire project lifecycle, MARS equips organizations to make informed, evidence-based decisions.
+      </p>
 
-        <div class="about-grid">
-          <div class="about-card">
-            <h3>Our Mission</h3>
-            <p>Our mission is to empower organizations to make informed, data-driven decisions grounded in clarity, strategy, and human insight.</p>
-          </div>
-          <div class="about-card">
-            <h3>Our Approach: Partnership & Capacity Building</h3>
-            <ul class="checklist">
-              <li><strong>Collaborative Partnership:</strong> We operate as thought partners, working closely with clients to co-create solutions aligned with your specific goals.</li>
-              <li><strong>Human-Centered Focus:</strong> Our approach balances technical precision with human clarity. We integrate stakeholder voices and lived experience into every phase of research and analysis to ensure our findings are strategically relevant.</li>
-              <li><strong>Lasting Impact:</strong> We’re committed to knowledge transfer and capacity building—equipping our clients with the tools and frameworks needed to sustain evidence-based decision-making long-term and create lasting impact.</li>
-            </ul>
-          </div>
-          <div class="about-card">
-            <h3>Our Core Values</h3>
-            <ul class="bullets">
-              <li><strong>Integrity:</strong> Upholding scientific rigor and the highest ethical standards in all that we do.</li>
-              <li><strong>Innovation:</strong> Applying modern tools, advanced analytics, and cutting-edge methods to address evolving challenges.</li>
-              <li><strong>Collaboration:</strong> Creating meaningful, client-aligned partnerships focused on shared goals and co-created solutions.</li>
-            </ul>
-          </div>
+      <div class="about-grid">
+        <div class="about-card">
+          <h3>Our Mission</h3>
+          <p>To empower organizations to make informed, data-driven decisions grounded in clarity, strategy, and human insight.</p>
+        </div>
+        <div class="about-card">
+          <h3>Our Approach: Partnership & Capacity Building</h3>
+          <ul class="checklist">
+            <li><strong>Collaborative Partnership:</strong> We operate as thought-partners, working closely with clients to co-create solutions aligned with your goals.</li>
+            <li><strong>Human-Centered Focus:</strong> Our approach balances technical precision with human clarity; we integrate stakeholder voices and lived experience into every phase.</li>
+            <li><strong>Lasting Impact:</strong> We are committed to knowledge transfer and capacity building, equipping clients with tools and frameworks for ongoing evidence-based decision-making.</li>
+          </ul>
+        </div>
+        <div class="about-card">
+          <h3>Our Core Values</h3>
+          <ul class="bullets">
+            <li><strong>Integrity:</strong> Upholding scientific rigor and the highest ethical standards.</li>
+            <li><strong>Innovation:</strong> Applying modern tools, advanced analytics, and cutting-edge methods.</li>
+            <li><strong>Collaboration:</strong> Creating meaningful, client-aligned partnerships focused on shared goals and co-created solutions.</li>
+          </ul>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Services Section -->
-    <section id="services" class="section">
-      <div class="container">
-        <h2>Our Services</h2>
-        <div class="cards">
-          <div class="card"><h3>Research Design</h3><p>Custom design and methodology planning to structure your research for maximum insight.</p></div>
-          <div class="card"><h3>Data Collection</h3><p>Robust and scalable data capture using the latest tools and technologies.</p></div>
-          <div class="card"><h3>Statistical Analysis</h3><p>Advanced quantitative techniques to uncover patterns and drive decisions.</p></div>
-          <div class="card"><h3>Qualitative Insights</h3><p>In-depth qualitative approaches to understand context, meaning, and story.</p></div>
-          <div class="card"><h3>Predictive Modeling</h3><p>Forecasting and modeling to anticipate future trends and opportunities.</p></div>
-          <div class="card"><h3>Data Visualization</h3><p>Clear, compelling visuals to bring your data story to life.</p></div>
-          <div class="card"><h3>Reporting</h3><p>Executive-ready reports that translate analytics into action.</p></div>
-          <div class="card"><h3>Front-to-End Project Management</h3><p>From strategy through delivery, we manage your full project lifecycle.</p></div>
-        </div>
+  <!-- Services Section -->
+  <section id="services" class="section">
+    <div class="container">
+      <h2>Our Services</h2>
+      <div class="cards">
+        <div class="card"><h3>Research Design</h3><p>Custom methodology planning to align research with strategy and objectives.</p></div>
+        <div class="card"><h3>Data Collection</h3><p>Robust, multi-channel data capture systems to support your insights journey.</p></div>
+        <div class="card"><h3>Statistical Analysis</h3><p>Quantitative and inferential techniques that uncover the hidden story in your data.</p></div>
+        <div class="card"><h3>Qualitative Insights</h3><p>Contextual, stakeholder-driven qualitative research to enrich your understanding.</p></div>
+        <div class="card"><h3>Predictive Modeling</h3><p>Forecasting and scenario planning to anticipate future opportunities and risks.</p></div>
+        <div class="card"><h3>Data Visualization</h3><p>Compelling visual stories that make your data easy to understand and act upon.</p></div>
+        <div class="card"><h3>Reporting</h3><p>Executive-ready deliverables that translate analytics into decisions and communication.</p></div>
+        <div class="card"><h3>Front-to-End Project Management</h3><p>Comprehensive oversight from kickoff through delivery to adoption.</p></div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section section--alt">
-      <div class="container">
-        <h2>Contact Us</h2>
-        <p>Ready to collaborate or learn more about how MARS can support your next project? Reach out at <a href="mailto:hello@mars-logic.com">hello@mars-logic.com</a>.</p>
-      </div>
-    </section>
-  </main>
+  <!-- Contact Section -->
+  <section id="contact" class="section section--alt">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <p>Ready to collaborate or learn more about how MARS can support your next project? Reach out at <a href="mailto:hello@mars-logic.com">hello@mars-logic.com</a>.</p>
+      <a href="mailto:hello@mars-logic.com" class="btn">Get In Touch</a>
+    </div>
+  </section>
 
+  <!-- Footer -->
   <footer>
     <div class="container">
-      <p>© <span id="year"></span> MARS</p>
+      <p>© <span id="year"></span> MARS. All rights reserved.</p>
     </div>
   </footer>
 
@@ -115,10 +115,13 @@
     // Auto-update footer year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Mobile nav toggle behaviour
-    const toggle = document.querySelector('.nav-toggle');
-    const navPanel = document.getElementById('primary-nav');
-    toggle.addEventListener('click', () => navPanel.classList.toggle('open'));
+    // Mobile nav toggle
+    const navToggle = document.querySelector('.nav-toggle');
+    const navPanel = document.querySelector('#primary-nav');
+    navToggle.addEventListener('click', () => {
+      navPanel.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', navPanel.classList.contains('open'));
+    });
   </script>
 </body>
 </html>
