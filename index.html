@@ -8,7 +8,6 @@
   <meta name="description" content="MARS transforms complex information into clarity and action through modern research and analytics.">
   <meta name="theme-color" content="#1e1853">
 
-  <!-- Favicon -->
   <link rel="icon" href="assets/logo.png" type="image/png" />
 
   <!-- Poppins font -->
@@ -17,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <!-- Stylesheet (cache-busted) -->
-  <link rel="stylesheet" href="styles.css?v=1760917025" />
+  <link rel="stylesheet" href="styles.css?v=1760917109" />
 
   <!-- Top-load hardening (runs before paint) -->
   <script>
@@ -30,13 +29,13 @@
 </head>
 <body>
 
-  <!-- true top anchor -->
+  <!-- Sentinel so the browser can anchor the very top instead of mid-page -->
   <div id="top-sentinel" aria-hidden="true"></div>
 
   <!-- ================= Header / Navigation ================= -->
   <header class="site-header" role="banner">
     <div class="nav container">
-      <a href="#top-sentinel" class="brand" aria-label="MARS Home">
+      <a href="#home" class="brand" aria-label="MARS Home">
         <img src="assets/logo.png" alt="MARS logo" />
       </a>
 
@@ -110,6 +109,7 @@
         </div>
 
         <aside class="about-visual" aria-label="About visual">
+          <!-- If you know actual dimensions, set them here; these reserve layout space -->
           <img src="assets/graphics.jpg" alt="" loading="lazy" width="1600" height="900" />
         </aside>
       </div>
@@ -153,8 +153,8 @@
     </div>
   </section>
 
-  <!-- back-to-top -->
-  <a href="#top-sentinel" class="back-to-top" aria-label="Back to top">
+  <!-- ===== Mobile back-to-top (icon-only logo) ===== -->
+  <a href="#home" class="back-to-top" aria-label="Back to top">
     <img src="assets/logo-icon.png" alt="" aria-hidden="true" />
   </a>
 
@@ -191,7 +191,7 @@
       });
     })();
 
-    // Finalize: unlock first, then force top
+    // Finalize: force top & unlock after layout stabilizes (handles iOS/Safari BFCache/orientation)
     (function () {
       function forceTopIfNoHash() {
         if (!location.hash) {
@@ -203,10 +203,8 @@
       }
 
       window.addEventListener('load', () => {
+        forceTopIfNoHash();
         document.documentElement.classList.remove('boot-lock');
-        // if you add padding-top during boot on touch in CSS, clear it here
-        document.body.style.removeProperty('padding-top');
-        requestAnimationFrame(() => requestAnimationFrame(forceTopIfNoHash));
       }, { once: true });
 
       window.addEventListener('pageshow', (e) => {
