@@ -8,81 +8,86 @@
   <meta name="description" content="MARS transforms complex information into clarity and action through modern research and analytics." />
   <meta name="theme-color" content="#1e1853" />
 
-  <!-- Favicon -->
   <link rel="icon" href="assets/logo.png" type="image/png" />
 
-  <!-- Poppins font -->
+  <!-- Poppins -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
-  <!-- Early, inline anti-jump reset (iOS Safari scroll restore & anchor jumps) -->
-  <style>
-    html, body {
-      scroll-behavior: auto !important;
-      overflow-anchor: none;
-    }
-  </style>
-
-  <!-- Stylesheet (cache-busted) -->
-  <link rel="stylesheet" href="styles.css?v=1760913614" />
+  <!-- Stylesheet (bump the ?v when you push) -->
+  <link rel="stylesheet" href="styles.css?v=1760914072" />
+  <script>
+    // add boot class ASAP (prevents smooth scroll during first paint)
+    document.documentElement.classList.add('is-booting');
+  </script>
 </head>
 <body>
 
-  <!-- Force start-at-top on first load / history restores (iOS-hardened) -->
+  <!-- Absolute top anchor (unambiguous target for first load and back-to-top) -->
+  <a id="top" class="visually-hidden" aria-hidden="true"></a>
+
+  <!-- Force start-at-top on first load / BFCache restore (iOS-hardened) -->
   <script>
     (function () {
       try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (_) {}
 
-      function forceTopIfNoHash() {
+      function forceTop() {
         if (!location.hash) {
-          // multiple attempts to beat late layout/paint on mobile Safari
-          window.scrollTo(0, 0);
-          requestAnimationFrame(() => window.scrollTo(0, 0));
-          setTimeout(() => window.scrollTo(0, 0), 60);
-          setTimeout(() => window.scrollTo(0, 0), 180);
-          setTimeout(() => window.scrollTo(0, 0), 400);
+          // Prefer a real in-page anchor target; avoids some Safari quirks
+          var el = document.getElementById('top');
+          if (el && typeof el.scrollIntoView === 'function') {
+            el.scrollIntoView();
+          } else {
+            window.scrollTo(0, 0);
+          }
         }
       }
 
-      // Run as early as we can
-      if (!location.hash) window.scrollTo(0, 0);
-
-      // DOM ready (earlier than full load)
-      document.addEventListener('DOMContentLoaded', forceTopIfNoHash, { once: true });
-
-      // After load (images/fonts/layout done-ish)
-      window.addEventListener('load', forceTopIfNoHash, { once: true });
-
-      // BFCache restores (common on iOS)
-      window.addEventListener('pageshow', function (e) {
-        if (e.persisted) forceTopIfNoHash();
-      });
-
-      // After web fonts (late reflow can nudge)
-      if (document.fonts && document.fonts.ready) {
-        document.fonts.ready.then(() => setTimeout(forceTopIfNoHash, 80));
+      // If there is no hash, normalize URL to #top without adding history
+      if (!location.hash) {
+        try { location.replace('#top'); } catch(_) {}
       }
 
-      // Orientation changes
-      window.addEventListener('orientationchange', () => setTimeout(forceTopIfNoHash, 60));
+      // Try at several lifecycle points (covers layout shifts & BFCache)
+      document.addEventListener('DOMContentLoaded', forceTop);
+      window.addEventListener('load', function () {
+        forceTop();
+        setTimeout(forceTop, 80);
+        setTimeout(forceTop, 240);
+        requestAnimationFrame(() => requestAnimationFrame(forceTop));
+        // remove boot class so normal smooth scrolling resumes
+        document.documentElement.classList.remove('is-booting');
+      }, { once: true });
+
+      window.addEventListener('pageshow', function (e) {
+        if (e.persisted) setTimeout(forceTop, 60);
+      });
+
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(() => setTimeout(forceTop, 60));
+      }
+
+      document.addEventListener('visibilitychange', function () {
+        if (document.visibilityState === 'visible') setTimeout(forceTop, 60);
+      });
+
+      window.addEventListener('orientationchange', () => setTimeout(forceTop, 60));
     })();
   </script>
 
   <!-- ================= Header / Navigation ================= -->
   <header class="site-header" role="banner">
     <div class="nav container">
-      <a href="#home" class="brand" aria-label="MARS Home">
+      <a href="#top" class="brand" aria-label="MARS Home">
         <img src="assets/logo.png" alt="MARS logo" />
       </a>
-
       <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
         <span class="bar"></span><span class="bar"></span><span class="bar"></span>
       </button>
-
       <nav id="primary-nav" class="primary-nav" aria-label="Main navigation">
         <ul class="nav-list">
-          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#top" class="active">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -95,13 +100,10 @@
   <section id="home" class="section section--hero" aria-label="Welcome">
     <div class="container hero-content">
       <h1>Welcome to MARS</h1>
-
-      <!-- Two-line subtitle: company name bold, tagline normal -->
       <p class="lede hero-subtitle">
         <span class="subtitle-line"><strong>Modern Analytics &amp; Research Solutions</strong></span>
         <span class="subtitle-line">Human centered. Data driven.</span>
       </p>
-
       <div class="cta-row">
         <a href="#contact" class="btn">Work With Us</a>
         <a href="#services" class="btn-secondary">Explore Services</a>
@@ -112,51 +114,31 @@
   <!-- ================= About ================= -->
   <section id="about" class="section section--band about-flow" aria-labelledby="about-label">
     <div class="container">
-      <!-- Pill label only (visible); semantic h2 hidden for a11y -->
       <span id="about-label" class="kicker kicker--pill" aria-hidden="true">ABOUT MARS</span>
       <h2 class="visually-hidden">About Us</h2>
-
       <p class="about-lede">
         MARS helps organizations turn complex information into clarity and action.
         We combine analytical precision with human understanding so data guides decisions that last.
       </p>
-
       <div class="about-columns">
         <div class="about-content">
           <div class="about-block">
             <h3>Our Mission</h3>
-            <p>
-              We empower teams to make confident, evidence-based decisions grounded in clarity,
-              strategy, and human insight.
-            </p>
+            <p>We empower teams to make confident, evidence-based decisions grounded in clarity, strategy, and human insight.</p>
           </div>
-
           <div class="about-block">
             <h3>Our Approach</h3>
-            <p>
-              We work as thought partners. Each engagement begins with your goals, audiences, and context.
-              Together we co-create solutions that align with strategy and human experience. Stakeholder voices
-              are integrated throughout the work so findings are relevant and clear. We share methods and tools
-              so teams can sustain evidence-based decision-making over time.
-            </p>
+            <p>We work as thought partners. Each engagement begins with your goals, audiences, and context. Together we co-create solutions that align with strategy and human experience. Stakeholder voices are integrated so findings are relevant and clear. We share methods and tools so teams can sustain evidence-based decision-making over time.</p>
           </div>
-
           <div class="about-block">
             <h3>Our Values</h3>
-            <p>
-              Integrity guides our process. Innovation fuels our methods and tools. Collaboration shapes our
-              partnerships through transparency, trust, and shared purpose.
-            </p>
+            <p>Integrity guides our process. Innovation fuels our methods and tools. Collaboration shapes our partnerships through transparency, trust, and shared purpose.</p>
           </div>
-
           <div class="about-block about-last">
             <h3>The MARS Difference</h3>
-            <p>
-              MARS delivers more than analysis; we deliver understanding that stands up to scrutiny and moves work forward.
-            </p>
+            <p>MARS delivers more than analysis; we deliver understanding that stands up to scrutiny and moves work forward.</p>
           </div>
         </div>
-
         <aside class="about-visual" aria-label="About visual">
           <img src="assets/graphics.jpg" alt="" loading="lazy" />
         </aside>
@@ -167,7 +149,6 @@
   <!-- ================= Services ================= -->
   <section id="services" class="section section--band" aria-labelledby="services-label">
     <div class="container">
-      <!-- Pill label only; semantic heading hidden -->
       <span id="services-label" class="kicker kicker--pill" aria-hidden="true">WHAT WE DO</span>
       <h2 class="visually-hidden">Our Services</h2>
 
@@ -187,16 +168,11 @@
   <!-- ================= Contact ================= -->
   <section id="contact" class="section contact section--deep" aria-labelledby="contact-label">
     <div class="container contact-inner">
-      <!-- Pill label only; semantic heading hidden -->
       <span id="contact-label" class="kicker kicker--pill kicker--light" aria-hidden="true">GET IN TOUCH</span>
       <h2 class="visually-hidden">Contact Us</h2>
 
-      <p class="contact-lede">
-        Tell us about your next project. We bring clarity to complex questions and help teams move forward with confidence.
-      </p>
-      <p class="contact-email">
-        <a href="mailto:dstone@mars-logic.com" class="contact-link">dstone@mars-logic.com</a>
-      </p>
+      <p class="contact-lede">Tell us about your next project. We bring clarity to complex questions and help teams move forward with confidence.</p>
+      <p class="contact-email"><a href="mailto:dstone@mars-logic.com" class="contact-link">dstone@mars-logic.com</a></p>
       <div class="cta-row">
         <a href="mailto:dstone@mars-logic.com" class="btn btn--light">Start the Conversation</a>
       </div>
@@ -204,7 +180,7 @@
   </section>
 
   <!-- ===== Mobile back-to-top (icon-only logo) ===== -->
-  <a href="#home" class="back-to-top" aria-label="Back to top">
+  <a href="#top" class="back-to-top" aria-label="Back to top">
     <img src="assets/logo-icon.png" alt="" aria-hidden="true" />
   </a>
 
@@ -218,7 +194,7 @@
 
   <!-- ================= Scripts ================= -->
   <script>
-    // Auto-update footer year
+    // Footer year
     (function () {
       const y = document.getElementById('year');
       if (y) y.textContent = new Date().getFullYear();

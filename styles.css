@@ -31,11 +31,16 @@
 *{ box-sizing:border-box; }
 
 /* Anchor offset for sticky header + default smooth scroll */
-html{
-  scroll-behavior:smooth;
-  scroll-padding-top:72px;
-  overflow-anchor:none;   /* optional: prevents mid-load jumpiness */
+html{ scroll-behavior:smooth; scroll-padding-top:72px; }
+
+/* Prevent Safari/iOS from loading mid-page or preserving weird anchors */
+html.is-booting { scroll-behavior:auto !important; }
+@media (hover:none) and (pointer:coarse){
+  html { scroll-behavior:auto; } /* Disable smooth scroll on touch devices during boot */
 }
+
+/* Prevent scroll anchoring jumps at top of page */
+body, #top, #home, .site-header { overflow-anchor:none; }
 
 /* Prefer reduced motion */
 @media (prefers-reduced-motion: reduce){
