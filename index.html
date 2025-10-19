@@ -16,9 +16,27 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
 
   <!-- Stylesheet (cache-busted) -->
-  <link rel="stylesheet" href="styles.css?v=1760909750" />
+  <link rel="stylesheet" href="styles.css?v=designv8_2" />
 </head>
 <body>
+
+  <!-- Force start-at-top on first load / history restores -->
+  <script>
+    (function () {
+      try {
+        if ('scrollRestoration' in history) {
+          history.scrollRestoration = 'manual';
+        }
+      } catch (_) {}
+      window.addEventListener('load', function () {
+        if (!location.hash) window.scrollTo(0, 0);
+      }, { once: true });
+      window.addEventListener('pageshow', function (e) {
+        if (e.persisted && !location.hash) window.scrollTo(0, 0);
+      });
+    })();
+  </script>
+
   <!-- ================= Header / Navigation ================= -->
   <header class="site-header" role="banner">
     <div class="nav container">
@@ -42,10 +60,11 @@
   </header>
 
   <!-- ================= Hero ================= -->
-  <section id="home" class="section section--hero">
+  <section id="home" class="section section--hero" aria-label="Welcome">
     <div class="container hero-content">
       <h1>Welcome to MARS</h1>
 
+      <!-- Two-line subtitle: company name bold, tagline normal -->
       <p class="lede hero-subtitle">
         <span class="subtitle-line"><strong>Modern Analytics &amp; Research Solutions</strong></span>
         <span class="subtitle-line">Human centered. Data driven.</span>
@@ -59,9 +78,10 @@
   </section>
 
   <!-- ================= About ================= -->
-  <section id="about" class="section section--band about-flow">
+  <section id="about" class="section section--band about-flow" aria-labelledby="about-label">
     <div class="container">
-      <span class="kicker kicker--pill">ABOUT MARS</span>
+      <!-- Pill label only (visible); keep semantic h2 visually hidden for accessibility -->
+      <span id="about-label" class="kicker kicker--pill" aria-hidden="true">ABOUT MARS</span>
       <h2 class="visually-hidden">About Us</h2>
 
       <p class="about-lede">
@@ -113,28 +133,30 @@
   </section>
 
   <!-- ================= Services ================= -->
-  <section id="services" class="section section--band">
+  <section id="services" class="section section--band" aria-labelledby="services-label">
     <div class="container">
-      <span class="kicker kicker--pill">WHAT WE DO</span>
+      <!-- Pill label only; semantic heading hidden -->
+      <span id="services-label" class="kicker kicker--pill" aria-hidden="true">WHAT WE DO</span>
       <h2 class="visually-hidden">Our Services</h2>
 
       <div class="cards services-grid">
-        <article class="card service"><div class="service-icon"></div><h3>Research Design</h3><p>Rigorous methods that align evidence with strategy from the start.</p></article>
-        <article class="card service"><div class="service-icon"></div><h3>Data Collection</h3><p>Reliable, multi-channel capture that supports a complete view.</p></article>
-        <article class="card service"><div class="service-icon"></div><h3>Statistical Analysis</h3><p>Clear quantitative answers to complex questions.</p></article>
-        <article class="card service"><div class="service-icon"></div><h3>Qualitative Insights</h3><p>Human context that brings meaning to the numbers.</p></article>
-        <article class="card service"><div class="service-icon"></div><h3>Predictive Modeling</h3><p>Forward-looking models that inform decisions before they are urgent.</p></article>
-        <article class="card service"><div class="service-icon"></div><h3>Data Visualization</h3><p>Visual narratives that make findings easy to understand and share.</p></article>
-        <article class="card service"><div class="service-icon"></div><h3>Reporting</h3><p>Executive-ready deliverables that translate analysis into action.</p></article>
-        <article class="card service"><div class="service-icon"></div><h3>End-to-End Management</h3><p>From kickoff through delivery to adoption with a single accountable partner.</p></article>
+        <article class="card service"><div class="service-icon" aria-hidden="true"></div><h3>Research Design</h3><p>Rigorous methods that align evidence with strategy from the start.</p></article>
+        <article class="card service"><div class="service-icon" aria-hidden="true"></div><h3>Data Collection</h3><p>Reliable, multi-channel capture that supports a complete view.</p></article>
+        <article class="card service"><div class="service-icon" aria-hidden="true"></div><h3>Statistical Analysis</h3><p>Clear quantitative answers to complex questions.</p></article>
+        <article class="card service"><div class="service-icon" aria-hidden="true"></div><h3>Qualitative Insights</h3><p>Human context that brings meaning to the numbers.</p></article>
+        <article class="card service"><div class="service-icon" aria-hidden="true"></div><h3>Predictive Modeling</h3><p>Forward-looking models that inform decisions before they are urgent.</p></article>
+        <article class="card service"><div class="service-icon" aria-hidden="true"></div><h3>Data Visualization</h3><p>Visual narratives that make findings easy to understand and share.</p></article>
+        <article class="card service"><div class="service-icon" aria-hidden="true"></div><h3>Reporting</h3><p>Executive-ready deliverables that translate analysis into action.</p></article>
+        <article class="card service"><div class="service-icon" aria-hidden="true"></div><h3>End-to-End Management</h3><p>From kickoff through delivery to adoption with a single accountable partner.</p></article>
       </div>
     </div>
   </section>
 
   <!-- ================= Contact ================= -->
-  <section id="contact" class="section contact section--deep">
+  <section id="contact" class="section contact section--deep" aria-labelledby="contact-label">
     <div class="container contact-inner">
-      <span class="kicker kicker--pill kicker--light">GET IN TOUCH</span>
+      <!-- Pill label only; semantic heading hidden -->
+      <span id="contact-label" class="kicker kicker--pill kicker--light" aria-hidden="true">GET IN TOUCH</span>
       <h2 class="visually-hidden">Contact Us</h2>
 
       <p class="contact-lede">
@@ -165,34 +187,27 @@
   <!-- ================= Scripts ================= -->
   <script>
     // Auto-update footer year
-    (function(){
+    (function () {
       const y = document.getElementById('year');
       if (y) y.textContent = new Date().getFullYear();
     })();
 
     // Mobile nav toggle
-    (function(){
+    (function () {
       const navToggle = document.querySelector('.nav-toggle');
       const navPanel  = document.querySelector('#primary-nav');
       if (!navToggle || !navPanel) return;
-      navToggle.addEventListener('click', function(){
+      navToggle.addEventListener('click', function () {
         const open = navPanel.classList.toggle('open');
         navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       });
-      navPanel.querySelectorAll('a').forEach(function(a){
-        a.addEventListener('click', function(){
+      navPanel.querySelectorAll('a').forEach(function (a) {
+        a.addEventListener('click', function () {
           navPanel.classList.remove('open');
           navToggle.setAttribute('aria-expanded', 'false');
         });
       });
     })();
-
-    // Always load at top of page
-    window.addEventListener("load", function() {
-      if (!window.location.hash) {
-        window.scrollTo({ top: 0, behavior: "instant" });
-      }
-    });
   </script>
 </body>
 </html>
