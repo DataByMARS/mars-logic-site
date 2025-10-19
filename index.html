@@ -8,7 +8,6 @@
   <meta name="description" content="MARS transforms complex information into clarity and action through modern research and analytics.">
   <meta name="theme-color" content="#1e1853">
 
-  <!-- Favicon -->
   <link rel="icon" href="assets/logo.png" type="image/png" />
 
   <!-- Poppins font -->
@@ -17,18 +16,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <!-- Stylesheet (cache-busted) -->
-  <link rel="stylesheet" href="styles.css?v=1760916092" />
+  <link rel="stylesheet" href="styles.css?v=1760916298" />
 
   <!-- Top-load hardening (runs before paint) -->
   <script>
     (function () {
-      // Prevent browser from restoring weird scroll on initial visit
       try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (_) {}
-
-      // Ensure the <html> boot class is present ASAP (SSR + redundancy)
       document.documentElement.classList.add('boot-lock');
-
-      // If the page is opened with no hash, start at absolute top immediately
       if (!location.hash) { window.scrollTo(0, 0); }
     })();
   </script>
@@ -115,7 +109,8 @@
         </div>
 
         <aside class="about-visual" aria-label="About visual">
-          <img src="assets/graphics.jpg" alt="" loading="lazy" />
+          <!-- If you know actual dimensions, set them here; these reserve layout space -->
+          <img src="assets/graphics.jpg" alt="" loading="lazy" width="1600" height="900" />
         </aside>
       </div>
     </div>
@@ -209,7 +204,6 @@
 
       window.addEventListener('load', () => {
         forceTopIfNoHash();
-        // Remove boot lock and padding after load
         document.documentElement.classList.remove('boot-lock');
       }, { once: true });
 

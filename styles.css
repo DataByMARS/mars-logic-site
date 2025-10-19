@@ -1,7 +1,7 @@
 /* ================================================================
    MARS — Modern Analytics & Research Solutions
-   Design v9 — guaranteed top-load on mobile, readable dark-CTA,
-   centered watermark, responsive About image, larger pills, back-to-top
+   Design v9.1 — nail mobile top-load (reserved hero + image size),
+   readable dark-CTA, centered watermark, back-to-top
    ================================================================ */
 
 /* ---------- Brand tokens ---------- */
@@ -31,7 +31,7 @@
 /* ---------- Base / reset ---------- */
 *{ box-sizing:border-box; }
 
-/* Default smooth scrolling (we'll disable during boot/touch) */
+/* Default smooth scrolling (we’ll disable during boot/touch) */
 html{ scroll-behavior:smooth; }
 
 /* Disable smooth during boot; iOS/touch prefers instant on first paint */
@@ -108,7 +108,11 @@ p{ margin:0 0 12px; color:var(--muted); }
    Sections / Utilities / Buttons
    ================================================================ */
 .section{ padding:var(--space-xl) 0; }
-.section--hero{ padding:calc(var(--space-xl) + 10px) 0 var(--space-lg); text-align:center; }
+.section--hero{
+  padding:calc(var(--space-xl) + 10px) 0 var(--space-lg);
+  text-align:center;
+  min-height: calc(100svh - var(--header-h)); /* reserve viewport height on iOS */
+}
 .section--band{
   background:var(--star-dust);
   border-top:1px solid #ececec;
@@ -186,7 +190,7 @@ p{ margin:0 0 12px; color:var(--muted); }
 }
 
 /* ================================================================
-   ABOUT — flowing narrative + responsive visual
+   ABOUT — flowing narrative + responsive visual (reserved height)
    ================================================================ */
 .about-flow .about-lede{
   text-align:left; color:var(--stellar-grey);
@@ -203,18 +207,24 @@ p{ margin:0 0 12px; color:var(--muted); }
 .about-block h3{ margin:0 0 8px 0; font-weight:600; }
 .about-block p{ margin:0; }
 
-/* Visual column — fully responsive image */
+/* Visual column — reserve image height to prevent mobile jump */
 .about-visual{
   background:#fff; border:1px solid #ececec; border-radius:12px; padding:12px;
   box-shadow:var(--shadow);
 }
 .about-visual img{
   width:100%;
-  height:auto;
+  height:auto;                 /* keep intrinsic aspect */
+  aspect-ratio: 4 / 3;         /* desktop/tablet reservation */
   border-radius:8px;
   display:block;
   object-fit:cover;
   object-position:center;
+}
+@media (max-width:720px){
+  .about-visual img{
+    aspect-ratio: 16 / 9;      /* reserve height on phones */
+  }
 }
 
 /* ================================================================
