@@ -301,3 +301,26 @@ p{ margin:0 0 12px; color:var(--muted); }
    Micro-polish
    ================================================================ */
 a:hover{ color: var(--martian-red); }
+/* --- Fix hover logo centering in service cells --- */
+.service:hover {
+  background-image: url('assets/logo-icon.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 120px;
+  background-blend-mode: lighten;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* --- Fix “Start the Conversation” button visibility --- */
+.cta-button {
+  background-color: #ffffff;
+  color: #1a174d;
+  border: 2px solid #ffffff;
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: transparent;
+  color: #ffffff;
+  border-color: #ffffff;
+}
