@@ -1,7 +1,6 @@
 /* ================================================================
    MARS — Modern Analytics & Research Solutions
-   Design v8.4 — full-screen hero, bigger subhead/tagline on desktop,
-   equal-size CTAs, guaranteed top-load, responsive About image
+   Design v8.5 — improved contact contrast & readability
    ================================================================ */
 
 /* ---------- Brand tokens ---------- */
@@ -11,7 +10,7 @@
   --stellar-grey:#676767;
   --star-dust:#f7f6f3;
   --text:#1b1b1b;
-  --white:#fff;
+  --white:#ffffff;
 
   --max:1140px;
   --radius:16px;
@@ -28,31 +27,34 @@
 
 /* ---------- Base / reset ---------- */
 *{ box-sizing:border-box; }
-html{ scroll-behavior:smooth; }                      /* default */
-@media (hover:none) and (pointer:coarse){ html{ scroll-behavior:auto; } } /* no smooth on touch first paints */
-html.boot-lock{ scroll-behavior:auto !important; }   /* disable during boot */
+html{ scroll-behavior:smooth; }
+@media (hover:none) and (pointer:coarse){ html{ scroll-behavior:auto; } }
+html.boot-lock{ scroll-behavior:auto !important; }
 
 body{
-  margin:0; background:var(--white); color:var(--text);
+  margin:0;
+  background:var(--white);
+  color:var(--text);
   font-family:"Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   line-height:1.75;
-  -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
-  overflow-anchor:none;                              /* stop “mid-page” anchoring */
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-anchor:none;
 }
 
-/* true top anchor allowed to anchor */
 #top-sentinel{ height:1px; overflow-anchor:auto; }
 
-/* utility */
 img{ max-width:100%; height:auto; display:block; }
 a{ color:var(--deep-space); text-decoration:none; }
 a:focus-visible, button:focus-visible{ outline:var(--focus); outline-offset:2px; }
 .container{ max-width:var(--max); margin:0 auto; padding:0 24px; }
 
-/* screen-reader-only */
 .visually-hidden{
-  position:absolute !important; height:1px; width:1px; overflow:hidden;
-  clip:rect(1px,1px,1px,1px); white-space:nowrap; border:0; padding:0; margin:-1px;
+  position:absolute !important;
+  height:1px; width:1px;
+  overflow:hidden;
+  clip:rect(1px,1px,1px,1px);
+  white-space:nowrap; border:0; padding:0; margin:-1px;
 }
 
 h1,h2,h3{ margin:0 0 10px; line-height:1.2; font-weight:800; letter-spacing:.2px; }
@@ -71,19 +73,22 @@ p{ margin:0 0 12px; color:#444; }
   box-shadow:0 2px 6px rgba(0,0,0,.03);
 }
 .nav{
-  max-width:var(--max); margin:0 auto; padding:12px 24px;
+  max-width:var(--max); margin:0 auto; padding:14px 24px;
   display:flex; align-items:center; justify-content:space-between; gap:16px;
 }
-.brand img{ height:auto; max-height:32px; max-width:170px; object-fit:contain; }
+.brand img{ height:auto; max-height:38px; max-width:190px; object-fit:contain; }
 
 .nav-list{
   list-style:none; display:flex; align-items:center; gap:20px; margin:0; padding:0;
 }
 .nav-list a{
-  color:var(--deep-space); font-weight:600; letter-spacing:.2px;
-  padding:10px 8px; border-radius:10px; transition:color .15s ease, background .15s ease;
+  color:var(--deep-space);
+  font-weight:600;
+  letter-spacing:.2px;
+  padding:10px 8px;
+  border-radius:10px;
+  transition:color .15s ease, background .15s ease;
 }
-
 .nav-toggle{ display:none; background:transparent; border:0; padding:6px; cursor:pointer; }
 .nav-toggle .bar{ display:block; width:22px; height:2px; background:#2b2b2b; margin:4px 0; border-radius:2px; }
 
@@ -92,7 +97,6 @@ p{ margin:0 0 12px; color:#444; }
    ================================================================ */
 .section{ padding:var(--space-xl) 0; }
 
-/* FULL-SCREEN HERO (minus sticky header) */
 .section--hero{
   min-height:calc(100svh - var(--header-h));
   display:grid; place-items:center;
@@ -100,12 +104,10 @@ p{ margin:0 0 12px; color:#444; }
   text-align:center;
 }
 
-/* subhead lines under h1  */
 .hero-subtitle{ margin-top:12px; }
 .hero-subtitle .subtitle-line{ display:block; }
 .hero-subtitle .subtitle-line strong{
   font-weight:800; color:#555;
-  /* bigger on desktop */
   font-size:clamp(1.15rem, 1rem + 0.6vw, 2rem);
   display:block;
   margin-bottom:6px;
@@ -115,7 +117,6 @@ p{ margin:0 0 12px; color:#444; }
   font-size:clamp(1rem, 0.95rem + 0.5vw, 1.5rem);
 }
 
-/* CTA buttons — equal size */
 .cta-row{
   display:flex; justify-content:center; align-items:center; flex-wrap:wrap;
   gap:16px; text-align:center; margin-top:24px;
@@ -169,7 +170,6 @@ p{ margin:0 0 12px; color:#444; }
 .about-block{ padding-left:18px; border-left:3px solid var(--deep-space); }
 .about-block h3{ margin:0 0 8px 0; font-weight:700; }
 
-/* responsive image, no weird crop on phones */
 .about-visual{
   background:#fff; border:1px solid #ececec; border-radius:12px; padding:12px;
   box-shadow:0 8px 22px rgba(0,0,0,.06);
@@ -205,16 +205,40 @@ p{ margin:0 0 12px; color:#444; }
 .service-icon{ width:36px; height:36px; border-radius:8px; margin-bottom:10px; background:#efeff7; }
 
 /* ================================================================
-   CONTACT
+   CONTACT (IMPROVED CONTRAST)
    ================================================================ */
-.section.contact{ padding:var(--space-lg) 0 var(--space-xl); background:var(--deep-space); color:#fff; }
+.section.contact{
+  padding:var(--space-lg) 0 var(--space-xl);
+  background:var(--deep-space);
+  color:#f5f5f7;
+}
 .section.contact .kicker{ background:rgba(255,255,255,.22); }
-.section.contact .lede{ color:#e7e7ef; }
+.section.contact .lede{ color:#dfe2f0; line-height:1.8; }
 .contact-inner{ max-width:900px; }
 .contact-email{ margin-bottom:var(--space-sm); }
-.contact-link{ color:#fff; text-decoration:underline; text-underline-offset:3px; }
-.btn--light{ background:#fff; color:var(--deep-space); border:2px solid rgba(255,255,255,0); }
-.section.contact .btn--light:hover{ background:transparent; color:#fff; border-color:#fff; }
+
+.contact-link{
+  color:#ffffff;
+  text-decoration:underline;
+  text-underline-offset:3px;
+  font-weight:500;
+  transition:color .2s ease-in-out;
+}
+.contact-link:hover{ color:var(--martian-red); }
+
+.btn--light{
+  background:#fff;
+  color:var(--deep-space);
+  border:2px solid #fff;
+  font-weight:700;
+  transition:background .2s ease, color .2s ease, transform .15s ease;
+}
+.btn--light:hover{
+  background:transparent;
+  color:#fff;
+  border-color:#fff;
+  transform:translateY(-1px);
+}
 
 /* ================================================================
    BACK TO TOP
@@ -263,5 +287,5 @@ p{ margin:0 0 12px; color:#444; }
   .cta-row{ justify-content:center; }
 }
 
-/* hover color micro-polish */
+/* hover polish */
 a:hover{ color:var(--martian-red); }
