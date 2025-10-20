@@ -1,6 +1,8 @@
 /* ================================================================
    MARS — Modern Analytics & Research Solutions
-   Design v8.7 — larger header logo for better balance
+   Design v8.7 — header/logo polish + contact lede contrast
+   (Full-screen hero, bigger subhead/tagline on desktop,
+   equal-size CTAs, guaranteed top-load, responsive About image)
    ================================================================ */
 
 /* ---------- Brand tokens ---------- */
@@ -27,25 +29,28 @@
 
 /* ---------- Base / reset ---------- */
 *{ box-sizing:border-box; }
-html{ scroll-behavior:smooth; }
-@media (hover:none) and (pointer:coarse){ html{ scroll-behavior:auto; } }
-html.boot-lock{ scroll-behavior:auto !important; }
+html{ scroll-behavior:smooth; }                      /* default */
+@media (hover:none) and (pointer:coarse){ html{ scroll-behavior:auto; } } /* no smooth on touch first paints */
+html.boot-lock{ scroll-behavior:auto !important; }   /* disable during boot */
 
 body{
   margin:0; background:var(--white); color:var(--text);
   font-family:"Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   line-height:1.75;
   -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
-  overflow-anchor:none;
+  overflow-anchor:none;                              /* stop “mid-page” anchoring */
 }
 
+/* true top anchor allowed to anchor */
 #top-sentinel{ height:1px; overflow-anchor:auto; }
 
+/* utility */
 img{ max-width:100%; height:auto; display:block; }
 a{ color:var(--deep-space); text-decoration:none; }
 a:focus-visible, button:focus-visible{ outline:var(--focus); outline-offset:2px; }
 .container{ max-width:var(--max); margin:0 auto; padding:0 24px; }
 
+/* screen-reader-only */
 .visually-hidden{
   position:absolute !important; height:1px; width:1px; overflow:hidden;
   clip:rect(1px,1px,1px,1px); white-space:nowrap; border:0; padding:0; margin:-1px;
@@ -67,14 +72,12 @@ p{ margin:0 0 12px; color:#444; }
   box-shadow:0 2px 6px rgba(0,0,0,.03);
 }
 .nav{
-  max-width:var(--max); margin:0 auto; padding:12px 24px;
+  max-width:var(--max); margin:0 auto; padding:14px 24px; /* a bit taller to fit larger logo */
   display:flex; align-items:center; justify-content:space-between; gap:16px;
 }
+/* Desktop logo a touch larger */
 .brand img{
-  height:auto;
-  max-height:40px;   /* increased from 32px */
-  max-width:200px;   /* increased from 170px */
-  object-fit:contain;
+  height:auto; max-height:40px; max-width:200px; object-fit:contain;
 }
 
 .nav-list{
@@ -93,6 +96,7 @@ p{ margin:0 0 12px; color:#444; }
    ================================================================ */
 .section{ padding:var(--space-xl) 0; }
 
+/* FULL-SCREEN HERO (minus sticky header) */
 .section--hero{
   min-height:calc(100svh - var(--header-h));
   display:grid; place-items:center;
@@ -100,6 +104,7 @@ p{ margin:0 0 12px; color:#444; }
   text-align:center;
 }
 
+/* subhead lines under h1  */
 .hero-subtitle{ margin-top:12px; }
 .hero-subtitle .subtitle-line{ display:block; }
 .hero-subtitle .subtitle-line strong{
@@ -113,6 +118,7 @@ p{ margin:0 0 12px; color:#444; }
   font-size:clamp(1rem, 0.95rem + 0.5vw, 1.5rem);
 }
 
+/* CTA buttons — equal size */
 .cta-row{
   display:flex; justify-content:center; align-items:center; flex-wrap:wrap;
   gap:16px; text-align:center; margin-top:24px;
@@ -166,6 +172,7 @@ p{ margin:0 0 12px; color:#444; }
 .about-block{ padding-left:18px; border-left:3px solid var(--deep-space); }
 .about-block h3{ margin:0 0 8px 0; font-weight:700; }
 
+/* responsive image, no weird crop on phones */
 .about-visual{
   background:#fff; border:1px solid #ececec; border-radius:12px; padding:12px;
   box-shadow:0 8px 22px rgba(0,0,0,.06);
@@ -203,9 +210,17 @@ p{ margin:0 0 12px; color:#444; }
 /* ================================================================
    CONTACT
    ================================================================ */
-.section.contact{ padding:var(--space-lg) 0 var(--space-xl); background:var(--deep-space); color:#fff; }
+.section.contact{
+  padding:var(--space-lg) 0 var(--space-xl);
+  background:var(--deep-space);
+  color:#fff;
+}
 .section.contact .kicker{ background:rgba(255,255,255,.22); }
-.section.contact .lede{ color:#f0eeea; font-weight:400; }
+/* ✅ Lock the lede to the bright tone for reliable contrast */
+.section.contact .lede{
+  color:#f7f7ff;
+  font-weight:400;
+}
 .contact-inner{ max-width:900px; }
 .contact-email{ margin-bottom:var(--space-sm); }
 .contact-link{ color:#fff; text-decoration:underline; text-underline-offset:3px; }
@@ -235,28 +250,24 @@ p{ margin:0 0 12px; color:#444; }
 /* ================================================================
    Responsive
    ================================================================ */
-@media (max-width:1080px){ .container{ padding:0 20px; } }
+@media (max-width:1080px){
+  .container{ padding:0 20px; }
+}
 @media (max-width:980px){
   .about-columns{ grid-template-columns:1fr; gap:28px; }
   .services-grid{ grid-template-columns:repeat(2,1fr); }
 }
 @media (max-width:720px){
-  .brand img{ max-height:36px; max-width:180px; } /* slightly smaller on small screens */
+  /* Compact header on phones so the logo feels intentional, not oversized */
+  .nav{ padding:10px 16px; }
+  .brand img{ max-height:30px; max-width:160px; }
   .section{ padding:var(--space-lg) 0; }
   .back-to-top{ display:flex; }
 }
-@media (max-width:680px){
-  .nav-toggle{ display:block; }
-  #primary-nav{
-    position:absolute; top:64px; right:16px; left:16px;
-    background:#fff; border:1px solid #e9e9e9; border-radius:10px;
-    box-shadow:0 8px 22px rgba(0,0,0,.06); padding:10px; display:none;
-  }
-  #primary-nav.open{ display:block; }
-  .nav-list{ flex-direction:column; align-items:stretch; gap:6px; }
-  .nav-list a{ padding:10px 12px; border-radius:8px; }
-  .services-grid{ grid-template-columns:1fr; }
-  .cta-row{ justify-content:center; }
+@media (max-width:380px){
+  .brand img{ max-height:28px; max-width:150px; }
+  .nav{ padding:8px 14px; }
 }
 
+/* hover color micro-polish */
 a:hover{ color:var(--martian-red); }
