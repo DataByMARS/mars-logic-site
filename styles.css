@@ -209,10 +209,13 @@ p{ margin:0 0 12px; color:#444; }
    ================================================================ */
 .section.contact{ padding:var(--space-lg) 0 var(--space-xl); background:var(--deep-space); color:#fff; }
 .section.contact .kicker{ background:rgba(255,255,255,.22); }
-.section.contact .lede{
-  color:#f4f4fb;           /* brighter contrast for readability on deep-space background */
+
+/* Only change — brighter project line */
+.section.contact .contact-lede{
+  color:#f0eeea;           /* warmer bright tone for perfect contrast */
   font-weight:400;
 }
+
 .contact-inner{ max-width:900px; }
 .contact-email{ margin-bottom:var(--space-sm); }
 .contact-link{ color:#fff; text-decoration:underline; text-underline-offset:3px; }
