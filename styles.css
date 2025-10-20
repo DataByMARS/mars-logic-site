@@ -1,6 +1,6 @@
 /* ================================================================
    MARS — Modern Analytics & Research Solutions
-   Design v8.1 — button visibility fix + mobile back-to-top + responsive About image
+   Design v8.1 + Full-screen hero + larger hero typography
    ================================================================ */
 
 /* ---------- Brand tokens ---------- */
@@ -20,6 +20,7 @@
   --shadow:0 8px 22px rgba(0,0,0,.06);
   --focus:2px solid var(--deep-space);
 
+  --header-h:72px;           /* sticky header height (used for hero height calc) */
   --space-xl:96px;
   --space-lg:72px;
   --space-md:48px;
@@ -85,7 +86,40 @@ p{ margin:0 0 12px; color:var(--muted); }
    Sections / Utilities / Buttons
    ================================================================ */
 .section{ padding:var(--space-xl) 0; }
-.section--hero{ padding:calc(var(--space-xl) + 10px) 0 var(--space-lg); text-align:center; }
+
+/* Full-screen hero (below the sticky header) */
+.section--hero{
+  min-height:calc(100svh - var(--header-h));   /* iOS-tolerant viewport */
+  display:grid; place-items:center;            /* center contents perfectly */
+  text-align:center;
+  padding:0;                                   /* override section default */
+}
+/* Fallback if svh isn't supported */
+@supports not (height:1svh){
+  .section--hero{ min-height:calc(100vh - var(--header-h)); }
+}
+/* Keep comfy horizontal spacing for content in centered grid */
+.section--hero .hero-content{ padding:0 24px; }
+
+/* Bigger hero headline/subtitle (scales with viewport) */
+.section--hero h1{
+  font-size:clamp(3rem, 2rem + 5vw, 5rem);
+  line-height:1.1;
+  letter-spacing:.3px;
+}
+.section--hero .hero-subtitle{
+  font-size:clamp(1.1rem, 0.9rem + 1.2vw, 1.6rem);
+  max-width:900px;
+  margin-top:10px;
+}
+
+/* Slightly larger CTAs in the hero */
+.section--hero .btn,
+.section--hero .btn-secondary{
+  padding:1rem 1.4rem;
+  font-size:1.05rem;
+}
+
 .section--band{
   background:var(--star-dust);
   border-top:1px solid #ececec;
@@ -117,7 +151,7 @@ p{ margin:0 0 12px; color:var(--muted); }
 .kicker--light{ background:rgba(255,255,255,.22); }
 .kicker--pill{}
 
-/* Hero subtitle: two lines */
+/* Hero subtitle two-line helper */
 .hero-subtitle{ margin-top:6px; }
 .hero-subtitle .subtitle-line{ display:block; line-height:1.55; }
 .hero-subtitle .subtitle-line:first-child{ margin-bottom:2px; }
@@ -145,7 +179,6 @@ p{ margin:0 0 12px; color:var(--muted); }
   border:2px solid rgba(255,255,255,0);
   box-shadow:var(--shadow);
 }
-/* High-specificity override so dark-band link color doesn't force white text */
 .section--deep .btn--light{
   background:#fff;
   color:var(--deep-space) !important;   /* readable by default */
@@ -302,8 +335,7 @@ p{ margin:0 0 12px; color:var(--muted); }
 @media (max-width:720px){
   .brand img{ max-height:28px; max-width:140px; }
   .section{ padding:var(--space-lg) 0; }
-  .section--hero{ padding:var(--space-lg) 0 var(--space-md); }
-  /* mobile back-to-top visible on phones */
+  /* hero keeps full-screen height; no extra bottom padding */
   .back-to-top{ display:flex; }
 }
 

@@ -17,12 +17,29 @@
 
   <!-- Stylesheet (cache-busted) -->
   <link rel="stylesheet" href="styles.css?v=designv8_1" />
+
+  <!-- Always start at the very top on first paint (prevents iOS mid-page restores) -->
+  <script>
+    (function () {
+      try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (_) {}
+      if (!location.hash) { window.scrollTo(0, 0); }          // before paint
+      // prevent fonts late-load nudge
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(function(){ if (!location.hash) window.scrollTo(0,0); });
+      }
+    })();
+  </script>
 </head>
 <body>
+
+  <!-- True top-of-page anchor (logo/back-to-top target) -->
+  <div id="top-sentinel" aria-hidden="true"></div>
+
   <!-- ================= Header / Navigation ================= -->
   <header class="site-header" role="banner">
     <div class="nav container">
-      <a href="#home" class="brand" aria-label="MARS Home">
+      <!-- Brand should jump to the true top, not the hero section -->
+      <a href="#top-sentinel" class="brand" aria-label="MARS Home">
         <img src="assets/logo.png" alt="MARS logo" />
       </a>
 
@@ -195,7 +212,7 @@
   </section>
 
   <!-- ===== Mobile back-to-top (icon-only logo) ===== -->
-  <a href="#home" class="back-to-top" aria-label="Back to top">
+  <a href="#top-sentinel" class="back-to-top" aria-label="Back to top">
     <img src="assets/logo-icon.png" alt="" aria-hidden="true" />
   </a>
 
@@ -231,6 +248,24 @@
           navPanel.classList.remove('open');
           navToggle.setAttribute('aria-expanded', 'false');
         });
+      });
+    })();
+
+    // Hardened: ensure top-of-page after load, BFCache restores, orientation changes
+    (function () {
+      function forceTopIfNoHash() {
+        if (!location.hash) {
+          window.scrollTo(0, 0);
+          requestAnimationFrame(() => window.scrollTo(0, 0));
+          setTimeout(() => window.scrollTo(0, 0), 80);
+        }
+      }
+      window.addEventListener('DOMContentLoaded', forceTopIfNoHash, { once: true });
+      window.addEventListener('load', forceTopIfNoHash, { once: true });
+      window.addEventListener('pageshow', function(e){ if (e.persisted) forceTopIfNoHash(); });
+      window.addEventListener('orientationchange', () => setTimeout(forceTopIfNoHash, 60));
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') setTimeout(forceTopIfNoHash, 60);
       });
     })();
   </script>
