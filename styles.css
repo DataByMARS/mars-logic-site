@@ -1,6 +1,6 @@
 /* ================================================================
    MARS — Modern Analytics & Research Solutions
-   v8.9 — responsive branding support (full/wordmark/icon) + CLS/a11y/print
+   v9.0 — header uses wordmark; About keeps photo; footer shows full logo on desktop (true ratio)
    ================================================================ */
 
 /* ---------- Brand tokens ---------- */
@@ -68,7 +68,7 @@ p { margin: 0 0 12px; color: #444; }
 .lede { color: var(--stellar-grey); max-width: 760px; margin: 0 auto var(--space-sm); }
 
 /* ================================================================
-   Header / Navigation (larger logo + breathing room)
+   Header / Navigation (wordmark only in header)
    ================================================================ */
 .site-header {
   position: sticky; top: 0; z-index: 1000;
@@ -89,21 +89,17 @@ p { margin: 0 0 12px; color: #444; }
   gap: 16px;
 }
 
-/* Header brand image (default: logo.png / wordmark) */
-.brand picture,
+/* Header brand image: readable wordmark (no subtext) */
 .brand img {
   display: block;
-}
-
-.brand img {
   height: auto;
   max-height: clamp(52px, 5.5vw, 64px);
   max-width:  clamp(240px, 14vw, 320px);
   object-fit: contain;
   transition: max-height .2s ease, max-width .2s ease;
-  aspect-ratio: 200 / 40; /* CLS guard */
 }
 
+/* Nav links */
 .nav-list {
   list-style: none;
   display: flex;
@@ -176,7 +172,7 @@ p { margin: 0 0 12px; color: #444; }
 }
 
 /* ================================================================
-   ABOUT
+   ABOUT (keeps original graphics.jpg)
    ================================================================ */
 .section--band {
   background: var(--star-dust);
@@ -222,15 +218,15 @@ p { margin: 0 0 12px; color: #444; }
   box-shadow: 0 8px 22px rgba(0,0,0,.06);
   aspect-ratio: auto;
 }
-.about-visual img, .about-visual picture {
+.about-visual img {
   width: 100%;
   height: auto;
   border-radius: 8px;
   display: block;
   object-fit: cover;
   object-position: center;
+  aspect-ratio: 3 / 2;
 }
-.about-visual img { aspect-ratio: 3 / 2; }
 
 /* ================================================================
    SERVICES
@@ -310,7 +306,7 @@ p { margin: 0 0 12px; color: #444; }
 .back-to-top:active { transform: scale(.98); }
 
 /* ================================================================
-   FOOTER
+   FOOTER (full logo on desktop, icon on mobile/tablet)
    ================================================================ */
 .site-footer {
   background: #fff;
@@ -322,7 +318,7 @@ p { margin: 0 0 12px; color: #444; }
   color: var(--stellar-grey);
 }
 
-/* Mobile/tablet: keep the small icon mark you already use */
+/* Mobile/tablet: keep the small icon mark */
 .footer-mark {
   display: block;
   margin: 0 auto 10px auto;
@@ -332,13 +328,14 @@ p { margin: 0 0 12px; color: #444; }
   aspect-ratio: 1 / 1;
 }
 
-/* Desktop-only: show the full logo, hide the small icon */
+/* Desktop: show the full logo, smaller & true ratio (no warp) */
 .footer-logo-full {
-  display: none;                 /* hidden by default to preserve mobile look */
-  margin: 0 auto 16px;
-  width: min(520px, 90%);
-  height: auto;
-  aspect-ratio: 5 / 1;          /* reserve space; prevents layout shift */
+  display: none;          /* hidden by default (mobile/tablet) */
+  margin: 0 auto 12px;
+  max-width: 360px;       /* smaller than before */
+  width: 100%;
+  height: auto;           /* preserve intrinsic aspect ratio */
+  object-fit: contain;    /* defensive: prevents stretching */
 }
 
 @media (min-width: 980px) {
@@ -357,13 +354,7 @@ p { margin: 0 0 12px; color: #444; }
 }
 
 @media (max-width:720px) {
-  /* bigger logo + comfy header on mobile */
-  .brand img {
-    max-height: clamp(42px, 6.6vw, 48px);
-    max-width:  clamp(180px, 32vw, 220px);
-    aspect-ratio: 160 / 36;
-  }
-
+  /* comfy header on mobile */
   .nav { padding: 18px 20px; }
   .site-header { min-height: 76px; }
 

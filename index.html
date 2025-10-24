@@ -8,10 +8,10 @@
   <meta name="description" content="MARS transforms complex information into clarity and action through modern research and analytics." />
   <meta name="theme-color" content="#1e1853" />
 
-  <!-- ✅ Canonical URL -->
+  <!-- Canonical URL -->
   <link rel="canonical" href="https://mars-logic.com/" />
 
-  <!-- ✅ Open Graph / Twitter cards -->
+  <!-- Open Graph / Twitter cards -->
   <meta property="og:title" content="MARS — Modern Analytics & Research Solutions" />
   <meta property="og:description" content="MARS transforms complex information into clarity and action through modern research and analytics." />
   <meta property="og:url" content="https://mars-logic.com/" />
@@ -32,9 +32,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
 
   <!-- Stylesheet (cache-busted) -->
-  <link rel="stylesheet" href="styles.css?v=1760926479" />
+  <link rel="stylesheet" href="styles.css?v=1760926480" />
 
-  <!-- ✅ Structured data: Organization -->
+  <!-- Structured data: Organization -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -46,7 +46,7 @@
   }
   </script>
 
-  <!-- ✅ Structured data: WebSite -->
+  <!-- Structured data: WebSite -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -71,14 +71,10 @@
   <!-- ================= Header / Navigation ================= -->
   <header class="site-header" role="banner">
     <div class="nav container">
-      <!-- Brand/logo goes to real top; full logo only on VERY wide screens -->
+      <!-- Brand/logo goes to real top -->
       <a href="#top-sentinel" class="brand" aria-label="MARS Home">
-        <picture>
-          <!-- Very wide desktops: full logo with subtext -->
-          <source media="(min-width: 1200px)" srcset="assets/logo-full.png" />
-          <!-- Default (all others): wordmark without subtext -->
-          <img src="assets/logo.png" alt="MARS — Modern Analytics & Research Solutions" />
-        </picture>
+        <!-- Header uses the wordmark (no subtext) for legibility -->
+        <img src="assets/logo.png" alt="MARS — Modern Analytics & Research Solutions" />
       </a>
 
       <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -151,12 +147,8 @@
         </div>
 
         <aside class="about-visual" aria-label="About visual">
-          <picture>
-            <!-- Desktop/tablet: full logo is readable here -->
-            <source media="(min-width: 980px)" srcset="assets/logo-full.png" />
-            <!-- Phones: keep your current image so layout looks identical -->
-            <img src="assets/graphics.jpg" alt="" loading="lazy" />
-          </picture>
+          <!-- Keep original image on About; no logo here -->
+          <img src="assets/graphics.jpg" alt="" loading="lazy" />
         </aside>
       </div>
     </div>
@@ -207,7 +199,7 @@
   <!-- ================= Footer ================= -->
   <footer class="site-footer" role="contentinfo">
     <div class="container footer-inner">
-      <!-- Desktop: full logo; Mobile/Tablet: icon (CSS handles visibility) -->
+      <!-- Desktop: full logo (smaller, true ratio). Mobile/Tablet: icon. -->
       <img src="assets/logo-full.png" class="footer-logo-full" alt="MARS — Modern Analytics & Research Solutions" loading="lazy" />
       <img src="assets/logo-icon.png" class="footer-mark" alt="" aria-hidden="true" />
       <p>© <span id="year"></span> Modern Analytics and Research Solutions. All rights reserved.</p>
