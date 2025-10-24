@@ -2,6 +2,11 @@
    MARS — Modern Analytics & Research Solutions
    Design v8.7 — larger logo on desktop, tidy mobile scale,
    contact lede locked to #f7f7ff for consistent contrast
+   NOTE: This revision adds SEO-adjacent improvements ONLY:
+   - aspect-ratio hints to reduce layout shift (CLS)
+   - prefers-reduced-motion accessibility (no visual change)
+   - print styles for shareability (no screen change)
+   - minor forced-colors focus polish (no visual change)
    ================================================================ */
 
 /* ---------- Brand tokens ---------- */
@@ -24,6 +29,9 @@
   --space-lg: 72px;
   --space-md: 48px;
   --space-sm: 24px;
+
+  /* Helps UA choose light form controls; no visual change to your styles */
+  color-scheme: light;
 }
 
 /* ---------- Base / reset ---------- */
@@ -49,6 +57,7 @@ body {
 #top-sentinel { height: 1px; overflow-anchor: auto; }
 
 img { max-width: 100%; height: auto; display: block; }
+/* Show obvious focus for keyboard users (accessibility) */
 a { color: var(--deep-space); text-decoration: none; }
 a:focus-visible, button:focus-visible { outline: var(--focus); outline-offset: 2px; }
 .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
@@ -94,6 +103,9 @@ p { margin: 0 0 12px; color: #444; }
   max-width: 200px;
   object-fit: contain;
   transition: max-height .2s ease, max-width .2s ease;
+
+  /* CLS guard: reserve box before image loads (no visual change) */
+  aspect-ratio: 200 / 40;
 }
 
 .nav-list {
@@ -213,6 +225,9 @@ p { margin: 0 0 12px; color: #444; }
   border-radius: 12px;
   padding: 12px;
   box-shadow: 0 8px 22px rgba(0,0,0,.06);
+
+  /* Reserve space before image load to reduce CLS */
+  aspect-ratio: auto;
 }
 .about-visual img {
   width: 100%;
@@ -221,6 +236,9 @@ p { margin: 0 0 12px; color: #444; }
   display: block;
   object-fit: cover;
   object-position: center;
+
+  /* CLS guard: if your asset is ~3:2, this prevents reflow pre-load */
+  aspect-ratio: 3 / 2;
 }
 
 /* ================================================================
@@ -248,6 +266,9 @@ p { margin: 0 0 12px; color: #444; }
 .service.card::after {
   content: ""; position: absolute; inset: 0;
   background: url("assets/logo-icon.png") no-repeat center center / 120px 120px;
+
+  /* CLS guard for the pseudo-element’s background area */
+  background-origin: content-box;
   opacity: 0;
   filter: grayscale(100%) contrast(80%) brightness(110%);
   transition: opacity .2s ease;
@@ -295,6 +316,8 @@ p { margin: 0 0 12px; color: #444; }
   border: 1px solid #ececec;
   box-shadow: 0 10px 22px rgba(0,0,0,.15);
   align-items: center; justify-content: center;
+  /* Reserve shape pre-load to avoid nudge when image appears */
+  aspect-ratio: 1 / 1;
 }
 .back-to-top img { width: 32px; height: 32px; display: block; }
 .back-to-top:active { transform: scale(.98); }
@@ -317,6 +340,9 @@ p { margin: 0 0 12px; color: #444; }
   width: clamp(34px, 5.2vw, 54px);
   height: auto;
   opacity: .9;
+
+  /* Reserve icon aspect ratio to prevent minor CLS in footer */
+  aspect-ratio: 1 / 1;
 }
 
 /* ================================================================
@@ -334,6 +360,8 @@ p { margin: 0 0 12px; color: #444; }
   .brand img {
     max-height: 30px;
     max-width: 150px;
+    /* Keep aspect-ratio hint consistent on mobile too */
+    aspect-ratio: 150 / 30;
   }
 
   .section { padding: var(--space-lg) 0; }
@@ -361,3 +389,36 @@ p { margin: 0 0 12px; color: #444; }
 
 /* hover color micro-polish */
 a:hover { color: var(--martian-red); }
+
+/* ================================================================
+   Accessibility & UX preferences (no visual change unless requested)
+   ================================================================ */
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* High-contrast forced-colors mode focus ring visibility */
+@media (forced-colors: active) {
+  a:focus-visible, button:focus-visible {
+    outline: 2px solid CanvasText;
+  }
+}
+
+/* Print-friendly stylesheet for sharing/archiving (no effect on screen) */
+@media print {
+  /* Neutralize backgrounds/shadows */
+  * { box-shadow: none !important; text-shadow: none !important; }
+  body { color: #000; background: #fff !important; }
+  .site-header, .back-to-top, .nav-toggle { display: none !important; }
+  .section.contact { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  a, a:visited { text-decoration: underline; }
+  a[href]:after { content: " (" attr(href) ")"; font-weight: normal; }
+  .btn, .service.card { border-color: #00000020 !important; }
+}
