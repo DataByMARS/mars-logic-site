@@ -16,13 +16,15 @@
   <meta property="og:description" content="MARS transforms complex information into clarity and action through modern research and analytics." />
   <meta property="og:url" content="https://mars-logic.com/" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://mars-logic.com/assets/logo.png" />
+  <meta property="og:image" content="https://mars-logic.com/assets/logo-full.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="MARS — Modern Analytics & Research Solutions" />
   <meta name="twitter:description" content="MARS transforms complex information into clarity and action through modern research and analytics." />
-  <meta name="twitter:image" content="https://mars-logic.com/assets/logo.png" />
+  <meta name="twitter:image" content="https://mars-logic.com/assets/logo-full.png" />
 
-  <link rel="icon" href="assets/logo.png" type="image/png" />
+  <link rel="icon" href="assets/logo-icon.png" type="image/png" />
 
   <!-- Poppins font -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -39,7 +41,7 @@
     "@type": "Organization",
     "name": "MARS — Modern Analytics & Research Solutions",
     "url": "https://mars-logic.com/",
-    "logo": "https://mars-logic.com/assets/logo.png",
+    "logo": "https://mars-logic.com/assets/logo-full.png",
     "email": "dstone@mars-logic.com"
   }
   </script>
@@ -58,7 +60,6 @@
   <script>
     (function () {
       try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (_) {}
-      // Start at the true top when there's no hash
       if (!location.hash) { window.scrollTo(0, 0); }
     })();
   </script>
@@ -70,9 +71,14 @@
   <!-- ================= Header / Navigation ================= -->
   <header class="site-header" role="banner">
     <div class="nav container">
-      <!-- Brand/logo goes to real top; keep nav "Home" for #home section -->
+      <!-- Brand/logo goes to real top; full logo only on VERY wide screens -->
       <a href="#top-sentinel" class="brand" aria-label="MARS Home">
-        <img src="assets/logo.png" alt="MARS logo" />
+        <picture>
+          <!-- Very wide desktops: full logo with subtext -->
+          <source media="(min-width: 1200px)" srcset="assets/logo-full.png" />
+          <!-- Default (all others): wordmark without subtext -->
+          <img src="assets/logo.png" alt="MARS — Modern Analytics & Research Solutions" />
+        </picture>
       </a>
 
       <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -145,7 +151,12 @@
         </div>
 
         <aside class="about-visual" aria-label="About visual">
-          <img src="assets/graphics.jpg" alt="" loading="lazy" />
+          <picture>
+            <!-- Desktop/tablet: full logo is readable here -->
+            <source media="(min-width: 980px)" srcset="assets/logo-full.png" />
+            <!-- Phones: keep your current image so layout looks identical -->
+            <img src="assets/graphics.jpg" alt="" loading="lazy" />
+          </picture>
         </aside>
       </div>
     </div>
@@ -196,6 +207,8 @@
   <!-- ================= Footer ================= -->
   <footer class="site-footer" role="contentinfo">
     <div class="container footer-inner">
+      <!-- Desktop: full logo; Mobile/Tablet: icon (CSS handles visibility) -->
+      <img src="assets/logo-full.png" class="footer-logo-full" alt="MARS — Modern Analytics & Research Solutions" loading="lazy" />
       <img src="assets/logo-icon.png" class="footer-mark" alt="" aria-hidden="true" />
       <p>© <span id="year"></span> Modern Analytics and Research Solutions. All rights reserved.</p>
     </div>
