@@ -7,6 +7,7 @@
    - prefers-reduced-motion accessibility (no visual change)
    - print styles for shareability (no screen change)
    - minor forced-colors focus polish (no visual change)
+   - header spacing tweak for logo/nav breathing room
    ================================================================ */
 
 /* ---------- Brand tokens ---------- */
@@ -84,23 +85,28 @@ p { margin: 0 0 12px; color: #444; }
   background: #fff;
   border-bottom: 1px solid #ececec;
   box-shadow: 0 2px 6px rgba(0,0,0,.03);
+  /* ↑ spacing tweak: give a touch of breathing room */
+  min-height: 80px;
 }
 
 .nav {
   max-width: var(--max);
   margin: 0 auto;
-  padding: 12px 24px;
+  /* ↑ spacing tweak: from 12px to 18px vertically */
+  padding: 18px 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
 }
 
-/* ---- logo sizing fix ---- */
+/* ---- logo sizing (slightly larger, same proportions) ---- */
 .brand img {
   height: auto;
-  max-height: 40px;      /* larger desktop logo */
-  max-width: 200px;
+  /* ↑ spacing tweak: from 40px to 44px */
+  max-height: 44px;
+  /* ↑ spacing tweak: from 200px to 220px */
+  max-width: 220px;
   object-fit: contain;
   transition: max-height .2s ease, max-width .2s ease;
 
@@ -356,12 +362,19 @@ p { margin: 0 0 12px; color: #444; }
 }
 
 @media (max-width:720px) {
-  /* ---- tidy logo scaling on mobile ---- */
+  /* ---- tidy logo scaling on mobile (slightly larger than before) ---- */
   .brand img {
-    max-height: 30px;
-    max-width: 150px;
-    /* Keep aspect-ratio hint consistent on mobile too */
-    aspect-ratio: 150 / 30;
+    max-height: 36px;  /* was 30px */
+    max-width: 160px;  /* was 150px */
+    aspect-ratio: 160 / 36;
+  }
+
+  .nav {
+    padding: 16px 20px; /* ↑ more breathing room on mobile */
+  }
+
+  .site-header {
+    min-height: 72px; /* ensure hamburger area isn't cramped */
   }
 
   .section { padding: var(--space-lg) 0; }
