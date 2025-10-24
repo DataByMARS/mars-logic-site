@@ -1,6 +1,6 @@
 /* ================================================================
    MARS — Modern Analytics & Research Solutions
-   v9.0 — header uses wordmark; About keeps photo; footer shows full logo on desktop (true ratio)
+   v9.1 — refine header/footer logo sizes + add mobile footer padding
    ================================================================ */
 
 /* ---------- Brand tokens ---------- */
@@ -89,12 +89,12 @@ p { margin: 0 0 12px; color: #444; }
   gap: 16px;
 }
 
-/* Header brand image: readable wordmark (no subtext) */
+/* Header brand image: slightly smaller for balance */
 .brand img {
   display: block;
   height: auto;
-  max-height: clamp(52px, 5.5vw, 64px);
-  max-width:  clamp(240px, 14vw, 320px);
+  max-height: clamp(38px, 4.5vw, 52px);   /* ↓ from 52–64px */
+  max-width:  clamp(180px, 11vw, 240px);  /* ↓ from 240–320px */
   object-fit: contain;
   transition: max-height .2s ease, max-width .2s ease;
 }
@@ -313,7 +313,8 @@ p { margin: 0 0 12px; color: #444; }
   border-top: 2px solid rgba(30,24,83,.18);
 }
 .footer-inner {
-  padding: calc(var(--space-sm) + 4px) 0 var(--space-sm);
+  /* ↑ extra top padding so logo never touches the edge */
+  padding: calc(var(--space-sm) + 16px) 0 var(--space-md);
   text-align: center;
   color: var(--stellar-grey);
 }
@@ -321,8 +322,8 @@ p { margin: 0 0 12px; color: #444; }
 /* Mobile/tablet: keep the small icon mark */
 .footer-mark {
   display: block;
-  margin: 0 auto 10px auto;
-  width: clamp(34px, 5.2vw, 54px);
+  margin: 10px auto 16px auto;
+  width: clamp(90px, 40vw, 150px);   /* comfortable scale on phones */
   height: auto;
   opacity: .9;
   aspect-ratio: 1 / 1;
@@ -331,8 +332,8 @@ p { margin: 0 0 12px; color: #444; }
 /* Desktop: show the full logo, smaller & true ratio (no warp) */
 .footer-logo-full {
   display: none;          /* hidden by default (mobile/tablet) */
-  margin: 0 auto 12px;
-  max-width: 360px;       /* smaller than before */
+  margin: 0 auto 14px;
+  max-width: 300px;       /* ↓ from 360px */
   width: 100%;
   height: auto;           /* preserve intrinsic aspect ratio */
   object-fit: contain;    /* defensive: prevents stretching */
@@ -360,6 +361,9 @@ p { margin: 0 0 12px; color: #444; }
 
   .section { padding: var(--space-lg) 0; }
   .back-to-top { display: flex; }
+
+  /* ↑ even more breathing room on smaller phones */
+  .footer-inner { padding: calc(var(--space-sm) + 22px) 0 var(--space-md); }
 }
 
 @media (max-width:680px) {
