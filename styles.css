@@ -1,6 +1,7 @@
 /* ================================================================
    MARS — Modern Analytics & Research Solutions
-   v9.1 — refine header/footer logo sizes + add mobile footer padding
+   v9.2 — header logo balanced; About photo unchanged;
+           desktop footer uses full logo; mobile/tablet footer uses smaller icon
    ================================================================ */
 
 /* ---------- Brand tokens ---------- */
@@ -89,12 +90,12 @@ p { margin: 0 0 12px; color: #444; }
   gap: 16px;
 }
 
-/* Header brand image: slightly smaller for balance */
+/* Header brand image: balanced scale */
 .brand img {
   display: block;
   height: auto;
-  max-height: clamp(38px, 4.5vw, 52px);   /* ↓ from 52–64px */
-  max-width:  clamp(180px, 11vw, 240px);  /* ↓ from 240–320px */
+  max-height: clamp(38px, 4.5vw, 52px);
+  max-width:  clamp(180px, 11vw, 240px);
   object-fit: contain;
   transition: max-height .2s ease, max-width .2s ease;
 }
@@ -306,37 +307,37 @@ p { margin: 0 0 12px; color: #444; }
 .back-to-top:active { transform: scale(.98); }
 
 /* ================================================================
-   FOOTER (full logo on desktop, icon on mobile/tablet)
+   FOOTER (full logo on desktop, small icon on mobile/tablet)
    ================================================================ */
 .site-footer {
   background: #fff;
   border-top: 2px solid rgba(30,24,83,.18);
 }
 .footer-inner {
-  /* ↑ extra top padding so logo never touches the edge */
+  /* extra top padding so the logo never touches the edge */
   padding: calc(var(--space-sm) + 16px) 0 var(--space-md);
   text-align: center;
   color: var(--stellar-grey);
 }
 
-/* Mobile/tablet: keep the small icon mark */
+/* Mobile/tablet: icon-only logo — small and neat */
 .footer-mark {
   display: block;
-  margin: 10px auto 16px auto;
-  width: clamp(90px, 40vw, 150px);   /* comfortable scale on phones */
+  margin: 8px auto 14px auto;
+  width: clamp(56px, 24vw, 88px);
   height: auto;
   opacity: .9;
   aspect-ratio: 1 / 1;
 }
 
-/* Desktop: show the full logo, smaller & true ratio (no warp) */
+/* Desktop: show the full logo, true ratio (no warp) */
 .footer-logo-full {
-  display: none;          /* hidden by default (mobile/tablet) */
+  display: none;             /* hidden by default (mobile/tablet) */
   margin: 0 auto 14px;
-  max-width: 300px;       /* ↓ from 360px */
+  max-width: 300px;
   width: 100%;
-  height: auto;           /* preserve intrinsic aspect ratio */
-  object-fit: contain;    /* defensive: prevents stretching */
+  height: auto;              /* keep intrinsic aspect ratio */
+  object-fit: contain;       /* defensive: prevents stretching */
 }
 
 @media (min-width: 980px) {
@@ -362,7 +363,7 @@ p { margin: 0 0 12px; color: #444; }
   .section { padding: var(--space-lg) 0; }
   .back-to-top { display: flex; }
 
-  /* ↑ even more breathing room on smaller phones */
+  /* even more breathing room on smaller phones */
   .footer-inner { padding: calc(var(--space-sm) + 22px) 0 var(--space-md); }
 }
 
