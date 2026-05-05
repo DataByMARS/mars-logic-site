@@ -1,6 +1,6 @@
 /* ================================================================
    MARS — Modern Analytics & Research Solutions
-   script.js — v2.0
+   script.js v2.0
    ================================================================ */
 
 (function () {
@@ -33,7 +33,7 @@
 
 
   /* ------------------------------------------------------------------
-     3. Back-to-top: show after 400 px of scroll (JS controls visibility)
+     3. Back-to-top: show after 400px of scroll
   ------------------------------------------------------------------ */
   const btt = document.querySelector('.back-to-top');
   if (btt) {
@@ -44,7 +44,7 @@
 
 
   /* ------------------------------------------------------------------
-     4. Scrollspy — highlights correct nav link as sections come into view
+     4. Scrollspy — highlights correct nav link as sections scroll into view
   ------------------------------------------------------------------ */
   const sections = document.querySelectorAll('section[id]');
   const navLinks  = document.querySelectorAll('.nav-list a[href^="#"]');
@@ -88,8 +88,6 @@
 
   /* ------------------------------------------------------------------
      6. Contact form — async Formspree submission
-     ACTION REQUIRED: Replace YOUR_FORM_ID in index.html with your
-     Formspree form ID from https://formspree.io
   ------------------------------------------------------------------ */
   const form       = document.getElementById('contact-form');
   const formStatus = document.getElementById('form-status');
@@ -110,8 +108,8 @@
         });
 
         if (res.ok) {
-          formStatus.textContent   = "Message received — we'll be in touch soon.";
-          formStatus.className     = 'form-status form-status--success';
+          formStatus.textContent = "Message received — we'll be in touch soon.";
+          formStatus.className   = 'form-status form-status--success';
           form.reset();
         } else {
           const data = await res.json();
@@ -130,8 +128,7 @@
 
 
   /* ------------------------------------------------------------------
-     7. Boot-lock: remove html.boot-lock THEN scroll to top
-        Stays in JS (not inline) but fires on load — same effect.
+     7. Boot-lock: remove html.boot-lock then force scroll to top
   ------------------------------------------------------------------ */
   function forceTopIfNoHash() {
     if (!location.hash) {
