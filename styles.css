@@ -1,6 +1,6 @@
 /* ================================================================
    MARS — Modern Analytics & Research Solutions
-   styles.css v10.2 — corrected
+   styles.css v10.3 — smaller footer icon, nav uses icon logo
    ================================================================ */
 
 /* ---------- Brand tokens ---------- */
@@ -122,11 +122,12 @@ p { margin: 0 0 12px; color: #444; }
   gap: 16px;
 }
 
+/* Icon-only logo in nav: square aspect, constrained height */
 .brand img {
   display: block;
   height: auto;
   max-height: clamp(38px, 4.5vw, 52px);
-  max-width:  clamp(180px, 11vw, 240px);
+  max-width:  clamp(38px, 4.5vw, 52px);
   object-fit: contain;
   transition: max-height .2s ease, max-width .2s ease;
 }
@@ -540,7 +541,7 @@ p { margin: 0 0 12px; color: #444; }
 
 
 /* ================================================================
-   Footer — icon only at all screen sizes
+   Footer — icon only, half size
    ================================================================ */
 .site-footer {
   background: #fff;
@@ -552,10 +553,11 @@ p { margin: 0 0 12px; color: #444; }
   color: var(--stellar-grey);
 }
 
+/* Half the previous size */
 .footer-mark {
   display: block;
   margin: 8px auto 14px;
-  width: clamp(56px, 10vw, 88px);
+  width: clamp(28px, 5vw, 44px);
   height: auto;
   opacity: .9;
   aspect-ratio: 1 / 1;
@@ -606,7 +608,6 @@ a:not(.nav-list a):hover { color: var(--martian-red); }
   .footer-inner { padding: calc(var(--space-sm) + 22px) 0 var(--space-md); }
 }
 
-/* NOTE: opening brace required — was missing in previous version, breaking all mobile styles */
 @media (max-width:680px) {
   .nav-toggle { display: block; }
   #primary-nav {
