@@ -255,7 +255,7 @@ p { margin: 0 0 12px; color: #444; }
 .btn:active { transform: translateY(1px) scale(.995); }
 
 .btn--solid { background: var(--martian-red); color: #fff; }
-.btn--solid:hover { background: #8e1a20; }
+.btn--solid:hover { background: #8e1a20; color: #fff; }
 
 .btn--outline {
   background: #fff; color: var(--deep-space);
@@ -587,7 +587,7 @@ p { margin: 0 0 12px; color: #444; }
 /* ================================================================
    Global hover polish
    ================================================================ */
-a:not(.nav-list a):hover { color: var(--martian-red); }
+a:not(.nav-list a):not(.btn):hover { color: var(--martian-red); }
 
 
 /* ================================================================
