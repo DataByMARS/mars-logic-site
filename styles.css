@@ -8,7 +8,7 @@
   --martian-red:  #a21e24;
   --deep-space:   #1e1853;
   --stellar-grey: #676767;
-  --star-dust:    #f7f6f3;
+  --star-dust:    #f0eeea;
   --text:         #1b1b1b;
   --white:        #fff;
 
@@ -245,7 +245,7 @@ p { margin: 0 0 12px; color: #444; }
 .btn {
   display: inline-flex; align-items: center; justify-content: center;
   border: 0; cursor: pointer; user-select: none;
-  padding: 1.05rem 1.6rem; min-width: 280px;
+  padding: 1.05rem 1.6rem; min-width: min(280px, 100%);
   border-radius: 18px;
   font-weight: 800; letter-spacing: .2px;
   font-size: clamp(1rem, .9rem + .35vw, 1.25rem);
@@ -266,6 +266,25 @@ p { margin: 0 0 12px; color: #444; }
 .btn--light { background: #fff; color: #0f0f3a; border: 2px solid rgba(255,255,255,0); }
 .section.contact .btn--light:hover { background: transparent; color: #fff; border-color: #fff; }
 
+.cta-row--start { justify-content: flex-start; }
+
+/* Secondary text-link CTA — used where a full-weight button would duplicate
+   a nearby primary button (e.g. "email us directly" under the contact form) */
+.link-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  color: #fff;
+  font-weight: 600;
+  font-size: .95rem;
+  border-bottom: 1px solid rgba(255,255,255,.4);
+  padding-bottom: 2px;
+  transition: border-color .15s ease, opacity .15s ease;
+}
+.link-cta:hover { border-color: #fff; opacity: .85; }
+.link-cta svg { width: 15px; height: 15px; stroke: currentColor; }
+
 
 /* ================================================================
    Band sections (About, Services)
@@ -278,14 +297,15 @@ p { margin: 0 0 12px; color: #444; }
 
 .kicker {
   display: inline-block;
-  font-weight: 800;
+  font-weight: 700;
   text-transform: uppercase;
-  padding: 12px 20px;
+  letter-spacing: 1.1px;
+  padding: 8px 18px;
   border-radius: 999px;
   background: var(--deep-space);
   color: #fff;
-  margin-bottom: 16px;
-  font-size: clamp(1.05rem, .9rem + .6vw, 1.25rem);
+  margin-bottom: 22px;
+  font-size: 0.8rem;
 }
 .kicker--light { background: rgba(255,255,255,.22); }
 
@@ -562,27 +582,6 @@ p { margin: 0 0 12px; color: #444; }
   opacity: .9;
   aspect-ratio: 1 / 1;
 }
-
-.footer-social {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin: 12px 0 6px;
-}
-.footer-social-btn {
-  display: flex; align-items: center; justify-content: center;
-  width: 36px; height: 36px;
-  border-radius: 8px;
-  background: rgba(30,24,83,.07);
-  border: 1px solid rgba(30,24,83,.12);
-  transition: background .15s ease;
-}
-.footer-social-btn:hover { background: rgba(30,24,83,.14); }
-.footer-social-btn svg {
-  width: 18px; height: 18px;
-  fill: var(--deep-space);
-}
-
 
 /* ================================================================
    Global hover polish
