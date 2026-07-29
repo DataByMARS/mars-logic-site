@@ -5,10 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>MARS — Website Maintenance</title>
+
   <meta
     name="description"
     content="The MARS website is currently undergoing maintenance."
   >
+
   <meta name="theme-color" content="#1e1853">
 
   <link rel="canonical" href="https://mars-logic.com/">
@@ -16,8 +18,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   >
 
@@ -33,116 +36,187 @@
       box-sizing: border-box;
     }
 
-    html,
-    body {
+    html {
       min-height: 100%;
     }
 
     body {
-      margin: 0;
       min-height: 100svh;
-      display: grid;
-      place-items: center;
-      padding: 40px 24px;
+      margin: 0;
+      padding: clamp(48px, 8vh, 90px) 28px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
       background:
         radial-gradient(
-          circle at 84% 18%,
-          rgba(30, 24, 83, 0.10),
-          transparent 34%
+          circle at 88% 15%,
+          rgba(30, 24, 83, 0.08),
+          transparent 38%
         ),
         radial-gradient(
-          circle at 14% 82%,
-          rgba(162, 30, 36, 0.08),
-          transparent 30%
+          circle at 10% 85%,
+          rgba(162, 30, 36, 0.06),
+          transparent 34%
         ),
         var(--white);
+
+      color: var(--deep-space);
       font-family:
         "Poppins",
         system-ui,
         -apple-system,
         "Segoe UI",
         sans-serif;
+
       text-align: center;
     }
 
     main {
-      width: min(760px, 100%);
+      width: min(980px, 100%);
+      margin: 0 auto;
     }
 
-    h1 {
-      margin: 0;
+    .welcome {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 14px;
+    }
+
+    .welcome-text {
+      margin: 0 0 24px;
+
       color: var(--deep-space);
-      font-size: clamp(2.6rem, 7vw, 5.75rem);
+      font-size: clamp(2.5rem, 5vw, 4.6rem);
       font-weight: 800;
-      line-height: 1.05;
-      letter-spacing: -0.04em;
+      line-height: 1;
+      letter-spacing: -0.045em;
     }
 
     .logo {
       display: block;
-      width: min(430px, 82vw);
+      width: clamp(250px, 30vw, 365px);
+      max-width: 78vw;
       height: auto;
     }
 
     .rule {
-      width: 72px;
+      width: 76px;
       height: 4px;
-      margin: 36px auto 28px;
+
+      margin:
+        clamp(52px, 7vh, 76px)
+        auto
+        clamp(40px, 5vh, 54px);
+
       border: 0;
       border-radius: 999px;
       background: var(--martian-red);
     }
 
     .message {
-      max-width: 660px;
+      width: min(860px, 100%);
       margin: 0 auto;
+
       color: var(--stellar-grey);
-      font-size: clamp(1rem, 1.7vw, 1.2rem);
-      line-height: 1.8;
+      font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+      font-weight: 400;
+      line-height: 1.75;
+      letter-spacing: -0.005em;
+    }
+
+    .message p {
+      margin: 0;
+    }
+
+    .message p + p {
+      margin-top: 14px;
     }
 
     .message a {
+      display: inline-block;
+
       color: var(--deep-space);
       font-weight: 700;
+      white-space: nowrap;
+
       text-decoration-color: rgba(162, 30, 36, 0.45);
       text-decoration-thickness: 2px;
       text-underline-offset: 4px;
+
+      transition:
+        color 150ms ease,
+        text-decoration-color 150ms ease;
     }
 
-    .message a:hover,
+    .message a:hover {
+      color: var(--martian-red);
+      text-decoration-color: var(--martian-red);
+    }
+
     .message a:focus-visible {
       color: var(--martian-red);
+      outline: 2px solid var(--deep-space);
+      outline-offset: 5px;
+      border-radius: 2px;
     }
 
-    .message a:focus-visible {
-      outline: 2px solid var(--deep-space);
-      outline-offset: 4px;
+    @media (max-width: 600px) {
+      body {
+        padding: 64px 22px;
+      }
+
+      .welcome-text {
+        margin-bottom: 20px;
+      }
+
+      .logo {
+        width: min(290px, 78vw);
+      }
+
+      .rule {
+        margin-top: 46px;
+        margin-bottom: 36px;
+      }
+
+      .message {
+        font-size: 1rem;
+        line-height: 1.7;
+      }
+
+      .message p + p {
+        margin-top: 18px;
+      }
     }
   </style>
 </head>
 
 <body>
   <main>
-    <h1>
-      <span>Welcome to</span>
+    <div class="welcome">
+      <p class="welcome-text">Welcome to</p>
+
       <img
         class="logo"
         src="assets/logo.png"
         alt="MARS"
       >
-    </h1>
+    </div>
 
     <hr class="rule">
 
-    <p class="message">
-      Our website is currently undergoing maintenance and should be back
-      online shortly. For assistance, please contact
-      <a href="mailto:dstone@mars-logic.com">dstone@mars-logic.com</a>.
-    </p>
+    <div class="message">
+      <p>
+        Our website is currently undergoing maintenance and should be
+        back online shortly.
+      </p>
+
+      <p>
+        For assistance, please contact
+        <a href="mailto:dstone@mars-logic.com">dstone@mars-logic.com</a>.
+      </p>
+    </div>
   </main>
 </body>
 </html>
