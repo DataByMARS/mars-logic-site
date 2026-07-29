@@ -1,378 +1,148 @@
 <!doctype html>
-<html lang="en" class="boot-lock">
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="author" content="David Stone — MARS Modern Analytics & Research Solutions" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>MARS — Modern Analytics & Research Solutions</title>
-  <meta name="description" content="MARS transforms complex information into clarity and action through modern research and analytics." />
-  <meta name="theme-color" content="#1e1853" />
+  <title>MARS — Website Maintenance</title>
+  <meta
+    name="description"
+    content="The MARS website is currently undergoing maintenance."
+  >
+  <meta name="theme-color" content="#1e1853">
 
-  <link rel="canonical" href="https://mars-logic.com/" />
+  <link rel="canonical" href="https://mars-logic.com/">
+  <link rel="icon" href="assets/logo-icon.png" type="image/png">
 
-  <meta property="og:title" content="MARS — Modern Analytics & Research Solutions" />
-  <meta property="og:description" content="MARS transforms complex information into clarity and action through modern research and analytics." />
-  <meta property="og:url" content="https://mars-logic.com/" />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://mars-logic.com/assets/logo-full.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="MARS — Modern Analytics & Research Solutions" />
-  <meta name="twitter:description" content="MARS transforms complex information into clarity and action through modern research and analytics." />
-  <meta name="twitter:image" content="https://mars-logic.com/assets/logo-full.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap"
+    rel="stylesheet"
+  >
 
-  <link rel="icon" href="assets/logo-icon.png" type="image/png" />
+  <style>
+    :root {
+      --white: #ffffff;
+      --martian-red: #a21e24;
+      --stellar-grey: #676767;
+      --deep-space: #1e1853;
+    }
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+    * {
+      box-sizing: border-box;
+    }
 
-  <link rel="stylesheet" href="styles.css?v=1746416000" />
+    html,
+    body {
+      min-height: 100%;
+    }
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "MARS — Modern Analytics & Research Solutions",
-    "url": "https://mars-logic.com/",
-    "logo": "https://mars-logic.com/assets/logo-full.png",
-    "email": "dstone@mars-logic.com",
-    "telephone": "+14175451610"
-  }
-  </script>
+    body {
+      margin: 0;
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      padding: 40px 24px;
+      background:
+        radial-gradient(
+          circle at 84% 18%,
+          rgba(30, 24, 83, 0.10),
+          transparent 34%
+        ),
+        radial-gradient(
+          circle at 14% 82%,
+          rgba(162, 30, 36, 0.08),
+          transparent 30%
+        ),
+        var(--white);
+      font-family:
+        "Poppins",
+        system-ui,
+        -apple-system,
+        "Segoe UI",
+        sans-serif;
+      text-align: center;
+    }
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "MARS",
-    "url": "https://mars-logic.com/"
-  }
-  </script>
+    main {
+      width: min(760px, 100%);
+    }
 
-  <script>
-    (function () {
-      try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (_) {}
-      if (!location.hash) { window.scrollTo(0, 0); }
-    })();
-  </script>
+    h1 {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      color: var(--deep-space);
+      font-size: clamp(2.6rem, 7vw, 5.75rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+    }
+
+    .logo {
+      display: block;
+      width: min(430px, 82vw);
+      height: auto;
+    }
+
+    .rule {
+      width: 72px;
+      height: 4px;
+      margin: 36px auto 28px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--martian-red);
+    }
+
+    .message {
+      max-width: 660px;
+      margin: 0 auto;
+      color: var(--stellar-grey);
+      font-size: clamp(1rem, 1.7vw, 1.2rem);
+      line-height: 1.8;
+    }
+
+    .message a {
+      color: var(--deep-space);
+      font-weight: 700;
+      text-decoration-color: rgba(162, 30, 36, 0.45);
+      text-decoration-thickness: 2px;
+      text-underline-offset: 4px;
+    }
+
+    .message a:hover,
+    .message a:focus-visible {
+      color: var(--martian-red);
+    }
+
+    .message a:focus-visible {
+      outline: 2px solid var(--deep-space);
+      outline-offset: 4px;
+    }
+  </style>
 </head>
+
 <body>
-  <div id="top-sentinel" aria-hidden="true"></div>
+  <main>
+    <h1>
+      <span>Welcome to</span>
+      <img
+        class="logo"
+        src="assets/logo.png"
+        alt="MARS"
+      >
+    </h1>
 
-  <!-- ================= Header / Navigation ================= -->
-  <header class="site-header" role="banner">
-    <div class="nav container">
-      <!-- Icon-only logo in nav -->
-      <a href="#top-sentinel" class="brand" aria-label="MARS Home">
-        <img src="assets/logo-icon.png" alt="MARS — Modern Analytics & Research Solutions" />
-      </a>
+    <hr class="rule">
 
-      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
-        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-      </button>
-
-      <nav id="primary-nav" class="primary-nav" aria-label="Main navigation">
-        <ul class="nav-list">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
-
-  <!-- ================= Hero ================= -->
-  <section id="home" class="section section--hero" aria-label="Welcome">
-    <div class="container hero-content reveal">
-      <h1>
-        <span class="hero-welcome-text">Welcome to</span>
-        <img src="assets/logo.png" alt="MARS" class="hero-logo" />
-      </h1>
-
-      <p class="lede hero-subtitle">
-        <span class="subtitle-line"><strong>Modern Analytics &amp; Research Solutions</strong></span>
-        <span class="subtitle-line">Human centered. Data driven.</span>
-      </p>
-
-      <div class="cta-row">
-        <a href="#contact" class="btn btn--solid">Work With Us</a>
-        <a href="#services" class="btn btn--outline">Explore Services</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= About ================= -->
-  <section id="about" class="section section--band about-flow" aria-labelledby="about-label">
-    <div class="container">
-      <span id="about-label" class="kicker" aria-hidden="true">ABOUT MARS</span>
-      <h2 class="visually-hidden">About Us</h2>
-
-      <p class="about-lede reveal">
-        MARS helps organizations turn complex information into clarity and action.
-        We combine analytical precision with human understanding so data guides decisions that last.
-      </p>
-
-      <div class="about-columns">
-        <div class="about-content">
-
-          <div class="about-block reveal">
-            <h3>Our Mission</h3>
-            <p>We empower teams to make confident, evidence-based decisions grounded in clarity, strategy, and human insight.</p>
-          </div>
-
-          <div class="about-block reveal">
-            <h3>Our Approach</h3>
-            <p>We work as thought partners. Each engagement begins with your goals, audiences, and context. Together we co-create
-              solutions that align with strategy and human experience. Stakeholder voices are integrated throughout the work so
-              findings are relevant and clear. We share methods and tools so teams can sustain evidence-based decision-making over time.</p>
-          </div>
-
-          <div class="about-block reveal">
-            <h3>Our Values</h3>
-            <p>Integrity guides our process. Innovation fuels our methods and tools. Collaboration shapes our partnerships through
-              transparency, trust, and shared purpose.</p>
-          </div>
-
-          <div class="about-block reveal">
-            <h3>The MARS Difference</h3>
-            <p>MARS delivers more than analysis; we deliver understanding that stands up to scrutiny and moves work forward.</p>
-          </div>
-
-        </div>
-
-        <aside class="about-visual reveal" aria-label="About visual">
-          <img src="assets/graphics.jpg" alt="" loading="lazy" />
-        </aside>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= Services ================= -->
-  <section id="services" class="section section--band" aria-labelledby="services-label">
-    <div class="container">
-      <span id="services-label" class="kicker" aria-hidden="true">WHAT WE DO</span>
-      <h2 class="visually-hidden">Our Services</h2>
-
-      <div class="services-grid">
-
-        <article class="card service reveal">
-          <div class="service-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/>
-              <rect x="9" y="3" width="6" height="4" rx="1"/>
-              <path d="m9 12 2 2 4-4"/>
-            </svg>
-          </div>
-          <h3>Research Design</h3>
-          <p>Rigorous methods that align evidence with strategy from the start.</p>
-        </article>
-
-        <article class="card service reveal">
-          <div class="service-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <ellipse cx="12" cy="5" rx="9" ry="3"/>
-              <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
-              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
-            </svg>
-          </div>
-          <h3>Data Collection</h3>
-          <p>Reliable, multi-channel capture that supports a complete view.</p>
-        </article>
-
-        <article class="card service reveal">
-          <div class="service-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="18" y1="20" x2="18" y2="10"/>
-              <line x1="12" y1="20" x2="12" y2="4"/>
-              <line x1="6"  y1="20" x2="6"  y2="14"/>
-              <line x1="2"  y1="20" x2="22" y2="20"/>
-            </svg>
-          </div>
-          <h3>Statistical Analysis</h3>
-          <p>Clear quantitative answers to complex questions.</p>
-        </article>
-
-        <article class="card service reveal">
-          <div class="service-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-            </svg>
-          </div>
-          <h3>Qualitative Insights</h3>
-          <p>Human context that brings meaning to the numbers.</p>
-        </article>
-
-        <article class="card service reveal">
-          <div class="service-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
-              <polyline points="16 7 22 7 22 13"/>
-            </svg>
-          </div>
-          <h3>Predictive Modeling</h3>
-          <p>Forward-looking models that inform decisions before they are urgent.</p>
-        </article>
-
-        <article class="card service reveal">
-          <div class="service-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21.21 15.89A10 10 0 1 1 8 2.83"/>
-              <path d="M22 12A10 10 0 0 0 12 2v10z"/>
-            </svg>
-          </div>
-          <h3>Data Visualization</h3>
-          <p>Visual narratives that make findings easy to understand and share.</p>
-        </article>
-
-        <article class="card service reveal">
-          <div class="service-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-              <polyline points="14 2 14 8 20 8"/>
-              <line x1="16" y1="13" x2="8" y2="13"/>
-              <line x1="16" y1="17" x2="8" y2="17"/>
-              <line x1="10" y1="9"  x2="8" y2="9"/>
-            </svg>
-          </div>
-          <h3>Reporting</h3>
-          <p>Executive-ready deliverables that translate analysis into action.</p>
-        </article>
-
-        <article class="card service reveal">
-          <div class="service-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="17 1 21 5 17 9"/>
-              <path d="M3 11V9a4 4 0 0 1 4-4h14"/>
-              <polyline points="7 23 3 19 7 15"/>
-              <path d="M21 13v2a4 4 0 0 1-4 4H3"/>
-            </svg>
-          </div>
-          <h3>End-to-End Management</h3>
-          <p>From kickoff through delivery to adoption with a single accountable partner.</p>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= Contact ================= -->
-  <section id="contact" class="section contact" aria-labelledby="contact-label">
-    <div class="container contact-inner">
-      <span id="contact-label" class="kicker kicker--light" aria-hidden="true">GET IN TOUCH</span>
-      <h2 class="visually-hidden">Contact Us</h2>
-
-      <p class="contact-lede">
-        Tell us about your next project. We bring clarity to complex questions
-        and help teams move forward with confidence.
-      </p>
-
-      <div class="contact-grid">
-
-        <!-- Contact form (Formspree) -->
-        <form
-          id="contact-form"
-          action="https://formspree.io/f/xlgznrnn"
-          method="POST"
-          class="contact-form"
-          novalidate
-        >
-          <div class="form-row">
-            <input type="text" name="name" placeholder="Your name" autocomplete="name" required />
-            <input type="email" name="email" placeholder="Email address" autocomplete="email" required />
-          </div>
-
-          <input type="text" name="organization" placeholder="Organization (optional)" autocomplete="organization" />
-
-          <textarea name="message" placeholder="Tell us about your project…" required></textarea>
-
-          <!-- Honeypot — hidden from humans, traps bots -->
-          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
-
-          <button type="submit" class="btn btn--light">Send Message</button>
-
-          <p id="form-status" class="form-status" aria-live="polite" hidden></p>
-        </form>
-
-        <!-- Contact info column -->
-        <div class="contact-info">
-
-          <div class="contact-info-item">
-            <div class="contact-info-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                <polyline points="22,6 12,13 2,6"/>
-              </svg>
-            </div>
-            <div class="contact-info-text">
-              <span class="contact-info-label">Email</span>
-              <a href="mailto:dstone@mars-logic.com" class="contact-link">dstone@mars-logic.com</a>
-            </div>
-          </div>
-
-          <div class="contact-info-item">
-            <div class="contact-info-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-              </svg>
-            </div>
-            <div class="contact-info-text">
-              <span class="contact-info-label">Phone</span>
-              <a href="tel:+14175451610" class="contact-link">417-545-1610</a>
-            </div>
-          </div>
-
-          <div class="contact-info-item">
-            <div class="contact-info-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                <rect x="2" y="9" width="4" height="12"/>
-                <circle cx="4" cy="4" r="2"/>
-              </svg>
-            </div>
-            <div class="contact-info-text">
-              <span class="contact-info-label">LinkedIn</span>
-              <a
-                href="https://www.linkedin.com/company/databymars"
-                class="contact-link"
-                target="_blank"
-                rel="noopener noreferrer"
-              >@DataByMARS</a>
-            </div>
-          </div>
-
-          <a href="mailto:dstone@mars-logic.com" class="link-cta">
-            Prefer email? Reach out directly
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M5 12h14"/>
-              <path d="m12 5 7 7-7 7"/>
-            </svg>
-          </a>
-
-        </div>
-      </div><!-- /.contact-grid -->
-    </div>
-  </section>
-
-  <!-- Back-to-top (JS controls display) -->
-  <a href="#top-sentinel" class="back-to-top" aria-label="Back to top">
-    <img src="assets/logo-icon.png" alt="" aria-hidden="true" />
-  </a>
-
-  <!-- ================= Footer ================= -->
-  <footer class="site-footer" role="contentinfo">
-    <div class="container footer-inner">
-
-      <!-- Icon-only logo, half size -->
-      <img src="assets/logo-icon.png" class="footer-mark" alt="" aria-hidden="true" />
-
-      <p>© <span id="year"></span> Modern Analytics and Research Solutions. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <script src="script.js" defer></script>
+    <p class="message">
+      Our website is currently undergoing maintenance and should be back
+      online shortly. For assistance, please contact
+      <a href="mailto:dstone@mars-logic.com">dstone@mars-logic.com</a>.
+    </p>
+  </main>
 </body>
 </html>
