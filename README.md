@@ -1,31 +1,35 @@
 # MARS Website
 
-Static landing page for **MARS — Modern Analytics & Research Solutions**.
+Static multi-page website for **MARS — Modern Analytics & Research Solutions**.
 
-## Files
+## Included pages
 
-- `index.html` — page structure and content
-- `css/styles.css` — layout, responsive behavior, and MARS brand styling
-- `js/script.js` — mobile navigation, sticky-header state, current year, and reveal effects
-- `assets/images/` — supplied MARS logo variants
+- `index.html` — Home
+- `solutions.html` — Services and capabilities
+- `about.html` — Company approach and process
+- `insights.html` — Insight index
+- `research-design.html`, `mixed-methods.html`, `decision-ready-reporting.html` — Insight articles
+- `contact.html` — Project inquiry form
+- `privacy-policy.html` — Privacy policy
+- `404.html` — GitHub Pages error page
 
-## Before publishing
+## Deployment
 
-Replace both instances of:
+The site requires no build step. Commit the contents of this directory to the root of the `main` branch in `DataByMARS/mars-logic-site`. `CNAME` preserves `www.mars-logic.com`.
 
-```text
-YOUR_EMAIL@example.com
-```
+## Forms
 
-with the official MARS contact email.
+GitHub Pages cannot process forms by itself. The contact and newsletter forms use JavaScript to prepare a prefilled email to `dstone@mars-logic.com`. No form data is stored by the website.
 
-## Publish with GitHub Pages
+## External media
 
-1. Create a new GitHub repository.
-2. Upload the contents of this folder to the repository root.
-3. Open **Settings → Pages**.
-4. Under **Build and deployment**, choose **Deploy from a branch**.
-5. Select the `main` branch and `/ (root)` folder.
-6. Save and wait for GitHub Pages to publish the site.
+The Poppins font is loaded from Google Fonts. Three template media assets remain hosted by Wix because they are part of the visual reference supplied for the project. To make the site fully self-hosted, replace those URLs with approved local media files and update the corresponding `src`/`poster` values.
 
-The website uses only relative paths and does not require a build step.
+## Brand palette
+
+- Martian Red: `#a21e24`
+- Stellar Grey: `#676767`
+- Deep Space: `#1e1853`
+- Star Dust: `#f0eeea`
+
+No CSS gradients are used.
