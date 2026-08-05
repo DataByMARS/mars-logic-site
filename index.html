@@ -1,222 +1,242 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>MARS — Website Maintenance</title>
-
-  <meta
-    name="description"
-    content="The MARS website is currently undergoing maintenance."
-  >
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MARS — Modern Analytics & Research Solutions. Research design, data collection, analysis, modeling, visualization, reporting, and project management.">
   <meta name="theme-color" content="#1e1853">
+  <title>MARS | Modern Analytics & Research Solutions</title>
 
-  <link rel="canonical" href="https://mars-logic.com/">
-  <link rel="icon" href="assets/logo-icon.png" type="image/png">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  >
-
-  <style>
-    :root {
-      --white: #ffffff;
-      --martian-red: #a21e24;
-      --stellar-grey: #676767;
-      --deep-space: #1e1853;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      min-height: 100%;
-    }
-
-    body {
-      min-height: 100svh;
-      margin: 0;
-      padding: clamp(48px, 8vh, 90px) 28px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      background:
-        radial-gradient(
-          circle at 88% 15%,
-          rgba(30, 24, 83, 0.08),
-          transparent 38%
-        ),
-        radial-gradient(
-          circle at 10% 85%,
-          rgba(162, 30, 36, 0.06),
-          transparent 34%
-        ),
-        var(--white);
-
-      color: var(--deep-space);
-      font-family:
-        "Poppins",
-        system-ui,
-        -apple-system,
-        "Segoe UI",
-        sans-serif;
-
-      text-align: center;
-    }
-
-    main {
-      width: min(980px, 100%);
-      margin: 0 auto;
-    }
-
-    .welcome {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .welcome-text {
-      margin: 0 0 24px;
-
-      color: var(--deep-space);
-      font-size: clamp(2.5rem, 5vw, 4.6rem);
-      font-weight: 800;
-      line-height: 1;
-      letter-spacing: -0.045em;
-    }
-
-    .logo {
-      display: block;
-      width: clamp(250px, 30vw, 365px);
-      max-width: 78vw;
-      height: auto;
-    }
-
-    .rule {
-      width: 76px;
-      height: 4px;
-
-      margin:
-        clamp(52px, 7vh, 76px)
-        auto
-        clamp(40px, 5vh, 54px);
-
-      border: 0;
-      border-radius: 999px;
-      background: var(--martian-red);
-    }
-
-    .message {
-      width: min(860px, 100%);
-      margin: 0 auto;
-
-      color: var(--stellar-grey);
-      font-size: clamp(1.05rem, 1.4vw, 1.2rem);
-      font-weight: 400;
-      line-height: 1.75;
-      letter-spacing: -0.005em;
-    }
-
-    .message p {
-      margin: 0;
-    }
-
-    .message p + p {
-      margin-top: 14px;
-    }
-
-    .message a {
-      display: inline-block;
-
-      color: var(--deep-space);
-      font-weight: 700;
-      white-space: nowrap;
-
-      text-decoration-color: rgba(162, 30, 36, 0.45);
-      text-decoration-thickness: 2px;
-      text-underline-offset: 4px;
-
-      transition:
-        color 150ms ease,
-        text-decoration-color 150ms ease;
-    }
-
-    .message a:hover {
-      color: var(--martian-red);
-      text-decoration-color: var(--martian-red);
-    }
-
-    .message a:focus-visible {
-      color: var(--martian-red);
-      outline: 2px solid var(--deep-space);
-      outline-offset: 5px;
-      border-radius: 2px;
-    }
-
-    @media (max-width: 600px) {
-      body {
-        padding: 64px 22px;
-      }
-
-      .welcome-text {
-        margin-bottom: 20px;
-      }
-
-      .logo {
-        width: min(290px, 78vw);
-      }
-
-      .rule {
-        margin-top: 46px;
-        margin-bottom: 36px;
-      }
-
-      .message {
-        font-size: 1rem;
-        line-height: 1.7;
-      }
-
-      .message p + p {
-        margin-top: 18px;
-      }
-    }
-  </style>
+  <link rel="icon" type="image/png" href="assets/images/mars-icon-color.png">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/script.js" defer></script>
 </head>
-
 <body>
-  <main>
-    <div class="welcome">
-      <p class="welcome-text">Welcome to</p>
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
-      <img
-        class="logo"
-        src="assets/logo.png"
-        alt="MARS"
-      >
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#home" aria-label="MARS home">
+        <img src="assets/images/mars-wordmark-color.png" alt="MARS">
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="primary-navigation" id="primary-navigation" aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#approach">Approach</a>
+        <a class="nav-cta" href="#contact">Start a project</a>
+      </nav>
     </div>
+  </header>
 
-    <hr class="rule">
+  <main id="main-content">
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="hero-orbit hero-orbit-one" aria-hidden="true"></div>
+      <div class="hero-orbit hero-orbit-two" aria-hidden="true"></div>
 
-    <div class="message">
-      <p>
-        Our website is currently undergoing maintenance and should be
-        back online shortly.
-      </p>
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Modern Analytics &amp; Research Solutions</p>
+          <h1 id="hero-title">
+            <span>Welcome to</span>
+            <img src="assets/images/mars-wordmark-color.png" alt="MARS">
+          </h1>
+          <p class="hero-intro">
+            Integrated research and analytics support from project design through clear, decision-ready reporting.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#services">Explore our services</a>
+            <a class="button button-secondary" href="#contact">Discuss a project</a>
+          </div>
+        </div>
 
-      <p>
-        For assistance, please contact
-        <a href="mailto:dstone@mars-logic.com">dstone@mars-logic.com</a>.
-      </p>
-    </div>
+        <div class="hero-visual reveal" aria-hidden="true">
+          <div class="planet">
+            <img src="assets/images/mars-icon-color.png" alt="">
+          </div>
+          <div class="data-card data-card-one">
+            <span class="data-label">Research</span>
+            <strong>Designed with purpose</strong>
+          </div>
+          <div class="data-card data-card-two">
+            <span class="data-label">Analysis</span>
+            <strong>Built for decisions</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="intro-section" id="about">
+      <div class="container intro-grid">
+        <div class="section-heading reveal">
+          <p class="eyebrow">About MARS</p>
+          <h2>One connected path from questions to answers.</h2>
+        </div>
+        <div class="intro-copy reveal">
+          <p>
+            MARS brings research design, data collection, analysis, visualization, and reporting into a single coordinated workflow. Engagements can cover one focused phase or the full project lifecycle.
+          </p>
+          <div class="statement">
+            <span class="statement-number">01</span>
+            <p>Structured research and analytics services aligned to the needs of each project.</p>
+          </div>
+          <div class="statement">
+            <span class="statement-number">02</span>
+            <p>Clear deliverables that translate evidence into information people can use.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services-section" id="services" aria-labelledby="services-title">
+      <div class="container">
+        <div class="services-header reveal">
+          <div>
+            <p class="eyebrow eyebrow-light">Capabilities</p>
+            <h2 id="services-title">Research and analytics, end to end.</h2>
+          </div>
+          <p>
+            Select individual services or combine them into a fully managed engagement.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card reveal">
+            <span class="service-index">01</span>
+            <h3>Research Design</h3>
+            <p>Translate objectives into a practical plan, including research questions, methods, measures, sampling, and analysis strategy.</p>
+          </article>
+
+          <article class="service-card reveal">
+            <span class="service-index">02</span>
+            <h3>Data Collection</h3>
+            <p>Develop and coordinate structured approaches for gathering reliable quantitative and qualitative information.</p>
+          </article>
+
+          <article class="service-card reveal">
+            <span class="service-index">03</span>
+            <h3>Statistical Analysis</h3>
+            <p>Examine patterns, relationships, differences, and uncertainty using methods suited to the data and research questions.</p>
+          </article>
+
+          <article class="service-card reveal">
+            <span class="service-index">04</span>
+            <h3>Qualitative Insights</h3>
+            <p>Identify themes, experiences, and context through systematic review and interpretation of qualitative evidence.</p>
+          </article>
+
+          <article class="service-card reveal">
+            <span class="service-index">05</span>
+            <h3>Predictive Modeling</h3>
+            <p>Build and assess models that estimate outcomes, clarify drivers, and support forward-looking decisions.</p>
+          </article>
+
+          <article class="service-card reveal">
+            <span class="service-index">06</span>
+            <h3>Data Visualization</h3>
+            <p>Turn complex results into clear charts, dashboards, and visual narratives designed for the intended audience.</p>
+          </article>
+
+          <article class="service-card reveal">
+            <span class="service-index">07</span>
+            <h3>Reporting</h3>
+            <p>Produce concise, defensible reports that document methods, findings, limitations, and implications.</p>
+          </article>
+
+          <article class="service-card service-card-featured reveal">
+            <span class="service-index">08</span>
+            <h3>Front-to-end Project Management</h3>
+            <p>Coordinate the complete workflow, from initial planning and execution through analysis, reporting, and final delivery.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="approach-section" id="approach" aria-labelledby="approach-title">
+      <div class="container approach-grid">
+        <div class="approach-visual reveal" aria-hidden="true">
+          <div class="approach-mark">
+            <img src="assets/images/mars-icon-white.png" alt="">
+          </div>
+        </div>
+
+        <div class="approach-content reveal">
+          <p class="eyebrow">Our approach</p>
+          <h2 id="approach-title">A disciplined workflow with room for the project to evolve.</h2>
+
+          <ol class="process-list">
+            <li>
+              <span>01</span>
+              <div>
+                <h3>Define</h3>
+                <p>Clarify objectives, audiences, constraints, and the decisions the work must support.</p>
+              </div>
+            </li>
+            <li>
+              <span>02</span>
+              <div>
+                <h3>Design</h3>
+                <p>Select methods, measures, collection strategies, and an analysis plan that fit the purpose.</p>
+              </div>
+            </li>
+            <li>
+              <span>03</span>
+              <div>
+                <h3>Analyze</h3>
+                <p>Apply transparent quantitative and qualitative methods while documenting assumptions and limitations.</p>
+              </div>
+            </li>
+            <li>
+              <span>04</span>
+              <div>
+                <h3>Deliver</h3>
+                <p>Present findings through clear visuals, reporting, and decision-focused communication.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact" aria-labelledby="contact-title">
+      <div class="container contact-panel reveal">
+        <div class="contact-copy">
+          <p class="eyebrow eyebrow-light">Start a conversation</p>
+          <h2 id="contact-title">Bring the question. We’ll help structure the path forward.</h2>
+          <p>
+            Share the project scope, current stage, and the type of support you need.
+          </p>
+        </div>
+        <a class="button button-light" href="mailto:YOUR_EMAIL@example.com">Contact MARS</a>
+      </div>
+    </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img src="assets/images/mars-logo-white.png" alt="MARS — Modern Analytics and Research Solutions">
+      </div>
+      <div>
+        <p class="footer-label">Navigate</p>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#approach">Approach</a>
+      </div>
+      <div>
+        <p class="footer-label">Contact</p>
+        <a href="mailto:YOUR_EMAIL@example.com">YOUR_EMAIL@example.com</a>
+      </div>
+      <div class="footer-meta">
+        <p>&copy; <span id="current-year"></span> MARS. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
