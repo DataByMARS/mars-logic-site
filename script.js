@@ -1,5 +1,5 @@
 /*
-  MARS — homepage interactions
+  MARS — site interactions
   Vanilla JavaScript implementation for the Wix template 3301 rebuild.
 
   Includes:
@@ -651,6 +651,31 @@
   };
 
   /* ------------------------------------------------------------------
+     Remote media fallbacks
+  ------------------------------------------------------------------ */
+  const setupMediaFallbacks = () => {
+    doc.querySelectorAll("img[src^='https://static.wixstatic.com']").forEach((image) => {
+      const markUnavailable = () => {
+        image.closest(
+          ".feature-wide__media, .solution-wide__media, .about-story__media, .insight-card__media"
+        )?.classList.add("media-is-unavailable");
+      };
+
+      on(image, "error", markUnavailable, { once: true });
+      if (image.complete && image.naturalWidth === 0) markUnavailable();
+    });
+
+    doc.querySelectorAll("[data-video-player]").forEach((player) => {
+      const video = player.querySelector("video");
+      const source = video?.querySelector("source");
+      const markUnavailable = () => player.classList.add("video-is-unavailable");
+
+      on(video, "error", markUnavailable, { once: true });
+      on(source, "error", markUnavailable, { once: true });
+    });
+  };
+
+  /* ------------------------------------------------------------------
      Site utilities
   ------------------------------------------------------------------ */
   const setupUtilities = () => {
@@ -661,6 +686,7 @@
   };
 
   const initialize = () => {
+    setupMediaFallbacks();
     setupMenu();
     setupVideoPlayer();
     setupRevealMotion();

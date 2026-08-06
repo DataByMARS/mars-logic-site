@@ -23,7 +23,7 @@ GitHub Pages cannot process forms by itself. The contact and newsletter forms us
 
 ## External media
 
-The Poppins font is loaded from Google Fonts. Three template media assets remain hosted by Wix because they are part of the visual reference supplied for the project. To make the site fully self-hosted, replace those URLs with approved local media files and update the corresponding `src`/`poster` values.
+The Poppins font is loaded from Google Fonts. Three template media assets remain hosted by Wix because they are part of the supplied visual reference. Branded local fallback artwork is displayed if any of those assets cannot load. For a fully self-hosted deployment, replace the remote URLs with approved local media files and update the corresponding `src` and `poster` values.
 
 ## Brand palette
 
@@ -33,3 +33,7 @@ The Poppins font is loaded from Google Fonts. Three template media assets remain
 - Star Dust: `#f0eeea`
 
 No CSS gradients are used.
+
+## Quality review
+
+See `QUALITY-ASSURANCE.md` for the visual, accessibility, link, syntax, and responsive checks completed on this package.

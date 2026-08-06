@@ -1,5 +1,5 @@
 /*
-  MARS — homepage styles
+  MARS — site styles
   Visual system follows Wix template 3301 (Business Consulting Agency).
   Typeface and brand palette are the intended substitutions.
   No gradients are used.
@@ -13,7 +13,7 @@
   --star-dust: #f0eeea;
   --paper: #ffffff;
   --ink: #111111;
-  --muted-panel: #eeeeee;
+  --muted-panel: var(--star-dust);
   --line: rgba(17, 17, 17, 0.18);
 
   --page-gutter: 4vw;
@@ -239,23 +239,26 @@ textarea:focus-visible {
   transition: background-color 180ms ease, color 180ms ease;
 }
 
-.social-links--header li:nth-child(1) a::before {
-  content: "gh";
+/* Compact icon treatment mirrors the template's circular social controls. */
+.social-links--header li:nth-child(1) {
+  --social-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 .5C5.73.5.75 5.74.75 12c0 5.01 3.44 9.27 8.2 10.77.6.11.82-.26.82-.58 0-.29-.01-1.25-.02-2.26-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.23 1.84 1.23 1.07 1.84 2.8 1.31 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.93 0-1.31.47-2.38 1.23-3.22-.12-.3-.53-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c.58-1.57 2.27-1.23 2.27-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.6-2.81 5.62-5.48 5.92.43.37.81 1.1.81 2.22 0 1.61-.01 2.91-.01 3.31 0 .32.22.7.83.58A11.52 11.52 0 0 0 23.25 12C23.25 5.74 18.27.5 12 .5Z'/%3E%3C/svg%3E");
 }
 
-.social-links--header li:nth-child(2) a::before {
-  content: "@";
+.social-links--header li:nth-child(2) {
+  --social-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M2 4h20v16H2V4Zm2 2v.35l8 6 8-6V6l-8 6-8-6Zm16 12V9l-8 6-8-6v9h16Z'/%3E%3C/svg%3E");
 }
 
-.social-links--header li:nth-child(3) a::before {
-  content: "?";
+.social-links--header li:nth-child(3) {
+  --social-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 3h18v14H8l-5 4V3Zm2 2v12l2-2h12V5H5Zm3 3h8v2H8V8Zm0 4h6v2H8v-2Z'/%3E%3C/svg%3E");
 }
 
 .social-links--header a::before {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: -0.03em;
-  text-transform: lowercase;
+  content: "";
+  width: 13px;
+  height: 13px;
+  background: currentColor;
+  -webkit-mask: var(--social-icon) center / contain no-repeat;
+  mask: var(--social-icon) center / contain no-repeat;
 }
 
 .social-links--header a:hover {
@@ -459,13 +462,23 @@ textarea:focus-visible {
   top: 80px;
   right: var(--page-gutter);
   overflow: hidden;
-  background: var(--martian-red);
+  background-color: var(--martian-red);
+  background-image: url("images/mars-icon-white.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 46% auto;
 }
 
 .hero-media__video {
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+.hero-media.video-is-unavailable .hero-media__video,
+.hero-media.video-is-unavailable .video-toggle,
+.media-is-unavailable > img {
+  display: none;
 }
 
 .video-toggle {
@@ -585,7 +598,11 @@ textarea:focus-visible {
   min-height: 225px;
   overflow: hidden;
   border-radius: 0 var(--section-radius) var(--section-radius) 0;
-  background: var(--star-dust);
+  background-color: var(--star-dust);
+  background-image: url("images/mars-icon-color.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 72px auto;
 }
 
 .feature-wide__media img {
@@ -602,11 +619,11 @@ textarea:focus-visible {
   padding: 42px 8%;
   border-radius: var(--section-radius);
   background: var(--deep-space);
-  color: var(--martian-red);
+  color: var(--paper);
 }
 
 .feature-panel--three .button-link:hover {
-  background: var(--martian-red);
+  background: var(--paper);
   color: var(--deep-space);
 }
 
@@ -836,6 +853,11 @@ textarea:focus-visible {
 .solution-wide__media {
   min-height: 100vh;
   overflow: hidden;
+  background-color: var(--star-dust);
+  background-image: url("images/mars-icon-color.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 84px auto;
 }
 
 .solution-wide__media img {
@@ -1853,6 +1875,11 @@ textarea {
 .about-story__media {
   min-height: 760px;
   overflow: hidden;
+  background-color: var(--star-dust);
+  background-image: url("images/mars-icon-color.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 84px auto;
 }
 
 .about-story__media img {
@@ -2009,7 +2036,11 @@ textarea {
   aspect-ratio: 4 / 3;
   overflow: hidden;
   border-radius: var(--section-radius) var(--section-radius) 0 0;
-  background: var(--star-dust);
+  background-color: var(--star-dust);
+  background-image: url("images/mars-icon-color.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 64px auto;
 }
 
 .insight-card__media img {
