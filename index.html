@@ -3,131 +3,30 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MARS | Website Maintenance</title>
-  <meta
-    name="description"
-    content="The MARS website is currently undergoing maintenance."
-  >
+  <meta name="description" content="The MARS website is currently under maintenance.">
+  <meta name="theme-color" content="#f0eeea">
+  <title>Welcome to MARS</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
-    rel="stylesheet"
-  >
-
-  <style>
-    :root {
-      --martian-red: #a21e24;
-      --deep-space: #1e1853;
-      --stellar-grey: #676767;
-      --star-dust: #f0eeea;
-      --white: #ffffff;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html,
-    body {
-      min-height: 100%;
-      margin: 0;
-    }
-
-    body {
-      display: grid;
-      place-items: center;
-      padding: 32px;
-      background: var(--star-dust);
-      color: var(--deep-space);
-      font-family: "Poppins", Arial, sans-serif;
-    }
-
-    main {
-      width: min(100%, 960px);
-      text-align: center;
-    }
-
-    h1 {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 0.3em;
-      margin: 0 0 32px;
-      font-size: clamp(2.5rem, 7vw, 5.75rem);
-      font-weight: 500;
-      line-height: 1.08;
-      letter-spacing: -0.045em;
-    }
-
-    .logo {
-      display: block;
-      width: auto;
-      height: clamp(2.8rem, 7vw, 5.6rem);
-      object-fit: contain;
-    }
-
-    p {
-      max-width: 760px;
-      margin: 0 auto;
-      color: var(--stellar-grey);
-      font-size: clamp(1rem, 2vw, 1.25rem);
-      line-height: 1.8;
-    }
-
-    a {
-      color: var(--martian-red);
-      font-weight: 600;
-      text-decoration-thickness: 2px;
-      text-underline-offset: 4px;
-    }
-
-    a:hover,
-    a:focus-visible {
-      color: var(--deep-space);
-    }
-
-    a:focus-visible {
-      outline: 3px solid var(--martian-red);
-      outline-offset: 5px;
-      border-radius: 2px;
-    }
-
-    @media (max-width: 540px) {
-      body {
-        padding: 24px;
-      }
-
-      h1 {
-        gap: 0.18em;
-        margin-bottom: 24px;
-      }
-
-      .logo {
-        max-width: 70vw;
-      }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-  <main>
-    <h1>
-      <span>Welcome to</span>
-      <img
-        class="logo"
-        src="images/mars-wordmark-color.png"
-        alt="MARS"
-      >
-    </h1>
+  <main class="maintenance" aria-labelledby="page-title">
+    <div class="content">
+      <h1 id="page-title" class="title">
+        <span>Welcome to</span>
+        <img class="logo" src="images/mars-logo.png" alt="MARS">
+      </h1>
 
-    <p>
-      Our website is currently under maintenance and should be back online
-      soon. For assistance or questions, please contact
-      <a href="mailto:dstone@mars-logic.com">dstone@mars-logic.com</a>.
-    </p>
+      <p class="message">
+        Our website is currently under maintenance and should be back online soon.
+        For assistance or questions, please contact
+        <a href="mailto:dstone@mars-logic.com">dstone@mars-logic.com</a>.
+      </p>
+    </div>
   </main>
 </body>
 </html>

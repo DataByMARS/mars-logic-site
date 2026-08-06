@@ -1,0 +1,104 @@
+:root {
+  --martian-red: #a21e24;
+  --deep-space: #1e1853;
+  --stellar-grey: #676767;
+  --star-dust: #f0eeea;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: var(--star-dust);
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  color: var(--deep-space);
+  background: var(--star-dust);
+  font-family: "Poppins", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.maintenance {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 48px 24px;
+}
+
+.content {
+  width: min(880px, 100%);
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.28em;
+  font-size: clamp(2.25rem, 5.6vw, 5rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+
+.logo {
+  display: block;
+  width: clamp(190px, 31vw, 360px);
+  height: auto;
+}
+
+.message {
+  max-width: 760px;
+  margin: 36px auto 0;
+  color: var(--stellar-grey);
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  font-weight: 400;
+  line-height: 1.8;
+}
+
+.message a {
+  color: var(--martian-red);
+  font-weight: 600;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.2em;
+}
+
+.message a:hover,
+.message a:focus-visible {
+  color: var(--deep-space);
+}
+
+.message a:focus-visible {
+  outline: 3px solid var(--martian-red);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+@media (max-width: 560px) {
+  .maintenance {
+    padding: 36px 20px;
+  }
+
+  .title {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .logo {
+    width: min(280px, 78vw);
+  }
+
+  .message {
+    margin-top: 28px;
+    line-height: 1.7;
+  }
+}
